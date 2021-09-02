@@ -31,3 +31,6 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
+
+
+Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');

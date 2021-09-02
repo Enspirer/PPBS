@@ -13,6 +13,20 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{active_class(Route::is('admin/location'))}}" href="{{ route('admin.location.index') }}">
+                    <i class="nav-icon fas fa-location-arrow"></i>
+                    Locations
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active_class(Route::is('admin/booking_rates'))}}" href="{{ route('admin.booking_rates.index') }}">
+                    <i class="nav-icon fas fa-plane-departure"></i>
+                    Booking Rates
+                </a>
+            </li>
+
             @if ($logged_in_user->isAdmin())
                 <li class="nav-title">
                     @lang('menus.backend.sidebar.system')
