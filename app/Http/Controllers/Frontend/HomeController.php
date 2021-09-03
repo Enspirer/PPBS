@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\BookingRates;
+use App\Models\Passengers;
 use DataTables;
 use DB;
 
@@ -28,45 +29,90 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {     
-        
-        // dd($request); 
+        // dd($request);        
 
         $count = $request->adults + $request->child + $request->baby;
 
-        // dd($count);
-        
-        $booking = BookingRates::where('booking_type',$request->booking_type)->where('start_point',$request->pickup_from)->where('end_point',$request->destination)->first();
+        $booking = BookingRates::where('booking_type',$request->booking_type)
+        ->where('start_point',$request->pickup_from)
+        ->where('end_point',$request->destination)
+        ->first();
 
         // dd($booking);
 
-        if($count <= 4){
-            $price = $booking->one_four_price;
-        }
-        // if( 4 << $count << 8){
-        //     $price = $booking->five_eight_price;
-        // }
-        if($count > 8){
-            $price = 'passengers limit exceeded';
+        if($booking == null){
+            return('Something Error!');
         }
 
-        // if($count <= 4){
-        //     $price = $booking->one_four_price;
-        // }elseif( $count = 5 ){
-        //     $price = $booking->five_eight_price;
-        // }elseif( $count > 10 ){
-        //     $price = 'passengers limit exceeded';
-        // }
+        // $start_point = Location::where('id',$booking->start_point)->first();
+        // $end_point = Location::where('id',$booking->end_point)->first();
         
+        $output = [];
+
+        foreach(json_decode($booking->price_details) as $key => $price_detail){
+            // dd($price_detail);
+
+            if($count == $price_detail->count){
+                $output = [
+                    'count' => $price_detail->count,
+                    'price' => $price_detail->price,
+                    'pickup_from' => $request->pickup_from,
+                    'destination' => $request->destination
+                ];
+
+            }
+        }
+
+        if(count($output) == 0){
+            return('passengers limit exceeded');
+        }
+
+        return json_encode($output);                  
+
+    }
 
 
-        dd($price);
+    public function api_booking(Request $request)
+    {     
+        // dd($request);        
+
+        $count = $request->adults + $request->child + $request->baby;
+
+        $booking = BookingRates::where('booking_type',$request->booking_type)
+        ->where('start_point',$request->pickup_from)
+        ->where('end_point',$request->destination)
+        ->first();
+
+        // dd($booking);
+
+        if($booking == null){
+            return('Something Error!');
+        }
+
+        // $start_point = Location::where('id',$booking->start_point)->first();
+        // $end_point = Location::where('id',$booking->end_point)->first();
         
+        $output = [];
 
+        foreach(json_decode($booking->price_details) as $key => $price_detail){
+            // dd($price_detail);
 
-        
+            if($count == $price_detail->count){
+                $output = [
+                    'count' => $price_detail->count,
+                    'price' => $price_detail->price,
+                    'pickup_from' => $request->pickup_from,
+                    'destination' => $request->destination
+                ];
 
-        return back(); 
-                  
+            }
+        }
+
+        if(count($output) == 0){
+            return('passengers limit exceeded');
+        }
+
+        return json_encode($output);                   
 
     }
 

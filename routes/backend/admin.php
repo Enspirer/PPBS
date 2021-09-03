@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\BookingRatesController;
+use App\Http\Controllers\Backend\PassengersController;
 
 
 // All route names are prefixed with 'admin.'.
@@ -16,7 +17,15 @@ Route::get('location/edit/{id}', [LocationController::class, 'edit'])->name('loc
 Route::post('location/update', [LocationController::class, 'update'])->name('location.update');
 Route::get('location/destroy/{id}', [LocationController::class, 'destroy'])->name('location.destroy');
 
+Route::get('passengers', [PassengersController::class, 'index'])->name('passengers.index');
+Route::post('passengers/store', [PassengersController::class, 'store'])->name('passengers.store');
+Route::get('passengers/getdetails', [PassengersController::class, 'getDetails'])->name('passengers.getDetails');
+Route::get('passengers/edit/{id}', [PassengersController::class, 'edit'])->name('passengers.edit');
+Route::post('passengers/update', [PassengersController::class, 'update'])->name('passengers.update');
+Route::get('passengers/destroy/{id}', [PassengersController::class, 'destroy'])->name('passengers.destroy');
+
 Route::get('booking_rates', [BookingRatesController::class, 'index'])->name('booking_rates.index');
+Route::get('booking_rates/create', [BookingRatesController::class, 'create'])->name('booking_rates.create');
 Route::post('booking_rates/store', [BookingRatesController::class, 'store'])->name('booking_rates.store');
 Route::get('booking_rates/getdetails', [BookingRatesController::class, 'getDetails'])->name('booking_rates.getDetails');
 Route::get('booking_rates/edit/{id}', [BookingRatesController::class, 'edit'])->name('booking_rates.edit');

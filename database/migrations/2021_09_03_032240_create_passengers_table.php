@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingRatesTable extends Migration
+class CreatePassengersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBookingRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking_rates', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('booking_type');
-            $table->text('start_point')->nullable();
-            $table->text('end_point')->nullable();
-            $table->text('price_details')->nullable();
+            $table->text('name');
+            $table->integer('count');
+            $table->text('status');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBookingRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_rates');
+        Schema::dropIfExists('passengers');
     }
 }

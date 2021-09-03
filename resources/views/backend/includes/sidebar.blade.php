@@ -21,6 +21,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{active_class(Route::is('admin/passengers'))}}" href="{{ route('admin.passengers.index') }}">
+                    <i class="nav-icon fas fa-users"></i>
+                    Passengers
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{active_class(Route::is('admin/booking_rates'))}}" href="{{ route('admin.booking_rates.index') }}">
                     <i class="nav-icon fas fa-plane-departure"></i>
                     Booking Rates

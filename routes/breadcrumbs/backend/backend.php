@@ -14,3 +14,14 @@ Breadcrumbs::for('admin.location.index', function ($trail) {
 Breadcrumbs::for('admin.booking_rates.index', function ($trail) {
     $trail->push('Booking Rates', route('admin.booking_rates.index'));
 });
+Breadcrumbs::for('admin.booking_rates.create', function ($trail) {
+    $trail->push('Create Booking Rates', route('admin.booking_rates.create'));
+});
+Breadcrumbs::for('admin.booking_rates.edit', function ($trail) {
+    $trail->push('Edit Booking Rates', route('admin.booking_rates.edit',1));
+});
+
+
+Breadcrumbs::for('admin.passengers.index', function ($trail) {
+    $trail->push('Passengers', route('admin.passengers.index'));
+});

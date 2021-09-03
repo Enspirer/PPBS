@@ -18,14 +18,14 @@
                     {{csrf_field()}}
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" >
+                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1"  onclick="myFunctionr()">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 One Way
                             </label>                        
                         </div>
                         <div class="form-check mt-2">
-                            <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault1" >
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onclick="myFunctionr()">
+                            <label class="form-check-label" for="flexRadioDefault2">
                                 Return
                             </label>                        
                         </div>
@@ -53,10 +53,11 @@
                         <div class="form-group">
                             <label>Passengers</label>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-4">
+                                <label style="font-size:14px;">Adults</label>
                                     <select class="form-control" name="adults" required>
-                                        <option value="" selected disabled>Adults</option>  
+                                        <option value="" selected disabled>Select...</option>  
                                             <option value="0">0</option> 
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -69,8 +70,9 @@
                                     </select>
                                 </div>
                                 <div class="col-4">
+                                <label style="font-size:14px;">Child</label>
                                     <select class="form-control" name="child" required>
-                                        <option value="" selected disabled>Child</option>  
+                                        <option value="" selected disabled>Select...</option>  
                                             <option value="0">0</option> 
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -83,8 +85,9 @@
                                     </select>
                                 </div>
                                 <div class="col-4">
-                                    <select class="form-control" name="baby" required>
-                                        <option value="" selected disabled>Baby</option>  
+                                <label style="font-size:14px;">Baby</label>
+                                    <select class="form-control" name="baby" id="baby" onchange="myFunction()" required>
+                                        <option value="" selected disabled>Select...</option>  
                                             <option value="0">0</option> 
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -100,7 +103,7 @@
                         </div>
 
                         <div class="form-group mt-4">
-                            <h1 class="display-4" style="color:#ff5252; font-weight: 500;"><span>&#8364;</span> 0.00</h1>                        
+                            <h1 class="display-4" style="color:#ff5252; font-weight: 500;" id="result"><span>&#8364;</span> 0.00</h1>                        
                         </div>
 
                         
@@ -115,5 +118,60 @@
 
     
 <!-- </div> -->
-    
 @endsection
+
+
+@push('after-scripts')
+<!-- <script>
+
+$('#baby').change(function(){
+    var settings = {
+    "url": "{{url('/')}}/api/api_booking",
+    "method": "POST",
+    "timeout": 0,
+    "dataType": "json",
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+  
+});
+</script> -->
+
+
+
+@endpush  
+
+
+<script>    
+
+    function myFunctionr(){
+
+        alert('hello');
+
+        var checkbox;
+
+        if($('#flexRadioDefault1').is(':checked')) { 
+            checkbox = $("#flexRadioDefault1").val();
+        }
+
+        if($('#flexRadioDefault2').is(':checked')) { 
+            checkbox = $("#flexRadioDefault2").val();
+        }
+
+        console.log(checkbox);
+
+
+        $.post("{{url('/')}}/api/api_booking",
+        {
+        // name: "Donald Duck",
+        // city: "Duckburg" 
+        $("#radio_1").attr('checked', 'checked')
+        },
+        function(data,status){
+            $('#result').val(data.price);
+        });
+    };
+  
+</script>
