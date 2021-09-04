@@ -32,7 +32,7 @@
 
                         <div class="form-group mt-4">
                             <label>Pickup From</label>
-                            <select class="form-control" name="pickup_from" required>
+                            <select class="form-control" id="picup_from" name="pickup_from" required>
                                 <option value="" selected disabled>Select...</option> 
                                 @foreach($location as $locate) 
                                     <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label>Destination</label>
-                            <select class="form-control" name="destination" required>
+                            <select class="form-control" id="destination" name="destination" required>
                                 <option value="" selected disabled>Select...</option> 
                                 @foreach($location as $locate) 
                                     <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
@@ -56,7 +56,7 @@
                             <div class="row mt-3">
                                 <div class="col-4">
                                 <label style="font-size:14px;">Adults</label>
-                                    <select class="form-control" name="adults" required>
+                                    <select class="form-control" id="adults" name="adults" required>
                                         <option value="" selected disabled>Select...</option>  
                                             <option value="0">0</option> 
                                             <option value="1">1</option>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="col-4">
                                 <label style="font-size:14px;">Child</label>
-                                    <select class="form-control" name="child" required>
+                                    <select class="form-control" id="child" name="child" required>
                                         <option value="" selected disabled>Select...</option>  
                                             <option value="0">0</option> 
                                             <option value="1">1</option>
@@ -116,7 +116,31 @@
         </div><!--col-->
     </div><!--row-->
 
-    
+
+<script>
+
+    function myFunctionr(){
+
+
+
+        if($('#flexRadioDefault1').is(':checked')) {
+            checkbox = $("#flexRadioDefault1").val();
+        }
+
+        if($('#flexRadioDefault2').is(':checked')) {
+            checkbox = $("#flexRadioDefault2").val();
+        }
+
+        pickup_from = $('#picup_from').val();
+        destination = $('#destination').val();
+        adults = $('#adults').val();
+        child = $('#child').val();
+        baby = $('#baby').val();
+
+        alert(pickup_from);
+    }
+
+</script>
 <!-- </div> -->
 @endsection
 
@@ -143,35 +167,3 @@ $('#baby').change(function(){
 
 @endpush  
 
-
-<script>    
-
-    function myFunctionr(){
-
-        alert('hello');
-
-        var checkbox;
-
-        if($('#flexRadioDefault1').is(':checked')) { 
-            checkbox = $("#flexRadioDefault1").val();
-        }
-
-        if($('#flexRadioDefault2').is(':checked')) { 
-            checkbox = $("#flexRadioDefault2").val();
-        }
-
-        console.log(checkbox);
-
-
-        $.post("{{url('/')}}/api/api_booking",
-        {
-        // name: "Donald Duck",
-        // city: "Duckburg" 
-        $("#radio_1").attr('checked', 'checked')
-        },
-        function(data,status){
-            $('#result').val(data.price);
-        });
-    };
-  
-</script>
