@@ -11,6 +11,16 @@ use App\Http\Controllers\Frontend\User\ProfileController;
  * All route names are prefixed with 'frontend.'.
  */
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');
+Route::get('booking_customer/{id}', [HomeController::class, 'booking_customer'])->name('booking_customer');
+Route::post('booking_customer/store', [HomeController::class, 'booking_customer_store'])->name('booking_customer.store');
+
+
+
+
+
+
+
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 
@@ -33,4 +43,3 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
 });
 
 
-Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');
