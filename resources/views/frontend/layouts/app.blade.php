@@ -39,10 +39,12 @@
             <!-- @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav') -->
 
-            <div class="container-fluid" style="background-color:#ededed">
-                @include('includes.partials.messages')
-                @yield('content')
-            </div><!-- container -->
+            <div class="container-fluid">
+                <div class="mt-4">
+                    @include('includes.partials.messages')
+                    @yield('content')
+                </div>
+            </div>
         </div><!-- #app -->
 
         <!-- Scripts -->

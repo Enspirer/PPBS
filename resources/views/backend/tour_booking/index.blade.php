@@ -1,19 +1,18 @@
 @extends('backend.layouts.app')
 
-@section('title', __('Booking Rates'))
+@section('title', __('Tour Booking'))
 
 @section('content')
-    
+
 
 <div class="row">
         <div class="col">
 
             <div class="card">
                 <div class="card-header">
-                    <strong>Booking Rates&nbsp;</strong>
-                    
-                    <a href="{{route('admin.booking_rates.create')}}" class="btn btn-info pull-right ml-4">Create New</a>
-                    
+
+                    <strong>Tour Booking &nbsp;</strong>
+                  
                 </div><!--card-header-->
 
                 <div class="card-body">
@@ -22,8 +21,10 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Booking Type</th>
-                                <th scope="col">Start Point</th>
-                                <th scope="col">End Point</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Passengers Count</th>
+                                <th scope="col">Booked Date</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Option</th>
                             </tr>
                         </thead>
@@ -35,8 +36,7 @@
             </div><!--card-->
         </div><!--col-->
     </div><!--row-->
-
-
+    
 
      <!-- Modal delete -->
      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteLabel" aria-hidden="true">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <h5>Are you sure you want to remove This?</h5>
+                            <h5>Are you sure you want to remove this?</h5>
                         </div>                        
 
                     </div>
@@ -72,19 +72,21 @@
         $(function () {
             var table = $('#villadatatable').DataTable({
                 processing: true,
-                ajax: "{{route('admin.booking_rates.getDetails')}}",
+                ajax: "{{route('admin.tour_booking.getDetails')}}",
                 serverSide: true,
                 order: [[0, "desc"]],
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'booking_type', name: 'booking_type'},
-                    {data: 'start_point', name: 'start_point'},
-                    {data: 'end_point', name: 'end_point'},
+                    {data: 'customer_name', name: 'customer_name'},
+                    {data: 'passengers_count', name: 'passengers_count'},
+                    {data: 'booked_date', name: 'booked_date'},
+                    {data: 'status', name: 'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
+ 
 
-            
             var user_id;
 
             $(document).on('click', '.delete', function(){
@@ -94,7 +96,7 @@
 
             $('#ok_button').click(function(){
             $.ajax({
-            url:"booking_rates/destroy/"+user_id,
+            url:"tour_booking/destroy/"+user_id,
             
             success:function(data)
             {

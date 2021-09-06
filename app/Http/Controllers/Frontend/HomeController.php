@@ -40,7 +40,7 @@ class HomeController extends Controller
         ->first();
 
         if($booking == null){
-            return('Something Error!');
+            return back()->withErrors('There is no such a Package for Now. Please choose another Package'); 
         }
         
         $output = [];
@@ -72,7 +72,6 @@ class HomeController extends Controller
             $add->child = $request->child;
             $add->baby = $request->baby;
             $add->total_price = $request->result_value;
-            $add->status = 'Pending';
     
             $add->save();
     
@@ -109,7 +108,7 @@ class HomeController extends Controller
         ->first();
 
         if($booking == null){
-            return('Something Error!');
+            return back()->withErrors('There is no such a Package for Now. Please choose another Package'); 
         }
         
         $output = [];
@@ -141,6 +140,7 @@ class HomeController extends Controller
         $update->customer_name=$request->name;
         $update->customer_email=$request->email;        
         $update->customer_telephone=$request->telephone;
+        $update->status = 'Pending';
                 
         Booking::whereId($request->hidden_id)->update($update->toArray());           
 
@@ -154,7 +154,8 @@ class HomeController extends Controller
     {     
         // dd($request);        
 
-        $count = $request->adults + $request->child + $request->baby;
+        $count = 0 + $request->adults + $request->child + $request->baby;
+        // dd($count);
 
         $booking = BookingRates::where('booking_type',$request->booking_type)
         ->where('start_point',$request->pickup_from)
@@ -164,7 +165,7 @@ class HomeController extends Controller
         // dd($booking);
 
         if($booking == null){
-            return('Something Error!');
+            return('There is no such a Package for Now. Please choose another Package!');
         }
 
         // $start_point = Location::where('id',$booking->start_point)->first();
@@ -175,6 +176,7 @@ class HomeController extends Controller
         foreach(json_decode($booking->price_details) as $key => $price_detail){
             // dd($price_detail);
 
+            
             if($count == $price_detail->count){
                 $output = [
                     'count' => $price_detail->count,
@@ -182,8 +184,14 @@ class HomeController extends Controller
                     'pickup_from' => $request->pickup_from,
                     'destination' => $request->destination
                 ];
-
             }
+            elseif($count > 8){
+                $output = [
+                    'price' => 'passengers limit exceeded'
+                ];
+            }
+
+
         }
 
         if(count($output) == 0){

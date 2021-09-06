@@ -2,23 +2,24 @@
 
 @section('title', app_name() . ' | ' . __('navs.general.home'))
 
-
-<div class="container-fluid" style="background-color:#ededed">
+@section('content')
+<!-- <div class="container-fluid pt-3" style="background-color:#ededed"> -->
+    
     <form action="{{route('frontend.booking_customer.store')}}" method="post" >
     {{csrf_field()}}
         <div class="row" style="margin-top:10px;">
-            <div class="col-3 p-4">
-                <div class="row mb-4" >
+            <div class="col-3 ">
+                <div class="row p-4">
                     
-                        <div class="card mb-5">
+                        <div class="card" style="background-color:#ededed">
                             <div class="card-header" style="background-color:#ffe192;">
                                 <div class="row">
                                     <div class="col-6">
                                         <h4 style="font-size: 24px; font-weight: 100; margin:0">Your Price</h4>
                                     </div>
                                     <div class="col-6">
-                                        <h3 style="font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                                        <span id="result">{{ $booking->total_price }}</span></h3> 
+                                        <h4 style="font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
+                                        <span id="result">{{ $booking->total_price }}</span></h4> 
                                     </div>                       
                                 </div>
                             </div>
@@ -43,7 +44,6 @@
                                     <div class="form-group mt-4">
                                         <label>Pickup From</label>
                                         <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunctionr()">
-                                            <option value="" selected disabled>Select...</option> 
                                             @foreach($location as $locate) 
                                                 <option value="{{ $locate->id }}" {{ $booking->pickup_from == $locate->id ? "selected" : "" }}>{{ $locate->name }}</option>  
                                             @endforeach                              
@@ -53,7 +53,6 @@
                                     <div class="form-group">
                                         <label>Destination</label>
                                         <select class="form-control" id="destination" name="destination" required onchange="myFunctionr()">
-                                            <option value="" selected disabled>Select...</option> 
                                             @foreach($location as $locate) 
                                                 <option value="{{ $locate->id }}" {{ $booking->destination == $locate->id ? "selected" : "" }}>{{ $locate->name }}</option>  
                                             @endforeach                              
@@ -67,7 +66,7 @@
                                             <div class="col-4">
                                             <label style="font-size:14px;">Adults</label>
                                                 <select class="form-control" id="adults" name="adults" required onchange="myFunctionr()"> 
-                                                        <option value="0" {{ $booking->adults == 0 ? "selected" : "" }}>0</option> 
+                                                        <!-- <option value="0" {{ $booking->adults == 0 ? "selected" : "" }}>1</option> -->
                                                         <option value="1" {{ $booking->adults == 1 ? "selected" : "" }}>1</option>
                                                         <option value="2" {{ $booking->adults == 2 ? "selected" : "" }}>2</option>
                                                         <option value="3" {{ $booking->adults == 3 ? "selected" : "" }}>3</option>
@@ -124,9 +123,9 @@
 
 
 
-            <div class="col-9 p-4">
-                <div class="row mb-4" >
-                        <div class="card mb-5">
+            <div class="col-9">
+                <div class="row p-4" >
+                        <div class="card" style="background-color:#ededed">
                             <div class="card-header" style="background-color:#ffe192;">
                                 <h4 style="font-size: 24px; font-weight: 100; margin:0">Personal Details</h4>
                             </div>
@@ -151,7 +150,7 @@
                                             </div>
                                             <div class="col-4">
                                             <label style="font-size:14px;">Email</label>
-                                                <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                                <input type="email" class="form-control" name="email" placeholder="Email" required>
                                             </div>
                                         </div>
                                     </div>
@@ -159,18 +158,12 @@
                                         <div class="row mt-3">
                                             <div class="col-3">
                                             <label style="font-size:14px;">Mobile Number</label>
-                                                <input type="text" class="form-control" name="telephone" placeholder="Mobile Number" required>
+                                                <input type="number" class="form-control" name="telephone" placeholder="Mobile Number" required>
                                             </div>
                                             
                                         </div>
                                     </div>
 
-                                    <!-- <div class="form-group mt-4">
-                                        <h1 class="display-4" style="color:#ff5252; font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                                        <span id="result">0.00</span></h1>                        
-                                    </div> -->
-
-                                    <!-- <input type="hidden" name="result_value" id="result_value"> -->
                                     <div class="d-flex justify-content-center mt-5">
                                         <input type="hidden" name="hidden_id" value="{{ $booking->id }}">
                                         <input type="submit" class="btn" value="Book Now" style="background-color:#ffe192;">
@@ -184,118 +177,8 @@
 
         </div>
     </form>
-</div>
-    <!-- <div class="row mb-4 d-flex justify-content-center" style="margin-top:50px;">
-        <div class="col-4">
-            <div class="card mb-5">
-                <div class="card-header text-light" style="background-color:#1565c0;">
-                    <h4 style="font-size: 24px; font-weight: 100; margin:0">Book Customer!</h4>
-                </div>
-                <div class="card-body">
-                    <form action="{{route('frontend.booking.store')}}" method="post" >
-                    {{csrf_field()}}
-
-                    
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunctionr()">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                One Way
-                            </label>                        
-                        </div>
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunctionr()">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Return
-                            </label>                        
-                        </div>
-
-                        <div class="form-group mt-4">
-                            <label>Pickup From</label>
-                            <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunctionr()">
-                                <option value="" selected disabled>Select...</option> 
-                                @foreach($location as $locate) 
-                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
-                                @endforeach                              
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Destination</label>
-                            <select class="form-control" id="destination" name="destination" required onchange="myFunctionr()">
-                                <option value="" selected disabled>Select...</option> 
-                                @foreach($location as $locate) 
-                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
-                                @endforeach                              
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Passengers</label>
-
-                            <div class="row mt-3">
-                                <div class="col-4">
-                                <label style="font-size:14px;">Adults</label>
-                                    <select class="form-control" id="adults" name="adults" required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                <label style="font-size:14px;">Child</label>
-                                    <select class="form-control" id="child" name="child" required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                <label style="font-size:14px;">Baby</label>
-                                    <select class="form-control" name="baby" id="baby"  required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-4">
-                            <h1 class="display-4" style="color:#ff5252; font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                            <span id="result">0.00</span></h1>                        
-                        </div>
-
-                        <input type="hidden" name="result_value" id="result_value">
-                        <input type="submit" class="btn btn-secondary" value="Complete You Booking">
-                    </form>
-
-
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+<!-- </div> -->
+    
 
 <script>
 
@@ -337,7 +220,7 @@
             },
             function(output, status){
                 var obj = JSON.parse(output);
-                console.log(obj.price);
+                // console.log(obj.price);
                 // console.log(status);
                 // alert("Data: " + output + "\nStatus: " + status);
                 $('#result').html(obj.price);
@@ -349,33 +232,12 @@
     }
 
 </script>
-<!-- </div> -->
 
+
+@endsection
 
 
 @push('after-scripts')
-<script>
-
-// $('#baby').change(function(){
-//     var settings = {
-//     "url": "{{url('/')}}/api/api_booking",
-//     "method": "POST",
-//     "timeout": 0,
-//     "dataType": "json",
-//     };
-
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-//     });
-  
-// });
-
-
-
-</script>
-
-
-
 
 @endpush  
 

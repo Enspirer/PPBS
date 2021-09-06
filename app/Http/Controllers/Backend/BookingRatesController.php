@@ -109,24 +109,24 @@ class BookingRatesController extends Controller
         $location = Location::where('status','=','Enabled')->get();
         $passengers = Passengers::where('status','=','Enabled')->get();
         $booking_rates = BookingRates::where('id',$id)->first();
+
+        $passengers_count = count($passengers);
+        // dd($passengers_count);
+
+        if($booking_rates->price_details == null){
+            $booking_rates_count = 0;
+        }else{
+            $booking_rates_count = count(json_decode($booking_rates->price_details));
+        }
+        // dd($booking_rates_count);
+
         
-        // $booking_rates->price_details;
-
-        // $output = [];
-
-        // foreach($request->name as $key => $pax_name){
-        //     $same_output = [
-        //         'name' => $pax_name,
-        //         'price' => $request->price[$key]
-        //     ];
-
-        //     array_push($output,$same_output);
-        // }
-
         return view('backend.booking_rates.edit',[
             'location' => $location,
             'passengers' => $passengers,
-            'booking_rates' => $booking_rates
+            'booking_rates' => $booking_rates,
+            'passengers_count' => $passengers_count,
+            'booking_rates_count' => $booking_rates_count
         ]);
     }
 
@@ -137,6 +137,7 @@ class BookingRatesController extends Controller
         foreach($request->name as $key => $pax_name){
             $same_output = [
                 'name' => $pax_name,
+                'count' => $request->count[$key],
                 'price' => $request->price[$key]
             ];
 
@@ -152,7 +153,24 @@ class BookingRatesController extends Controller
                 
         BookingRates::whereId($request->hidden_id)->update($update->toArray());           
 
-        return back()->withFlashSuccess('Updated Successfully'); 
+        return redirect()->route('admin.booking_rates.index')->withFlashSuccess('Updated Successfully');  
+                 
+
+    }
+
+    public function reset(Request $request,$id)
+    {    
+
+        // dd($id);
+        
+
+        $update = new BookingRates;
+       
+        $update->price_details = null;
+                
+        BookingRates::whereId($id)->update($update->toArray());           
+
+        return back()->withFlashSuccess('Reset Price Details'); 
                  
 
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\BookingRatesController;
 use App\Http\Controllers\Backend\PassengersController;
+use App\Http\Controllers\Backend\TourBookingController;
 
 
 // All route names are prefixed with 'admin.'.
@@ -30,4 +31,11 @@ Route::post('booking_rates/store', [BookingRatesController::class, 'store'])->na
 Route::get('booking_rates/getdetails', [BookingRatesController::class, 'getDetails'])->name('booking_rates.getDetails');
 Route::get('booking_rates/edit/{id}', [BookingRatesController::class, 'edit'])->name('booking_rates.edit');
 Route::post('booking_rates/update', [BookingRatesController::class, 'update'])->name('booking_rates.update');
+Route::get('booking_rates/reset/{id}', [BookingRatesController::class, 'reset'])->name('booking_rates.reset');
 Route::get('booking_rates/destroy/{id}', [BookingRatesController::class, 'destroy'])->name('booking_rates.destroy');
+
+Route::get('tour_booking', [TourBookingController::class, 'index'])->name('tour_booking.index');
+Route::get('tour_booking/getdetails', [TourBookingController::class, 'getDetails'])->name('tour_booking.getDetails');
+Route::get('tour_booking/edit/{id}', [TourBookingController::class, 'edit'])->name('tour_booking.edit');
+Route::post('tour_booking/update', [TourBookingController::class, 'update'])->name('tour_booking.update');
+Route::get('tour_booking/destroy/{id}', [TourBookingController::class, 'destroy'])->name('tour_booking.destroy');

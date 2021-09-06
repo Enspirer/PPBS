@@ -4,12 +4,12 @@
 
 @section('content')
 
-<!-- <div class="container-fluid" > -->
-<h1 class="display-4 text-center" style="color:#455A64; font-weight: 400; font-family: Roboto,Helvetica,Arial,sans-serif;">Tour Booking</h1>
+<!-- <div class="container-fluid" style="background-color:#ededed"> -->
+<h1 class="display-4 text-center pt-4" style="color:#455A64; font-weight: 400; font-family: Roboto,Helvetica,Arial,sans-serif;">Tour Booking</h1>
 
-    <div class="row mb-4 d-flex justify-content-center" style="margin-top:50px;">
+    <div class="row mb-4 d-flex justify-content-center" style="margin-top:40px;">
         <div class="col-4">
-            <div class="card mb-5">
+            <div class="card mb-5" style="background-color:#ededed">
                 <div class="card-header text-light" style="background-color:#1565c0;">
                     <h4 style="font-size: 24px; font-weight: 100; margin:0">Book Your Ride!</h4>
                 </div>
@@ -18,7 +18,7 @@
                     {{csrf_field()}}
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunctionr()">
+                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunctionr()" required>
                             <label class="form-check-label" for="flexRadioDefault1">
                                 One Way
                             </label>                        
@@ -58,7 +58,6 @@
                                 <label style="font-size:14px;">Adults</label>
                                     <select class="form-control" id="adults" name="adults" required onchange="myFunctionr()">
                                         <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -103,12 +102,14 @@
                         </div>
 
                         <div class="form-group mt-4">
-                            <h1 class="display-4" style="color:#ff5252; font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                            <span id="result">0.00</span></h1>                        
+                            <h4 style="color:#ff5252; font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
+                            <span id="result">0.00</span></h4>                        
                         </div>
 
-                        <input type="hidden" name="result_value" id="result_value">
-                        <input type="submit" class="btn btn-secondary" value="Complete Your Booking">
+                        <div class="d-flex justify-content-center mt-5">
+                            <input type="hidden" name="result_value" id="result_value">
+                            <input type="submit" class="btn btn-success" value="Complete Your Booking">
+                        </div>
                     </form>
 
 
@@ -116,7 +117,7 @@
             </div><!--card-->
         </div><!--col-->
     </div><!--row-->
-
+<!-- </div> -->
 
 <script>
 
@@ -156,12 +157,21 @@
                 child: child,
                 baby: baby
             },
-            function(output, status){
+            function(output, status){                
+
                 var obj = JSON.parse(output);
-                console.log(obj.price);
+                // console.log(obj.price);
+
                 // console.log(status);
                 // alert("Data: " + output + "\nStatus: " + status);
+
+                // if(obj.total > 8){
+                //     $('#result').html('100000');
+                // }else{
+                //     $('#result').html(obj.price);
+                // }
                 $('#result').html(obj.price);
+                
                 $('#result_value').val(obj.price);
 
             }
@@ -170,33 +180,10 @@
     }
 
 </script>
-<!-- </div> -->
 @endsection
 
 
 @push('after-scripts')
-<script>
-
-// $('#baby').change(function(){
-//     var settings = {
-//     "url": "{{url('/')}}/api/api_booking",
-//     "method": "POST",
-//     "timeout": 0,
-//     "dataType": "json",
-//     };
-
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-//     });
-  
-// });
-
-
-
-</script>
-
-
-
 
 @endpush  
 

@@ -25,3 +25,10 @@ Breadcrumbs::for('admin.booking_rates.edit', function ($trail) {
 Breadcrumbs::for('admin.passengers.index', function ($trail) {
     $trail->push('Passengers', route('admin.passengers.index'));
 });
+
+Breadcrumbs::for('admin.tour_booking.index', function ($trail) {
+    $trail->push('Tour Booking', route('admin.tour_booking.index'));
+});
+Breadcrumbs::for('admin.tour_booking.edit', function ($trail) {
+    $trail->push('Tour Booking Approval', route('admin.tour_booking.edit',1));
+});

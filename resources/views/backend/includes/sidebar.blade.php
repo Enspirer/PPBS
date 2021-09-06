@@ -29,8 +29,15 @@
 
             <li class="nav-item">
                 <a class="nav-link {{active_class(Route::is('admin/booking_rates'))}}" href="{{ route('admin.booking_rates.index') }}">
-                    <i class="nav-icon fas fa-plane-departure"></i>
+                    <i class="nav-icon fas fa-percent"></i>
                     Booking Rates
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{active_class(Route::is('admin/tour_booking'))}}" href="{{ route('admin.tour_booking.index') }}">
+                    <i class="nav-icon fas fa-plane-departure"></i>
+                    Tour Booking
                 </a>
             </li>
 
