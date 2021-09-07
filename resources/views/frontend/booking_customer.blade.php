@@ -14,13 +14,13 @@
                         <div class="card" style="background-color:#ededed">
                             <div class="card-header" style="background-color:#ffe192;">
                                 <div class="row">
-                                    <div class="col-6">
-                                        <h4 style="font-size: 24px; font-weight: 100; margin:0">Your Price</h4>
-                                    </div>
-                                    <div class="col-6">
+                                    <!-- <div class="col-6"> -->
+                                        <h4 class="mb-3" style="font-size: 24px; font-weight: 100; margin:0">Your Price</h4>
+                                    <!-- </div>
+                                    <div class="col-6"> -->
                                         <h4 style="font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
                                         <span id="result">{{ $booking->total_price }}</span></h4> 
-                                    </div>                       
+                                    <!-- </div>-->
                                 </div>
                             </div>
                             <div class="card-body">

@@ -60,7 +60,7 @@ class HomeController extends Controller
         // dd($output);
 
         if(count($output) == 0){
-            return('passengers limit exceeded');
+            return back()->withErrors('Passengers limit exceeded');
         }else{
             $add = new Booking;
 
@@ -132,25 +132,30 @@ class HomeController extends Controller
             $total_price = $request->result_value;
         }
         
-        $update = new Booking;
+        if(count($output) == 0){
+            return back()->withErrors('Passengers limit exceeded');
+        }else{
 
-        $update->booking_type = $request->booking_type;
-        $update->pickup_from = $request->pickup_from;
-        $update->destination = $request->destination;
-        $update->passengers_count = $count;
-        $update->adults = $request->adults;
-        $update->child = $request->child;
-        $update->baby = $request->baby;
-        $update->total_price = $total_price;
-        $update->customer_title=$request->title;        
-        $update->customer_name=$request->name;
-        $update->customer_email=$request->email;        
-        $update->customer_telephone=$request->telephone;
-        $update->status = 'Pending';
+            $update = new Booking;
+
+            $update->booking_type = $request->booking_type;
+            $update->pickup_from = $request->pickup_from;
+            $update->destination = $request->destination;
+            $update->passengers_count = $count;
+            $update->adults = $request->adults;
+            $update->child = $request->child;
+            $update->baby = $request->baby;
+            $update->total_price = $total_price;
+            $update->customer_title=$request->title;        
+            $update->customer_name=$request->name;
+            $update->customer_email=$request->email;        
+            $update->customer_telephone=$request->telephone;
+            $update->status = 'Pending';
                 
-        Booking::whereId($request->hidden_id)->update($update->toArray());           
+            Booking::whereId($request->hidden_id)->update($update->toArray());           
 
-        return back(); 
+            return back(); 
+        }
 
     }    
 
@@ -174,8 +179,11 @@ class HomeController extends Controller
             return('There is no such a Package for Now. Please choose another Package!');
         }
 
-        // $start_point = Location::where('id',$booking->start_point)->first();
-        // $end_point = Location::where('id',$booking->end_point)->first();
+        
+        $max = json_decode($booking->price_details);
+        $max_count = end($max);
+        $max_count_number = $max_count->count;
+       
         
         $output = [];
 
@@ -191,7 +199,7 @@ class HomeController extends Controller
                     'destination' => $request->destination
                 ];
             }
-            elseif($count > 8){
+            elseif($count > $max_count_number){
                 $output = [
                     'price' => 'passengers limit exceeded'
                 ];

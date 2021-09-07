@@ -165,11 +165,6 @@
                 // console.log(status);
                 // alert("Data: " + output + "\nStatus: " + status);
 
-                // if(obj.total > 8){
-                //     $('#result').html('100000');
-                // }else{
-                //     $('#result').html(obj.price);
-                // }
                 $('#result').html(obj.price);
                 
                 $('#result_value').val(obj.price);
