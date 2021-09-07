@@ -125,6 +125,12 @@ class HomeController extends Controller
 
             }
         }
+
+        if($request->result_value == null){
+            $total_price = Booking::where('id',$request->hidden_id)->first()->total_price;
+        }else{
+            $total_price = $request->result_value;
+        }
         
         $update = new Booking;
 
@@ -135,7 +141,7 @@ class HomeController extends Controller
         $update->adults = $request->adults;
         $update->child = $request->child;
         $update->baby = $request->baby;
-        $update->total_price = $request->result_value;
+        $update->total_price = $total_price;
         $update->customer_title=$request->title;        
         $update->customer_name=$request->name;
         $update->customer_email=$request->email;        
