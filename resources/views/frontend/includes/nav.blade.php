@@ -1,48 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <a href="{{ route('frontend.index') }}" class="navbar-brand">{{ app_name() }}</a>
+<div class="fixed-top">
 
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('labels.general.toggle_navigation')">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid py-2 top-nav" style="background-color: #DFDFDF;">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-3 text-end">
+                    <p><i class="bi bi-envelope-fill me-2"></i>info@parisprivatetransfer.com</p>
+                </div>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            @if(config('locale.status') && count(config('locale.languages')) > 1)
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownLanguageLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">@lang('menus.language-picker.language') ({{ strtoupper(app()->getLocale()) }})</a>
-
-                    @include('includes.partials.lang')
-                </li>
-            @endif
-
-            @auth
-                <li class="nav-item"><a href="{{route('frontend.user.dashboard')}}" class="nav-link {{ active_class(Route::is('frontend.user.dashboard')) }}">@lang('navs.frontend.dashboard')</a></li>
-            @endauth
-
-            @guest
-                <li class="nav-item"><a href="{{route('frontend.auth.login')}}" class="nav-link {{ active_class(Route::is('frontend.auth.login')) }}">@lang('navs.frontend.login')</a></li>
-
-                @if(config('access.registration'))
-                    <li class="nav-item"><a href="{{route('frontend.auth.register')}}" class="nav-link {{ active_class(Route::is('frontend.auth.register')) }}">@lang('navs.frontend.register')</a></li>
-                @endif
-            @else
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuUser" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">{{ $logged_in_user->name }}</a>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuUser">
-                        @can('view backend')
-                            <a href="{{ route('admin.dashboard') }}" class="dropdown-item">@lang('navs.frontend.user.administration')</a>
-                        @endcan
-
-                        <a href="{{ route('frontend.user.account') }}" class="dropdown-item {{ active_class(Route::is('frontend.user.account')) }}">@lang('navs.frontend.user.account')</a>
-                        <a href="{{ route('frontend.auth.logout') }}" class="dropdown-item">@lang('navs.general.logout')</a>
-                    </div>
-                </li>
-            @endguest
-
-            <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link {{ active_class(Route::is('frontend.contact')) }}">@lang('navs.frontend.contact')</a></li>
-        </ul>
+                <div class="col-2 text-end">
+                    <p><i class="bi bi-telephone-fill me-2"></i></i>0033652300255</p>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
+
+    <nav class="navbar navbar-expand-lg bg-light p-0 bottom-nav">
+        <div class="container position-relative">
+            <a class="navbar-brand" href="#">
+                <img src="{{ url('img/logo.png') }}" alt="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto py-4 align-items-center">
+                    <li class="nav-item links">
+                        <a class="nav-link text-decoration-none text-dark active p-0" aria-current="page" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link text-decoration-none text-dark p-0" href="#">RATES</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link text-decoration-none text-dark p-0" href="#">ONLINE BOOKING</a>
+                    </li>
+                    <li class="nav-item links">
+                        <a class="nav-link text-decoration-none text-dark p-0" href="#">CONTACT</a>
+                    </li>
+                    <li class="nav-item ps-4 pe-3">
+                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="#" style="border: 1px solid #FF9701;">Sign Up</a>
+                    </li>
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="#" style="background-color: #FF9701">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+
+
+
+

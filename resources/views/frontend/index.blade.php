@@ -2,126 +2,311 @@
 
 @section('title', app_name() . ' | ' . __('navs.general.home'))
 
+@push('after-styles')
+    <link rel="stylesheet" href="{{ url('css/index.css') }}">
+@endpush
+
 @section('content')
 
-<!-- <div class="container-fluid" style="background-color:#ededed"> -->
-<h1 class="display-4 text-center pt-4" style="color:#455A64; font-weight: 400; font-family: Roboto,Helvetica,Arial,sans-serif;">Tour Booking</h1>
-
-    <div class="row mb-4 d-flex justify-content-center" style="margin-top:40px;">
-        <div class="col-4">
-            <div class="card mb-5" style="background-color:#ededed">
-                <div class="card-header text-light" style="background-color:#1565c0;">
-                    <h4 style="font-size: 24px; font-weight: 100; margin:0">Book Your Ride!</h4>
-                </div>
-                <div class="card-body">
-                    <form action="{{route('frontend.booking.store')}}" method="post" >
+    <div class="container-fluid p-0 banner">
+        <div class="container">
+            <div class="row justify-content-end pt-5">
+                <div class="col-5 p-4 cal">
+                    <h5>Book Your Ride Now</h5>
+                    <form action="{{route('frontend.booking.store')}}" method="post">
                     {{csrf_field()}}
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunctionr()" required>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                One Way
-                            </label>                        
-                        </div>
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunctionr()">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Return
-                            </label>                        
-                        </div>
+                        <div class="row mt-4">
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunction()" required>
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                One Way
+                                            </label>
+                                        </div>
+                                    </div>
 
-                        <div class="form-group mt-4">
-                            <label>Pickup From</label>
-                            <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunctionr()">
-                                <option value="" selected disabled>Select...</option> 
-                                @foreach($location as $locate) 
-                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
-                                @endforeach                              
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Destination</label>
-                            <select class="form-control" id="destination" name="destination" required onchange="myFunctionr()">
-                                <option value="" selected disabled>Select...</option> 
-                                @foreach($location as $locate) 
-                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
-                                @endforeach                              
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Passengers</label>
-
-                            <div class="row mt-3">
-                                <div class="col-4">
-                                <label style="font-size:14px;">Adults</label>
-                                    <select class="form-control" id="adults" name="adults" required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                <label style="font-size:14px;">Child</label>
-                                    <select class="form-control" id="child" name="child" required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                <label style="font-size:14px;">Baby</label>
-                                    <select class="form-control" name="baby" id="baby"  required onchange="myFunctionr()">
-                                        <option value="" selected disabled>Select...</option>  
-                                            <option value="0">0</option> 
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                    </select>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunction()">
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                One Way
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group mt-4">
-                            <h4 style="color:#ff5252; font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                            <span id="result">0.00</span></h4>                        
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <p class="mb-2">Pickup Place</p>
+                                <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunction()">
+                                    <option value="" selected disabled>Select...</option> 
+                                    @foreach($location as $locate) 
+                                        <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
+                                    @endforeach   
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <p class="mb-2">Destination Place</p>
+                                <select class="form-control" id="destination" name="destination" required onchange="myFunction()">
+                                    <option value="" selected disabled>Select...</option> 
+                                    @foreach($location as $locate) 
+                                        <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
+                                    @endforeach  
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-center mt-5">
-                            <input type="hidden" name="result_value" id="result_value">
-                            <input type="submit" class="btn btn-success" value="Complete Your Booking">
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <p class="mb-2">Pickup Date</p>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <div class="col-6">
+                                <p class="mb-2">Pickup Time</p>
+                                <input type="time" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-2">Adults</p>
+                                        <select class="form-control" id="adults" name="adults" required onchange="myFunction()">
+                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <p class="mb-2">Child</p>
+                                        <select class="form-control" id="child" name="child" required onchange="myFunction()">
+                                            <option value="" selected disabled>Select...</option>  
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <p class="mb-2">Baby</p>
+                                        <select class="form-control" id="baby" name="baby" required onchange="myFunction()">
+                                            <option value="" selected disabled>Select...</option>    
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 mb-4">
+                            <div class="col-8">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <input type="hidden" name="result_value" id="result_value">
+                                        <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="BOOK NOW"></input>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4 class="fw-bold" onchange="myFunction()">
+                                            <span id="result">€00.00</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
-
-
                 </div>
-            </div><!--card-->
-        </div><!--col-->
-    </div><!--row-->
-<!-- </div> -->
+            </div>
+        </div>
+    </div>
 
+
+    <div class="container" style="margin-top: 6rem;">
+        <div class="row">
+            <div class="col-4">
+                <div class="card border-0 shadow-lg">
+                    <img src="{{ url('img/index/card-1.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body pb-1">
+                        <h5 class="card-title fw-bold mb-2">Disneyland Private Transfer</h5>
+                        <p class="card-text">We provide a private taxi service from Charles de Gaulle to Disneyland Paris 42 KM a ride with our experienced drivers at a low cost and all Disney hotels are serviced. Enjoy Disneyland with us because we care about the comfort and safety of your children.</p>
+
+                        <div class="text-end">
+                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card border-0 shadow-lg">
+                    <img src="{{ url('img/index/card-2.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body pb-1">
+                        <h5 class="card-title fw-bold mb-2">Paris Airport Transport</h5>
+                        <p class="card-text">Do you need a private taxi from Charles De Gaulle to Paris city center, it is 32 KM Distance. Paris private transfer drivers welcome you personally, assist and guide you to visit the most beautiful places in the city of Paris. We offer the best prices for reduced cost online booking.</p>
+
+                        <div class="text-end">
+                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card border-0 shadow-lg">
+                    <img src="{{ url('img/index/card-3.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body pb-1">
+                        <h5 class="card-title fw-bold mb-2">Beauvais Airport Transfer</h5>
+                        <p class="card-text">The cheapest direct shuttle from Beauvais airport to Disneyland Paris for your budget. The journey time is 90 minutes. Distance 120 KM from Beauvais Tille airport to Euro disney Val d 'Europe Marne la Valle.</p>
+
+                        <div class="text-end" style="margin-top: 1.4rem;">
+                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 6rem;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="fw-bold mb-3" style="color: #1F1A7D">About Us</h3>
+                            <p style="text-align: justify">Paris Private Transfer is a specializing private passengers transport services in France we offer services from Paris CDG Airport to Disneyland, Orly, Beauvais with Clean, comfortable and modern vehicles. Our drivers are professional and friendly competent people, speaking English and well trained to ensure a safe trip. We cover a wide range of destinations, always the right choice for a one-way trip or a return trip to Euro disney Paris Orly Paris Beauvais</p>
+
+                            <button class="btn text-white rounded mt-4" style="background-color: #FF9701">CONTACT US<i class="bi bi-arrow-right text-white ms-3"></i></button>
+                        </div>
+
+                        <div class="col-1"></div>
+
+                        <div class="col services">
+                            <h3 class="fw-bold mb-3" style="color: #1F1A7D">Our Services</h3>
+                            
+                            <div class="row align-items-center mb-3">
+                                <div class="col-2 text-center">
+                                    <img src="{{ url('img/index/ser-1.png') }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="fw-bold mb-2" style="color: #1F1A7D;">CDG Paris Transfer</h6>
+                                    <p>Private taxi reception service between CDG airport and the city of Paris.</p>
+                                </div>
+
+                                <hr class="mt-3 mb-0">
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-2 text-center">
+                                    <img src="{{ url('img/index/ser-2.png') }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="fw-bold mb-2" style="color: #1F1A7D;">Paris Disneyland Transfer</h6>
+                                    <p>From CDG Charles de Galle airport to Disney 9 seater minivan services</p>
+                                </div>
+
+                                <hr class="mt-3 mb-0">
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-2 text-center">
+                                    <img src="{{ url('img/index/ser-3.png') }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="fw-bold mb-2" style="color: #1F1A7D;">Orly Airport transfer</h6>
+                                    <p>From Orly airport to disney, quality of private & shared shuttle services</p>
+                                </div>
+
+                                <hr class="mt-3 mb-0">
+                            </div>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-2 text-center">
+                                    <img src="{{ url('img/index/ser-4.png') }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="fw-bold mb-2" style="color: #1F1A7D;">Paris Beauvais Tille Transfer</h6>
+                                    <p>Direct from BVE Airport Beauvais to Disney private cabs service</p>
+                                </div>
+                            </div>
+
+                            <button class="btn text-white rounded mt-4" style="background-color: #FF9701">BOOK NOW<i class="bi bi-arrow-right text-white ms-3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="margin-top: 6rem;">
+        <h2 class="fw-bold text-center mb-4" style="color: #1F1A7D">Booking a private taxi Paris</h2>
+        
+        <div class="swiper mySwiper pt-4 pb-5">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col position-relative py-4 px-5 shadow">
+                                    <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
+                                    <h5 class="d-inline-block mb-2">Charles de Gaulle to Euro Disney</h5>
+                                    <p style="text-align: justify;">Reliable and convenient, the private airport transfer is booked directly with us. Free baby seats, guaranteed family, pleasant private taxi, competitive rates, no waiting fees, payment on arrival.</p>
+                                </div>
+
+                                <div class="col-1"></div>
+
+                                <div class="col position-relative py-4 px-5 shadow">
+                                    <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
+                                    <h5 class="d-inline-block mb-2">Orly Airport to Disneyland Paris</h5>
+                                    <p style="text-align: justify;">If you are looking for Cheapest private Taxi service in Orly.paris private transfer.com offer you best service. Baby seats for children free we do not ask your credit card for the reservation payment can directly to the driver at the end of the transfer.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+
+@endsection
+
+
+@push('after-scripts')
 <script>
 
-    function myFunctionr(){
+    function myFunction(){
 
         if($('#flexRadioDefault1').is(':checked')) {
             checkbox = $("#flexRadioDefault1").val();
@@ -175,10 +360,13 @@
     }
 
 </script>
-@endsection
 
-
-@push('after-scripts')
-
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        pagination: {
+            el: ".swiper-pagination",
+        },
+    });
+</script>
 @endpush  
 
