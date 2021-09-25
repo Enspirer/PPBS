@@ -32,7 +32,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunction()">
                                             <label class="form-check-label" for="flexRadioDefault2">
-                                                One Way
+                                                Both Way
                                             </label>
                                         </div>
                                     </div>
@@ -193,9 +193,9 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="margin-top: 6rem;">
+    <div class="container-fluid tower" style="margin-top: 6rem;">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center pt-5">
                 <div class="col-10">
                     <div class="row">
                         <div class="col">

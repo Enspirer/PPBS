@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\RatesController;
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\ProfileController;
@@ -11,17 +13,16 @@ use App\Http\Controllers\Frontend\User\ProfileController;
  * All route names are prefixed with 'frontend.'.
  */
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');
+Route::get('/rates', [RatesController::class, 'index'])->name('rates');
+Route::get('/online-booking', [BookingController::class, 'index'])->name('booking');
+Route::get('contact-us', [ContactController::class, 'index'])->name('contact_us');
+
+
+
 Route::get('booking_customer/{id}', [HomeController::class, 'booking_customer'])->name('booking_customer');
+
+Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');
 Route::post('booking_customer/store', [HomeController::class, 'booking_customer_store'])->name('booking_customer.store');
-
-
-
-
-
-
-
-Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 /*

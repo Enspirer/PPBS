@@ -25,16 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto py-4 align-items-center">
                     <li class="nav-item links">
-                        <a class="nav-link text-decoration-none text-dark active p-0" aria-current="page" href="#">HOME</a>
+                        <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == null ? 'active' : null }}" aria-current="page" href="{{ route('frontend.index') }}">HOME</a>
                     </li>
                     <li class="nav-item links">
-                        <a class="nav-link text-decoration-none text-dark p-0" href="#">RATES</a>
+                        <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'rates' ? 'active' : null }}" href="{{ route('frontend.rates') }}">RATES</a>
                     </li>
                     <li class="nav-item links">
-                        <a class="nav-link text-decoration-none text-dark p-0" href="#">ONLINE BOOKING</a>
+                        <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'online-booking' ? 'active' : null }}" href="{{ route('frontend.booking') }}">ONLINE BOOKING</a>
                     </li>
                     <li class="nav-item links">
-                        <a class="nav-link text-decoration-none text-dark p-0" href="#">CONTACT</a>
+                        <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'contact-us' ? 'active' : null }}" href="{{ route('frontend.contact_us') }}">CONTACT</a>
                     </li>
                     <li class="nav-item ps-4 pe-3">
                         <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="#" style="border: 1px solid #FF9701;">Sign Up</a>

@@ -1,0 +1,85 @@
+.banner {
+    background: url('../img/booking/0.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position:center center;
+    height: 300px;
+}
+
+.form-check-input {
+    margin-top: 0.2rem!important;
+}
+
+.form-check {
+    padding-left: 1.5rem!important;
+}
+
+/* .form-control {
+    background: rgba(101, 101, 101, .4);
+    border: #707070!important;
+    color: white;
+} */
+
+
+#booking-form fieldset {
+	width: 100%;
+	position: relative;
+}
+
+/*Hide all except first fieldset*/
+#booking-form fieldset:not(:first-of-type) {
+	display: none;
+}
+
+
+/*bar*/
+#bar {
+	overflow: hidden;
+	counter-reset: step;
+    margin-top: 4rem;
+}
+#bar li {
+	list-style-type: none;
+	color: black;
+	text-transform: uppercase;
+	font-size: 15px;
+	width: 25%;
+	float: left;
+	position: relative;
+    text-align: center;
+}
+#bar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 25px;
+	color: white;
+	background: #C8C8C8;
+	border-radius: 50px;
+	margin: 0 auto 5px auto;
+    padding: 2rem 2.6rem;;
+}
+/*bar connectors*/
+#bar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #C8C8C8;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+    margin-top: 2rem;
+}
+#bar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#bar li.active:before,  #bar li.active:after{
+	background: #FF9701;
+	color: white;
+}

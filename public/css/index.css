@@ -54,3 +54,12 @@ hr:not([size]) {
     left: -2.5rem;
     top: 0rem;
 }
+
+.tower {
+    background: url('../img/index/tower.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position:center center;
+    width: 100%;
+    height: 600px;
+}
