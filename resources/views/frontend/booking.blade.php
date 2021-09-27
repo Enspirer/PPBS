@@ -36,13 +36,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <ul id="bar">
-                <li class="active">Inquire</li>
-                <li>Information</li>
-                <li>Payment</li>
-                <li>Confirm</li>
+                <li class="active fw-bold"><br> Inquire</li>
+                <li class="fw-bold"><br> Information</li>
+                <li class="fw-bold"><br> Payment</li>
+                <li class="fw-bold"><br> Confirm</li>
             </ul>
             <div class="col-7">
-                <form action="{{route('frontend.online_booking.store')}}" method="post" id="booking-form" style="margin-top: 4rem;">
+                <form action="{{route('frontend.online_booking.store')}}" method="post" id="booking-form" style="margin-top: 2rem;">
                 {{csrf_field()}}   
                     <fieldset>
                         <div class="row border" style="color: #1C1952">
@@ -53,8 +53,8 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_way" onchange="myFunction()" >
-                                                    <label class="form-check-label" for="one_way">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" >
+                                                    <label class="form-check-label" for="one_check">
                                                         One Way
                                                     </label>
                                                 </div>
@@ -62,8 +62,8 @@
 
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_way" onchange="myFunction()">
-                                                    <label class="form-check-label" for="both_way">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()">
+                                                    <label class="form-check-label" for="both_check">
                                                        Both Way
                                                     </label>
                                                 </div>
@@ -161,7 +161,7 @@
                                     <div class="col-8">
                                         <div class="row align-items-center">
                                             <div class="col-4">
-                                                <input type="button" class="btn text-white rounded next" style="background-color: #FF9701" value="NEXT"></input>
+                                                <input type="button" class="btn text-white rounded next 1st" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
                                             <div class="col-8">
                                                 <h4 class="fw-bold" onchange="myFunction()">
@@ -180,30 +180,6 @@
                         <div class="row border" style="color: #1C1952">
                             <div class="col-12 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
                             <h5>Book Your Ride Now</h5>
-                                <div class="row mt-4">
-                                    <div class="col-8" >
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="aa" value="One Way" id="one-check" >
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        One Way
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-6">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="aa" value="Return" id="both-check">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        Both Way
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <label for="name" class="form-label">Your Name</label>
@@ -431,12 +407,12 @@
 
         function myFunction(){
 
-            if($('#one_way').is(':checked')) {
-                checkbox = $("#one_way").val();
+            if($('#one_check').is(':checked')) {
+                checkbox = $("#one_check").val();
             }
 
-            if($('#both_way').is(':checked')) {
-                checkbox = $("#both_way").val();
+            if($('#both_check').is(':checked')) {
+                checkbox = $("#both_check").val();
             }
             // console.log(checkbox);
             // alert(checkbox);
@@ -481,10 +457,17 @@
                     $('#passengers_count').val(obj.count);
                     $('#result_value').val(obj.price);
 
+
+                    if($('#result').text() != '0.00'){
+                        $('.1st').removeAttr('disabled');
+                    };
+
+
                 }
                 
             );
         }
+
 
     </script>
 
@@ -535,11 +518,11 @@
     </script>
 
     <script>
-        $('#both-check').on('click', function() {
+        $('#both_check').on('click', function() {
             $('.both').removeClass('d-none');
         });
 
-        $('#one-check').on('click', function() {
+        $('#one_check').on('click', function() {
             $('.both').addClass('d-none');
         });
     </script>

@@ -14,12 +14,6 @@
     padding-left: 1.5rem!important;
 }
 
-/* .form-control {
-    background: rgba(101, 101, 101, .4);
-    border: #707070!important;
-    color: white;
-} */
-
 
 #booking-form fieldset {
 	width: 100%;
@@ -35,21 +29,21 @@
 /*bar*/
 #bar {
 	overflow: hidden;
-	counter-reset: step;
-    margin-top: 4rem;
+	counter-reset: list-number;
+    margin-top: 3rem;
 }
 #bar li {
 	list-style-type: none;
 	color: black;
 	text-transform: uppercase;
-	font-size: 15px;
+	font-size: 12px;
 	width: 25%;
 	float: left;
 	position: relative;
     text-align: center;
 }
 #bar li:before {
-	counter-increment: step;
+	/* counter-increment: step;
 	content: counter(step, decimal-leading-zero);
 	width: 20px;
 	line-height: 20px;
@@ -58,9 +52,23 @@
 	color: white;
 	background: #C8C8C8;
 	border-radius: 50px;
-	margin: 0 auto 5px auto;
-    /* padding: 2rem 2.6rem; */
-    padding: 2.5rem 4rem 2.5rem 2.6rem;
+	margin: 6px auto 5px auto;
+    padding: 1.5rem 2.5rem 1.5rem 2rem;
+	align-items:center;
+  	justify-content: center; */
+
+	counter-increment: list-number;
+  	content: counter(list-number, decimal-leading-zero);
+	margin-bottom:10px;
+	width:60px;
+	height:60px;
+	display:inline-flex;
+	align-items:center;
+	justify-content: center;
+	font-size:16px;
+	background-color:#C8C8C8;
+	border-radius:50%;
+	color:#fff;
 }
 /*bar connectors*/
 #bar li:after {
@@ -72,7 +80,7 @@
 	left: -50%;
 	top: 9px;
 	z-index: -1; /*put it behind the numbers*/
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 #bar li:first-child:after {
 	/*connector not needed before the first step*/
