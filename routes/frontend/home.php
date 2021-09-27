@@ -14,12 +14,12 @@ use App\Http\Controllers\Frontend\User\ProfileController;
  */
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/rates', [RatesController::class, 'index'])->name('rates');
+
 Route::get('/online-booking', [BookingController::class, 'index'])->name('booking');
+Route::post('online-booking/store', [BookingController::class, 'store'])->name('online_booking.store');
 
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact_us');
 Route::post('contact-us/send', [ContactController::class, 'store'])->name('contact_us.store');
-
-
 
 Route::get('booking_customer/{id}', [HomeController::class, 'booking_customer'])->name('booking_customer');
 
