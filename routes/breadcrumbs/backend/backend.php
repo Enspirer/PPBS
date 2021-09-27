@@ -32,3 +32,11 @@ Breadcrumbs::for('admin.tour_booking.index', function ($trail) {
 Breadcrumbs::for('admin.tour_booking.edit', function ($trail) {
     $trail->push('Tour Booking Approval', route('admin.tour_booking.edit',1));
 });
+
+
+Breadcrumbs::for('admin.contact_us.index', function ($trail) {
+    $trail->push('Contact Us', route('admin.contact_us.index'));
+});
+Breadcrumbs::for('admin.contact_us.edit', function ($trail) {
+    $trail->push('Edit Contact Us', route('admin.contact_us.edit',1));
+});

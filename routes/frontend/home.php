@@ -15,7 +15,9 @@ use App\Http\Controllers\Frontend\User\ProfileController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/rates', [RatesController::class, 'index'])->name('rates');
 Route::get('/online-booking', [BookingController::class, 'index'])->name('booking');
+
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact_us');
+Route::post('contact-us/send', [ContactController::class, 'store'])->name('contact_us.store');
 
 
 
