@@ -8,6 +8,26 @@
 
 @section('content')
 
+
+@if ( session()->has('message') )
+
+  <body style="text-align:center; background-color: #C0C0C0">
+
+        <div style="padding: 0 100px 0 100px">
+
+            <h1 style="margin-top:200px;" class="display-4">Thank You!</h1><br>
+            <p class="lead"><h4>We appreciate you contacting us. One of our member will get back in touch with you soon!<br><br> Have a great day!</h4></p>
+            <hr><br>    
+            <p class="lead">
+                <a class="btn btn-success btn-md" href="{{url('contact-us')}}" role="button">Go Back to Contact Us Page</a>
+            </p>
+        </div>
+        
+    </body>
+
+@else  
+
+
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row justify-content-center" style="padding-top: 6rem;">
@@ -64,24 +84,25 @@
                         
                         <div class="row align-items-center mb-3 form">
                             <div class="col-12 p-4">
-                                <form action="">
+                                <form action="{{route('frontend.contact_us.store')}}" method="post">
+                                {{csrf_field()}}
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Full Name" required>
+                                        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Full Name" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" required>
+                                        <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Email" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="subject" aria-describedby="subject" placeholder="Le sujet de la siscussion" required>
+                                        <input type="text" class="form-control" name="subject" aria-describedby="subject" placeholder="Le sujet de la siscussion" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <textarea name="message" id="message" rows="6" class="form-control" placeholder="Type your message" required></textarea>
+                                        <textarea name="message" name="message" rows="6" class="form-control" placeholder="Type your message" required></textarea>
                                     </div>
 
-                                    <button class="btn text-white rounded mt-4" style="background-color: #FF9701">Submit</button>
+                                    <button type="submit" class="btn text-white rounded mt-4" style="background-color: #FF9701">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -128,5 +149,8 @@
             
         </div>
     </div>
+
+
+@endif
 
 @endsection

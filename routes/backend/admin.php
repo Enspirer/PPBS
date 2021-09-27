@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\BookingRatesController;
 use App\Http\Controllers\Backend\PassengersController;
 use App\Http\Controllers\Backend\TourBookingController;
+use App\Http\Controllers\Backend\ContactUsController;
 
 
 // All route names are prefixed with 'admin.'.
@@ -39,3 +40,9 @@ Route::get('tour_booking/getdetails', [TourBookingController::class, 'getDetails
 Route::get('tour_booking/edit/{id}', [TourBookingController::class, 'edit'])->name('tour_booking.edit');
 Route::post('tour_booking/update', [TourBookingController::class, 'update'])->name('tour_booking.update');
 Route::get('tour_booking/destroy/{id}', [TourBookingController::class, 'destroy'])->name('tour_booking.destroy');
+
+Route::get('contact_us', [ContactUsController::class, 'index'])->name('contact_us.index');
+Route::get('contact_us/getdetails', [ContactUsController::class, 'getDetails'])->name('contact_us.getDetails');
+Route::get('contact_us/edit/{id}', [ContactUsController::class, 'edit'])->name('contact_us.edit');
+Route::post('contact_us/update', [ContactUsController::class, 'update'])->name('contact_us.update');
+Route::get('contact_us/delete/{id}', [ContactUsController::class, 'destroy'])->name('contact_us.destroy');
