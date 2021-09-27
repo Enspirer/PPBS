@@ -2,242 +2,480 @@
 
 @section('title', app_name() . ' | ' . __('navs.general.home'))
 
+@push('after-styles')
+    <link rel="stylesheet" href="{{ url('css/booking.css') }}">
+    <link rel="stylesheet" href="{{ url('css/booking_customer.css') }}">
+@endpush
+
 @section('content')
-<!-- <div class="container-fluid pt-3" style="background-color:#ededed"> -->
-    
-    <form action="{{route('frontend.booking_customer.store')}}" method="post" >
-    {{csrf_field()}}
-        <div class="row" style="margin-top:10px;">
-            <div class="col-3 ">
-                <div class="row p-4">
-                    
-                        <div class="card" style="background-color:#ededed">
-                            <div class="card-header" style="background-color:#ffe192;">
-                                <div class="row">
-                                    <!-- <div class="col-6"> -->
-                                        <h4 class="mb-3" style="font-size: 24px; font-weight: 100; margin:0">Your Price</h4>
-                                    <!-- </div>
-                                    <div class="col-6"> -->
-                                        <h4 style="font-weight: 500;" onchange="myFunctionr()"><span>&#8364;</span>
-                                        <span id="result">{{ $booking->total_price }}</span></h4> 
-                                    <!-- </div>-->
+
+    <div class="container mt-3">
+        <div class="row justify-content-center pt-5 text-center">
+            <p>Airport Paris rivers Specializing Online GDG Private Taxi & Cabs Booking</p>
+            <h2 style="color: #1F1A7D">Book Your Private Taxi Online Now</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <ul id="bar">
+                <li class="active">Inquire</li>
+                <li class="active">Information</li>
+                <li>Payment</li>
+                <li>Confirm</li>
+            </ul>
+            <div class="col-7">
+                <form id="booking-form" style="margin-top: 4rem;">
+                    <fieldset>
+                        <div class="row border" style="color: #1C1952">
+                            <div class="col-12 px-5 py-3">
+                            <h5>Book Your Ride Now</h5>
+                                <div class="row mt-4">
+                                    <div class="col-8" >
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunction()" required>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        One Way
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunction()">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                       Both Way
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <form action="{{route('frontend.booking.store')}}" method="post" >
-                                {{csrf_field()}}
 
-                                
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunctionr()" {{ $booking->booking_type == 'One Way' ? "checked" : "" }}>
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            One Way
-                                        </label>                        
-                                    </div>
-                                    <div class="form-check mt-2">
-                                        <input class="form-check-input" type="radio" name="booking_type" value="Return" id="flexRadioDefault2" onchange="myFunctionr()" {{ $booking->booking_type == 'Return' ? "checked" : "" }}>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Return
-                                        </label>                        
-                                    </div>
-
-                                    <div class="form-group mt-4">
-                                        <label>Pickup From</label>
-                                        <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunctionr()">
-                                            @foreach($location as $locate) 
-                                                <option value="{{ $locate->id }}" {{ $booking->pickup_from == $locate->id ? "selected" : "" }}>{{ $locate->name }}</option>  
-                                            @endforeach                              
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <p class="mb-2">Pickup Place</p>
+                                        <select class="form-control" id="pickup_from" name="pickup_from" required onchange="myFunction()">
+                                            <option value="" selected disabled>Select...</option> 
+                                                <option value=""></option>    
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Destination</label>
-                                        <select class="form-control" id="destination" name="destination" required onchange="myFunctionr()">
-                                            @foreach($location as $locate) 
-                                                <option value="{{ $locate->id }}" {{ $booking->destination == $locate->id ? "selected" : "" }}>{{ $locate->name }}</option>  
-                                            @endforeach                              
+                                    <div class="col-6">
+                                        <p class="mb-2">Destination Place</p>
+                                        <select class="form-control" id="destination" name="destination" required onchange="myFunction()">
+                                            <option value="" selected disabled>Select...</option> 
+                                                <option value=""></option>  
                                         </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label>Passengers</label>
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <p class="mb-2">Pickup Date</p>
+                                        <input type="date" class="form-control">
+                                    </div>
 
-                                        <div class="row mt-3">
+                                    <div class="col-6">
+                                        <p class="mb-2">Pickup Time</p>
+                                        <input type="time" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-8">
+                                        <div class="row">
                                             <div class="col-4">
-                                            <label style="font-size:14px;">Adults</label>
-                                                <select class="form-control" id="adults" name="adults" required onchange="myFunctionr()"> 
-                                                        <!-- <option value="0" {{ $booking->adults == 0 ? "selected" : "" }}>1</option> -->
-                                                        <option value="1" {{ $booking->adults == 1 ? "selected" : "" }}>1</option>
-                                                        <option value="2" {{ $booking->adults == 2 ? "selected" : "" }}>2</option>
-                                                        <option value="3" {{ $booking->adults == 3 ? "selected" : "" }}>3</option>
-                                                        <option value="4" {{ $booking->adults == 4 ? "selected" : "" }}>4</option>
-                                                        <option value="5" {{ $booking->adults == 5 ? "selected" : "" }}>5</option>
-                                                        <option value="6" {{ $booking->adults == 6 ? "selected" : "" }}>6</option>
-                                                        <option value="7" {{ $booking->adults == 7 ? "selected" : "" }}>7</option>
-                                                        <option value="8" {{ $booking->adults == 8 ? "selected" : "" }}>8</option>
+                                                <p class="mb-2">Adults</p>
+                                                <select class="form-control" id="adults" name="adults" required onchange="myFunction()">
+                                                    <option value="" selected disabled>Select...</option>   
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
                                                 </select>
                                             </div>
+
                                             <div class="col-4">
-                                            <label style="font-size:14px;">Child</label>
-                                                <select class="form-control" id="child" name="child" required onchange="myFunctionr()"> 
-                                                        <option value="0" {{ $booking->child == 0 ? "selected" : "" }}>0</option> 
-                                                        <option value="1" {{ $booking->child == 1 ? "selected" : "" }}>1</option>
-                                                        <option value="2" {{ $booking->child == 2 ? "selected" : "" }}>2</option>
-                                                        <option value="3" {{ $booking->child == 3 ? "selected" : "" }}>3</option>
-                                                        <option value="4" {{ $booking->child == 4 ? "selected" : "" }}>4</option>
-                                                        <option value="5" {{ $booking->child == 5 ? "selected" : "" }}>5</option>
-                                                        <option value="6" {{ $booking->child == 6 ? "selected" : "" }}>6</option>
-                                                        <option value="7" {{ $booking->child == 7 ? "selected" : "" }}>7</option>
-                                                        <option value="8" {{ $booking->child == 8 ? "selected" : "" }}>8</option>
+                                                <p class="mb-2">Child</p>
+                                                <select class="form-control" id="child" name="child" required onchange="myFunction()">
+                                                    <option value="" selected disabled>Select...</option>  
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
                                                 </select>
                                             </div>
+
                                             <div class="col-4">
-                                            <label style="font-size:14px;">Baby</label>
-                                                <select class="form-control" name="baby" id="baby"  required onchange="myFunctionr()">
-                                                        <option value="0" {{ $booking->baby == 0 ? "selected" : "" }}>0</option> 
-                                                        <option value="1" {{ $booking->baby == 1 ? "selected" : "" }}>1</option>
-                                                        <option value="2" {{ $booking->baby == 2 ? "selected" : "" }}>2</option>
-                                                        <option value="3" {{ $booking->baby == 3 ? "selected" : "" }}>3</option>
-                                                        <option value="4" {{ $booking->baby == 4 ? "selected" : "" }}>4</option>
-                                                        <option value="5" {{ $booking->baby == 5 ? "selected" : "" }}>5</option>
-                                                        <option value="6" {{ $booking->baby == 6 ? "selected" : "" }}>6</option>
-                                                        <option value="7" {{ $booking->baby == 7 ? "selected" : "" }}>7</option>
-                                                        <option value="8" {{ $booking->baby == 8 ? "selected" : "" }}>8</option>
+                                                <p class="mb-2">Baby</p>
+                                                <select class="form-control" id="baby" name="baby" required onchange="myFunction()">
+                                                    <option value="" selected disabled>Select...</option>    
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    
-
-                                    <input type="hidden" name="result_value" id="result_value">
-                                    <!-- <input type="submit" class="btn btn-secondary" value="Complete You Booking"> -->
-                                </form>
-
-
-                            </div>
-                        </div>
-                    
-                </div>
-            </div>
-
-
-
-            <div class="col-9">
-                <div class="row p-4" >
-                        <div class="card" style="background-color:#ededed">
-                            <div class="card-header" style="background-color:#ffe192;">
-                                <h4 style="font-size: 24px; font-weight: 100; margin:0">Personal Details</h4>
-                            </div>
-                            <div class="card-body">
-                                
-
-                                    <div class="form-group">
-                                        <div class="row mt-3">
-                                            <div class="col-2">
-                                            <label style="font-size:14px;">Title</label>
-                                                <select class="form-control" id="title" name="title" required> 
-                                                    <option value="" selected disabled>Select...</option> 
-                                                    <option value="Mr">Mr</option> 
-                                                    <option value="Mrs">Mrs</option>
-                                                    <option value="Miss">Miss</option>
-                                                    <option value="Ms">Ms</option>  
-                                                </select>
+                                <div class="row mt-5 mb-4">
+                                    <div class="col-8">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <input type="button" class="btn text-white rounded next" style="background-color: #FF9701" value="NEXT"></input>
                                             </div>
                                             <div class="col-6">
-                                            <label style="font-size:14px;">Full Name</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Name" required>
-                                            </div>
-                                            <div class="col-4">
-                                            <label style="font-size:14px;">Email</label>
-                                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                                <h4 class="fw-bold" onchange="myFunction()">
+                                                    <span id="result">€00.00</span>
+                                                </h4>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="row mt-3">
-                                            <div class="col-3">
-                                            <label style="font-size:14px;">Mobile Number</label>
-                                                <input type="number" class="form-control" name="telephone" placeholder="Mobile Number" required>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex justify-content-center mt-5">
-                                        <input type="hidden" name="hidden_id" value="{{ $booking->id }}">
-                                        <input type="submit" class="btn" value="Book Now" style="background-color:#ffe192;">
-                                    </div>                          
-
-
+                                </div>
                             </div>
                         </div>
-                </div>
-            </div>
 
-        </div>
-    </form>
-<!-- </div> -->
-    
+                    </fieldset>
 
-<script>
+                    <fieldset>
+                        <div class="row border" style="color: #1C1952">
+                            <div class="col-12 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
+                            <h5>Book Your Ride Now</h5>
+                                <div class="row mt-4">
+                                    <div class="col-8" >
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one-check" required>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        One Way
+                                                    </label>
+                                                </div>
+                                            </div>
 
-    function myFunctionr(){
+                                            <div class="col-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both-check">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Both Way
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-        if($('#flexRadioDefault1').is(':checked')) {
-            checkbox = $("#flexRadioDefault1").val();
-        }
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <label for="name" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" name="name" id="name" required>
+                                    </div>
+                                </div>
 
-        if($('#flexRadioDefault2').is(':checked')) {
-            checkbox = $("#flexRadioDefault2").val();
-        }
-        // console.log(checkbox);
-        // alert(checkbox);
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <label for="text" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" name="number" id="number" required>
+                                    </div>
 
-        pickup_from = $('#pickup_from').val();
-        // console.log(pickup_from);
-        destination = $('#destination').val();
-        // console.log(destination);
-        adults = $('#adults').val();
-        // console.log(adults);
-        child = $('#child').val();
-        // console.log(child);
-        baby = $('#baby').val();
-        // console.log(baby);
+                                    <div class="col-6">
+                                        <label for="name" class="form-label">Arrival Flight or Train Number</label>
+                                        <input type="text" class="form-control" name="address" id="address" required>
+                                    </div>
+                                </div>
 
-        // alert(pickup_from);
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <label for="name" class="form-label">Pickup Terminal Address</label>
+                                        <input type="text" class="form-control" name="address" id="address" required>
+                                    </div>
+                                </div>
 
-        // var obj = JSON.parse(data);
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <label for="drop_address" class="form-label">Drop Address</label>
+                                        <input type="text" class="form-control" name="drop_address" id="drop_address" required>
+                                    </div>
+                                </div>
 
-        $.post("{{url('/')}}/api/api_booking",
-            {
-                booking_type: checkbox,
-                pickup_from: pickup_from,
-                destination: destination,
-                adults: adults,
-                child: child,
-                baby: baby
-            },
-            function(output, status){
-                var obj = JSON.parse(output);
-                // console.log(obj.price);
-                // console.log(status);
-                // alert("Data: " + output + "\nStatus: " + status);
-                $('#result').html(obj.price);
-                $('#result_value').val(obj.price);
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <p class="mb-2">Number of passengers Total</p>
+                                        <select class="form-control" id="total_passengers" name="total_passengers" required>
+                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
 
-            }
+                                    <div class="col-6">
+                                        <p class="mb-2">Number of Baby Seats</p>
+                                        <select class="form-control" id="baby_seats" name="baby_seats" required>
+                                            <option value="" selected disabled>Select...</option>  
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div> 
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <p class="mb-2">Number of Luggage's</p>
+                                        <select class="form-control" id="total_passengers" name="total_passengers" required>
+                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="both mt-5 d-none">
+                                    <h5>Passenger Return Detail</h5>
+                                    
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <p class="mb-2">Departure Date</p>
+                                            <input type="date" class="form-control">
+                                        </div>
             
-        );
-    }
+                                        <div class="col-6">
+                                            <p class="mb-2">Departure Time</p>
+                                            <input type="time" class="form-control">
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label for="vehicle_number" class="form-label">Departure Flight or Train Number</label>
+                                            <input type="text" class="form-control" name="vehicle_number" id="vehicle_number" required>
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label for="name" class="form-label">Pickup Place or Address</label>
+                                            <input type="text" class="form-control" name="address" id="address" required>
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label for="drop_address" class="form-label">Drop Airport or Address</label>
+                                            <input type="text" class="form-control" name="drop_address" id="drop_address" required>
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <p class="mb-2">Number of passengers Total</p>
+                                            <select class="form-control" id="total_passengers" name="total_passengers" required>
+                                                <option value="" selected disabled>Select...</option>   
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label for="drop_address" class="form-label">Other Information</label>
+                                            <textarea class="form-control" name="other" row="7"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
 
-</script>
+                                <div class="row mt-5 mb-4 justify-content-center">
+                                    <div class="col-8">
+                                        <div class="row align-items-center">
+                                            <div class="col-6 text-center">
+                                                <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
+                                            </div>
 
+                                            <div class="col-6 text-center">
+                                                <input type="button" class="next btn text-white rounded" style="background-color: #FF9701" value="NEXT"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="row border banner" style="color: #1C1952">
+                            <div class="col-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
+                                <h5>Payment Information</h5>
+
+                                <div class="row mt-5 mb-4 align-items-center">
+                                    <div class="col-6">
+                                        <a href="#" class="btn text-decoration-none p-3" style="border: 1px solid #FF9701">Pay upon Arrival</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn text-decoration-none px-4" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></a>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-5 mb-4">
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <div class="col-4 text-center">
+                                                <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
+                                            </div>
+
+                                            <div class="col-4 text-center">
+                                                <input type="button" class="btn text-white rounded next" style="background-color: #FF9701" value="NEXT"></input>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <h4 class="fw-bold" onchange="myFunction()">
+                                                    <span id="result">€00.00</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="row border banner" style="color: #1C1952">
+                            <div class="col-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
+                                <h5>Confirm your book</h5>
+
+                                <p class="mt-2" style="font-size:0.9rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunction()" required>
+                                    <label class="form-check-label" for="flexRadioDefault1" style="font-size: 0.9rem;">
+                                        Agree with this
+                                    </label>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <div class="col-4 text-center">
+                                                <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
+                                            </div>
+
+                                            <div class="col-4 text-center">
+                                                <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="BOOK NOW"></input>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <h4 class="fw-bold" onchange="myFunction()">
+                                                    <span id="result">€00.00</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+    </div>
 
 @endsection
 
 
 @push('after-scripts')
+    <script>
 
-@endpush  
+        let current_fs, next_fs, previous_fs;
 
+        $(".previous").click(function(){
+
+            current_fs = $(this).parents('fieldset');
+            previous_fs = $(this).parents('fieldset').prev();
+
+            $("#bar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+
+            current_fs.animate({
+                top: '200px'
+            }, 200, function(){
+
+                current_fs.css('top', '0');
+
+                current_fs.hide();
+
+                previous_fs.show();
+            });
+        });
+
+        $(".next").click(function(){
+
+            current_fs = $(this).parents('fieldset');
+            next_fs = $(this).parents('fieldset').next();
+
+
+            $("#bar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+
+            current_fs.animate({
+                top: '200px'
+            }, 200, function(){
+
+                current_fs.css('top', '0');
+
+                current_fs.hide();
+
+                next_fs.show();
+            });
+        });
+    </script>
+
+    <script>
+        $('#both-check').on('click', function() {
+            $('.both').removeClass('d-none');
+        });
+
+        $('#one-check').on('click', function() {
+            $('.both').addClass('d-none');
+        });
+    </script>
+@endpush

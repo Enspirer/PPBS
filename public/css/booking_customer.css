@@ -1,0 +1,17 @@
+.banner {
+    background: url('../img/booking/0.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position:center center;
+    height: 300px;
+}
+
+#booking-form fieldset {
+	width: 100%;
+	position: relative;
+}
+
+/*Hide all except first fieldset*/
+#booking-form fieldset:not(:nth-child(3)) {
+	display: none;
+}

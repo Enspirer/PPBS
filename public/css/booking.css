@@ -49,8 +49,8 @@
     text-align: center;
 }
 #bar li:before {
-	content: counter(step);
 	counter-increment: step;
+	content: counter(step, decimal-leading-zero);
 	width: 20px;
 	line-height: 20px;
 	display: block;
@@ -59,7 +59,8 @@
 	background: #C8C8C8;
 	border-radius: 50px;
 	margin: 0 auto 5px auto;
-    padding: 2rem 2.6rem;;
+    /* padding: 2rem 2.6rem; */
+    padding: 2.5rem 4rem 2.5rem 2.6rem;
 }
 /*bar connectors*/
 #bar li:after {

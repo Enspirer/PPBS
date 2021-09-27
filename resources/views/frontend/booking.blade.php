@@ -195,7 +195,7 @@
                                     </div>
 
                                     <div class="col-6">
-                                        <label for="name" class="form-label">Pickup Terminal Address</label>
+                                        <label for="name" class="form-label">Arrival Flight or Train Number</label>
                                         <input type="text" class="form-control" name="address" id="address" required>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@
 
                                 <div class="row mt-3">
                                     <div class="col-6">
-                                        <p class="mb-2">Number of passengers Total</p>
+                                        <p class="mb-2">Number of Luggage's</p>
                                         <select class="form-control" id="total_passengers" name="total_passengers" required>
                                             <option value="" selected disabled>Select...</option>   
                                             <option value="1">1</option>
@@ -373,10 +373,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
-
-
                         </div>
                     </fieldset>
 
@@ -434,6 +431,8 @@
             current_fs = $(this).parents('fieldset');
             previous_fs = $(this).parents('fieldset').prev();
 
+            $("#bar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
 
             current_fs.animate({
                 top: '200px'
@@ -451,6 +450,9 @@
 
             current_fs = $(this).parents('fieldset');
             next_fs = $(this).parents('fieldset').next();
+
+
+            $("#bar li").eq($("fieldset").index(next_fs)).addClass("active");
 
 
             current_fs.animate({
