@@ -8,7 +8,6 @@ use App\Models\Location;
 use App\Models\BookingRates;
 use App\Models\Booking;
 use App\Models\Passengers;
-use DataTables;
 use DB;
 
 /**
