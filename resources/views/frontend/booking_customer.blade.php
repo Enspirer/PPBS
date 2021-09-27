@@ -25,7 +25,7 @@
                 <li>Confirm</li>
             </ul>
             <div class="col-7">
-                <form id="booking-form" style="margin-top: 4rem;">
+                <form id="booking-form1" style="margin-top: 4rem;">
                     <fieldset>
                         <div class="row border" style="color: #1C1952">
                             <div class="col-12 px-5 py-3">

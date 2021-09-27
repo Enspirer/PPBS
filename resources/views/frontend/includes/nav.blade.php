@@ -16,7 +16,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light p-0 bottom-nav">
         <div class="container position-relative">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('frontend.index') }}">
                 <img src="{{ url('img/logo.png') }}" alt="" class="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
                         <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="#" style="border: 1px solid #FF9701;">Sign Up</a>
                     </li>
                     <li class="nav-item ps-3">
-                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="#" style="background-color: #FF9701">Log In</a>
+                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.login') }}" style="background-color: #FF9701">Log In</a>
                     </li>
                 </ul>
             </div>
