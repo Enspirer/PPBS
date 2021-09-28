@@ -10,14 +10,14 @@
 
     <div class="container-fluid p-0 banner">
         <div class="container">
-            <div class="row justify-content-end pt-5">
+            <div class="row justify-content-end pt-5 banner-row">
                 <div class="col-12 col-lg-5 p-4 cal">
                     <h5>Book Your Ride Now</h5>
                     <form action="{{route('frontend.booking.store')}}" method="post">
                     {{csrf_field()}}
 
                         <div class="row mt-4">
-                            <div class="col-8">
+                            <div class="col-12 col-md-8">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-check">
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="row mt-3">
-                            <div class="col-8">
+                            <div class="col-12 col-md-8">
                                 <div class="row">
                                     <div class="col-4">
                                         <p class="mb-2">Adults</p>
@@ -152,7 +152,7 @@
 
     <div class="container cards" style="margin-top: 6rem;">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
                     <img src="{{ url('img/index/card-1.png') }}" class="card-img-top" alt="...">
                     <div class="card-body pb-1">
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
                     <img src="{{ url('img/index/card-2.png') }}" class="card-img-top" alt="...">
                     <div class="card-body pb-1">
@@ -180,7 +180,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
                     <img src="{{ url('img/index/card-3.png') }}" class="card-img-top" alt="...">
                     <div class="card-body pb-1">
@@ -199,18 +199,18 @@
     <div class="container tower" style="margin-top: 6rem;">
         <div class="container">
             <div class="row justify-content-center pt-5">
-                <div class="col-10">
+                <div class="col-12 col-md-10">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md">
                             <h3 class="fw-bold mb-3" style="color: #1F1A7D">About Us</h3>
                             <p style="text-align: justify">Paris Private Transfer is a specializing private passengers transport services in France we offer services from Paris CDG Airport to Disneyland, Orly, Beauvais with Clean, comfortable and modern vehicles. Our drivers are professional and friendly competent people, speaking English and well trained to ensure a safe trip. We cover a wide range of destinations, always the right choice for a one-way trip or a return trip to Euro disney Paris Orly Paris Beauvais</p>
 
                             <button class="btn text-white rounded mt-4" style="background-color: #FF9701">CONTACT US<i class="bi bi-arrow-right text-white ms-3"></i></button>
                         </div>
 
-                        <div class="col-1"></div>
+                        <div class="col-12 col-md-1"></div>
 
-                        <div class="col services">
+                        <div class="col-12 col-md services">
                             <h3 class="fw-bold mb-3" style="color: #1F1A7D">Our Services</h3>
                             
                             <div class="row align-items-center mb-3">
@@ -222,7 +222,10 @@
                                     <p>Private taxi reception service between CDG airport and the city of Paris.</p>
                                 </div>
 
-                                <hr class="mt-3 mb-0">
+                                <div class="col-12">
+                                    <hr class="mt-3 mb-0">
+                                </div>
+                                
                             </div>
 
                             <div class="row align-items-center mb-3">
@@ -234,7 +237,9 @@
                                     <p>From CDG Charles de Galle airport to Disney 9 seater minivan services</p>
                                 </div>
 
-                                <hr class="mt-3 mb-0">
+                                <div class="col-12">
+                                    <hr class="mt-3 mb-0">
+                                </div>
                             </div>
 
                             <div class="row align-items-center mb-3">
@@ -246,7 +251,9 @@
                                     <p>From Orly airport to disney, quality of private & shared shuttle services</p>
                                 </div>
 
-                                <hr class="mt-3 mb-0">
+                                <div class="col-12">
+                                    <hr class="mt-3 mb-0">
+                                </div>
                             </div>
 
                             <div class="row align-items-center mb-3">
@@ -268,35 +275,31 @@
     </div>
 
 
-    <div class="container" style="margin-top: 6rem;">
+    <div class="container slider" style="margin-top: 6rem;">
         <h2 class="fw-bold text-center mb-4" style="color: #1F1A7D">Booking a private taxi Paris</h2>
         
-        <div class="swiper mySwiper pt-4 pb-5">
+        <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="row justify-content-center">
-                        <div class="col-10">
-                            <div class="row">
-                                <div class="col position-relative py-4 px-5 shadow">
-                                    <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
-                                    <h5 class="d-inline-block mb-2">Charles de Gaulle to Euro Disney</h5>
-                                    <p style="text-align: justify;">Reliable and convenient, the private airport transfer is booked directly with us. Free baby seats, guaranteed family, pleasant private taxi, competitive rates, no waiting fees, payment on arrival.</p>
-                                </div>
-
-                                <div class="col-1"></div>
-
-                                <div class="col position-relative py-4 px-5 shadow">
-                                    <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
-                                    <h5 class="d-inline-block mb-2">Orly Airport to Disneyland Paris</h5>
-                                    <p style="text-align: justify;">If you are looking for Cheapest private Taxi service in Orly.paris private transfer.com offer you best service. Baby seats for children free we do not ask your credit card for the reservation payment can directly to the driver at the end of the transfer.</p>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-12 position-relative py-4 px-5 slide">
+                            <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
+                            <h5 class="d-inline-block mb-2">Charles de Gaulle to Euro Disney</h5>
+                            <p style="text-align: justify;">Reliable and convenient, the private airport transfer is booked directly with us. Free baby seats, guaranteed family, pleasant private taxi, competitive rates, no waiting fees, payment on arrival.</p>
                         </div>
-                        
+                    </div>
+                    
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="row">
+                        <div class="col-12 position-relative py-4 px-5 slide">
+                            <img src="{{ url('img/index/quote.png') }}" alt="" class="quote">
+                            <h5 class="d-inline-block mb-2">Orly Airport to Disneyland Paris</h5>
+                            <p style="text-align: justify;">If you are looking for Cheapest private Taxi service in Orly.paris private transfer.com offer you best service. Baby seats for children free we do not ask your credit card for the reservation payment can directly to the driver at the end of the transfer.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -322,19 +325,11 @@
         // alert(checkbox);
 
         pickup_from = $('#pickup_from').val();
-        // console.log(pickup_from);
         destination = $('#destination').val();
-        // console.log(destination);
         adults = $('#adults').val();
-        // console.log(adults);
         child = $('#child').val();
-        // console.log(child);
         baby = $('#baby').val();
-        // console.log(baby);
 
-        // alert(pickup_from);
-
-        // var obj = JSON.parse(data);
 
         $.post("{{url('/')}}/api/api_booking",
             {
@@ -348,11 +343,6 @@
             function(output, status){                
 
                 var obj = JSON.parse(output);
-                // console.log(obj.price);
-
-                // console.log(status);
-                // alert("Data: " + output + "\nStatus: " + status);
-
                 $('#result').html(obj.price);
                 
                 $('#result_value').val(obj.price);
@@ -366,9 +356,24 @@
 
 <script>
     var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+        spaceBetween: 50,
         pagination: {
             el: ".swiper-pagination",
             clickable: true
+        },
+        breakpoints: {
+
+            0: {
+                slidesPerView: 1,
+            },
+
+            576: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            }
         },
     });
 </script>

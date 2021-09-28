@@ -46,208 +46,49 @@ p {
     color: white!important;
 }
 
+.footer-bottom-logo {
+    display: none;
+}
+
 
 
 @media (min-width: 1400px) {
-    .testimonial-section .testi-image {
-        height: 500px!important;
-    }
-    .testimonial-section .carousel-caption {
-        bottom: 7.5rem!important;
-    }
-    .service-banner {
-        height: 850px!important;
-    }
+   
 }
 
 @media (max-width: 1400px) {
-    .testimonial-section .testi-image {
-        height: 400px!important;
-    }
-    .testimonial-section .carousel-caption {
-        bottom: 3rem!important;
-    }
-    .testimonial-section .carousel-caption .h3 {
-        font-size: 48px!important;
-    }
-    .testimonial-section .carousel-caption h5 {
-        font-size: 35px;
-    }
-    .testimonial-section .carousel-caption p {
-        font-size: 15px;
-    }
-    .service-banner {
-        height: 750px!important;
-    }
+   
 }
 
 @media (max-width: 1200px) {
-    .testimonial-section .testi-image {
-        height: 300px!important;
-    }
-    .testimonial-section .carousel-caption {
-        bottom: 1.5rem!important;
-    }
-    .testimonial-section .carousel-caption .h3 {
-        font-size: 43px!important;
-    }
-    .testimonial-section .carousel-caption h5 {
-        font-size: 30px;
-    }
-    .testimonial-section .carousel-caption p {
-        font-size: 15px;
-    }
-    .service-banner {
-        height: 650px!important;
-    }
-    .service-text-content {
-        font-size: 34px!important;
-        text-align: center;
-        line-height: 2.5rem;
-    }
+    
 }
 
 @media (max-width: 992px) {
-    .testimonial-section .testi-image {
-        height: 200px!important;
-    }
-    .project-section .carousel-item .carousel-caption {
-        bottom: -20px;
-    }
-    .project-section .carousel-item .carousel-caption h5 {
-        font-size: 16px!important;
-    }
-    .project-section .carousel-item .carousel-caption p {
-        margin-bottom: 0.5rem!important;
-    }
-    .project-section .carousel-item .carousel-caption i {
-        color: #fff;
-        font-size: 15px;
-    }
-    .project-section .carousel-item .item1:hover .carousel-caption,
-    .project-section .carousel-item .item2:hover .carousel-caption,
-    .project-section .carousel-item .item3:hover .carousel-caption,
-    .project-section .carousel-item .item4:hover .carousel-caption,
-    .project-section .carousel-item .item5:hover .carousel-caption,
-    .project-section .carousel-item .item6:hover .carousel-caption {
-        bottom: 0px;
-    }
-    .testimonial-section .carousel-caption {
-        bottom: 1rem!important;
-    }
-    .testimonial-section .carousel-caption .h3 {
-        font-size: 30px!important;
-    }
-    .testimonial-section .carousel-caption h5 {
-        font-size: 20px;
-    }
-    .testimonial-section .carousel-caption p {
-        font-size: 15px;
-    }
-    .service-banner {
-        height: 550px!important;
-    }
-    .service-text {
-        padding-top: 10rem!important;
-    }
+    
 }
 
 @media (max-width: 768px) {
-    .aubowan-card-body {
-        padding: 30px!important;
-    }
-    .project-section {
-        margin-top: 4rem!important;
-    }
-    .project-section .carousel-item .carousel-caption h5 {
-        font-size: 15px!important;
-    }
-    .project-section .carousel-item .carousel-caption p {
-        font-size: 18px!important;
-        margin-bottom: 0!important;
-    }
-    .project-section .carousel-item .item1:hover .carousel-caption,
-    .project-section .carousel-item .item2:hover .carousel-caption,
-    .project-section .carousel-item .item3:hover .carousel-caption,
-    .project-section .carousel-item .item4:hover .carousel-caption,
-    .project-section .carousel-item .item5:hover .carousel-caption,
-    .project-section .carousel-item .item6:hover .carousel-caption {
-        bottom: -10px;
-    }
-    .project-section .carousel-item .line {
-        margin: 0 auto 0px;
-    }
-    .about-section {
-        margin-top: 4rem!important;
-    }
-    .about-section a {
-        margin: auto auto!important;
-        display: block!important;
-        width: 30%;
-    }
-    .about-section img{
-        margin-top: 3rem!important;
-    }
-
-    .service-card {
-        margin-top: 4%;
-    }
-    .top-left {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-    .top-left .container h5, h2{
-        font-size: 20px;
-    }
-    .download-section {
-        margin-top: 4rem!important;
-    }
-    .testimonial-section .testi-image {
-        height: 200px!important;
-    }
-    .testimonial-section .carousel-caption {
-        bottom: 1rem!important;
-    }
-    .testimonial-section .carousel-caption .h3 {
-        font-size: 22px!important;
-    }
-    .testimonial-section .carousel-caption h5 {
-        font-size: 17px;
-    }
-    .testimonial-section .carousel-caption p {
-        font-size: 15px;
-    }
-    .contact-section {
-        margin-top: 4rem!important;
-    }
-    .service-banner {
-        height: 450px!important;
-    }
-    .service-text {
-        padding-top: 7rem!important;
-    }
-    .service-text-content {
-        font-size: 20px!important;
-    }
+   
 }
 
 
 @media (max-width: 576px) {
-    /* #app {
-        padding: 0 1rem;
-    } */
     .logo {
-        top: -0.5rem;
+        top: -1.5rem;
         height: 5rem;
     }
     .bottom-nav button {
         margin-top: 1rem;
     }
-    .banner {
-        height: 530px!important;
+    
+    .footer-logo {
+        display: none!important;
     }
-    .cards {
-        margin-top: 4rem!important;
+    .footer-bottom-logo {
+        display: block!important;
     }
+    /* * {
+        border: 1px solid red;;
+    } */
 }

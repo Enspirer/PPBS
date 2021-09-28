@@ -72,3 +72,96 @@ hr:not([size]) {
 	box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
 	padding: 1rem;
 }
+
+.swiper {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+@media (min-width: 1400px) {
+    .testimonial-section .testi-image {
+        height: 500px!important;
+    }
+    .testimonial-section .carousel-caption {
+        bottom: 7.5rem!important;
+    }
+    .service-banner {
+        height: 850px!important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .testimonial-section .testi-image {
+        height: 400px!important;
+    }
+    .testimonial-section .carousel-caption {
+        bottom: 3rem!important;
+    }
+    .testimonial-section .carousel-caption .h3 {
+        font-size: 48px!important;
+    }
+    .testimonial-section .carousel-caption h5 {
+        font-size: 35px;
+    }
+    .testimonial-section .carousel-caption p {
+        font-size: 15px;
+    }
+    .service-banner {
+        height: 750px!important;
+    }
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+    
+}
+
+
+@media (max-width: 576px) {
+    .banner .banner-row {
+        padding-top: 2rem!important;
+    }
+
+    .index-card {
+        margin-bottom: 2rem!important;
+    }
+    .banner {
+        height: 530px!important;
+    }
+    .cards {
+        margin-top: 4rem!important;
+    }
+    .tower {
+        margin-top: 0rem!important;
+        background: none!important;
+    }
+    .services {
+        margin-top: 3rem!important;
+    }
+    .slider {
+        margin-top: 24rem!important;
+    }
+    .swiper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+    }
+    .quote {
+        height: 2rem!important;
+        left: 0.5rem!important;
+        top: 1rem!important;
+    }
+    .slide {
+        height: 240px!important;
+    }
+    .tower hr {
+        margin: 1rem 0!important;
+    }
+}

@@ -31,7 +31,7 @@
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row justify-content-center" style="padding-top: 6rem;">
-                <div class="col-5 text-center p-3" style="background: rgba(255, 255, 255, .6);">
+                <div class="col-12 col-md-5 text-center p-3" style="background: rgba(255, 255, 255, .6);">
                     <h2 class="fw-bold">Taxi and Shuttle from Disneyland</h2>
                 </div>
             </div>
@@ -39,11 +39,11 @@
     </div>
 
 
-    <div class="container mt-3">
+    <div class="container mt-3 contact-us">
         <div class="row justify-content-center pt-5">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-md">
                         <h3 class="fw-bold mb-3">Information</h3>
 
                         <div class="row align-items-center mb-3 py-3 information">
@@ -79,7 +79,7 @@
 
                     <div class="col-1"></div>
 
-                    <div class="col services">
+                    <div class="col-12 col-md contact">
                         <h3 class="fw-bold mb-3">Contact Us</h3>
                         
                         <div class="row align-items-center mb-3 form">
@@ -106,19 +106,17 @@
                                 </form>
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container" style="margin-top: 6rem;">
+    <div class="container cards" style="margin-top: 6rem;">
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
                             <img src="{{ url('img/contact/1.png') }}" class="card-img-top img-fluid w-100" alt="...">
                             <div class="card-body pb-1 text-center">
@@ -127,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
                             <img src="{{ url('img/contact/2.png') }}" class="card-img-top" alt="...">
                             <div class="card-body pb-1 text-center">
@@ -136,7 +134,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
                             <img src="{{ url('img/contact/3.png') }}" class="card-img-top" alt="...">
                             <div class="card-body pb-1 text-center">

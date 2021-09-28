@@ -11,7 +11,7 @@
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row justify-content-center" style="padding-top: 6rem;">
-                <div class="col-5 text-center p-3" style="background: rgba(255, 255, 255, .6);">
+                <div class="col-12 col-md-5 text-center p-3" style="background: rgba(255, 255, 255, .6);">
                     <h2 class="fw-bold">Taxi and Shuttle from Disneyland</h2>
                 </div>
             </div>
