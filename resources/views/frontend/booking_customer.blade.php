@@ -162,14 +162,14 @@
                                 </div>
 
                                 <div class="row mt-5 mb-4">
-                                    <div class="col-8">
+                                    <div class="col-12">
                                         <div class="row align-items-center">
                                             <div class="col-4">
                                                 <input type="button" class="btn text-white rounded next 1st" style="background-color: #FF9701" value="NEXT"></input>
                                             </div>
-                                            <div class="col-8">
-                                                <h4 class="fw-bold" onchange="myFunction()">
-                                                    <span>€</span><span id="result">0.00</span>
+                                            <div class="col-8 text-end">
+                                                <h4 class="fw-bold price" onchange="myFunction()">
+                                                    <span>€</span><span id="result">{{ $booking->total_price }}</span><span>.00</span>
                                                 </h4>
                                             </div>
                                         </div>
@@ -304,14 +304,20 @@
                                 </div>
 
                                 <div class="row mt-5 mb-4 justify-content-center">
-                                    <div class="col-8">
+                                    <div class="col-12">
                                         <div class="row align-items-center">
-                                            <div class="col-6 text-center">
+                                            <div class="col-4 text-center">
                                                 <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
                                             </div>
 
-                                            <div class="col-6 text-center">
+                                            <div class="col-4 text-center">
                                                 <input type="button" class="next btn text-white rounded 2nd" style="background-color: #FF9701" value="NEXT" disabled></input>
+                                            </div>
+
+                                            <div class="col-4 text-end">
+                                                <h4 class="fw-bold price" onchange="myFunction()">
+                                                    <span>€</span><span id="result1">0</span><span>.00</span>
+                                                </h4>
                                             </div>
                                         </div>
                                     </div>
@@ -347,8 +353,8 @@
                                                 <input type="button" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <h4 class="fw-bold" onchange="myFunction()">
-                                                    <span>€</span><span id="result2">0.00</span>
+                                                <h4 class="fw-bold price" onchange="myFunction()">
+                                                    <span>€</span><span id="result2">0</span><span>.00</span>
                                                 </h4>
                                             </div>
                                         </div>
@@ -366,7 +372,7 @@
                                 <p class="mt-2" style="font-size:0.9rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 
                                 <div class="form-check mt-2">
-                                    <input class="form-check-input" type="radio" name="agree" value="One Way" id="confirm" onchange="myFunction()" required>
+                                    <input class="form-check-input" type="radio" name="agree" value="One Way" id="confirm" required>
                                     <label class="form-check-label" for="confirm" style="font-size: 0.9rem;">
                                         Agree with this
                                     </label>
@@ -383,11 +389,11 @@
                                                 <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <h4 class="fw-bold" onchange="myFunction()">
+                                                <h4 class="fw-bold price" onchange="myFunction()">
                                                 
                                                     <input type="hidden" name="passengers_count" id="passengers_count">
                                                     <input type="hidden" name="result_value" id="result_value">
-                                                    <span>€</span><span id="result3">0.00</span>
+                                                        <span>€</span><span id="result3">0</span><span>.00</span>
                                                 </h4>
                                             </div>
                                         </div>
@@ -441,6 +447,7 @@
                     var obj = JSON.parse(output);
 
                     $('#result').html(obj.price);
+                    $('#result1').html(obj.price);
                     $('#result2').html(obj.price);
                     $('#result3').html(obj.price);
                     $('#count').html(obj.count);
@@ -591,6 +598,12 @@
                     $(this).attr('selected', 'selected');
                 }
             });
+
+
+            let price = $('#result').text();
+            $('#result1').text(price);
+            $('#result2').text(price);
+            $('#result3').text(price);
         });
     </script>
 @endpush

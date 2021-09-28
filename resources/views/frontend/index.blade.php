@@ -129,15 +129,15 @@
                         </div>
 
                         <div class="row mt-5 mb-4">
-                            <div class="col-8">
+                            <div class="col-12">
                                 <div class="row align-items-center">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <input type="hidden" name="result_value" id="result_value">
                                         <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="BOOK NOW"></input>
                                     </div>
-                                    <div class="col-6">
-                                        <h4 class="fw-bold" onchange="myFunction()">
-                                            <span id="result">€00.00</span>
+                                    <div class="col-8 text-end">
+                                        <h4 class="fw-bold price" onchange="myFunction()">
+                                            <span>€</span><span id="result">0</span><span>.00</span>
                                         </h4>
                                     </div>
                                 </div>
