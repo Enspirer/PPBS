@@ -2,19 +2,19 @@
 
     <div class="container-fluid py-2 top-nav" style="background-color: #DFDFDF;">
         <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-3 text-end">
+            <div class="row justify-content-sm-start justify-content-lg-end">
+                <div class="col-12 text-center col-lg-3 text-lg-end">
                     <p><i class="bi bi-envelope-fill me-2"></i>info@parisprivatetransfer.com</p>
                 </div>
 
-                <div class="col-2 text-end">
+                <div class="col-12 text-center col-lg-2 text-lg-end">
                     <p><i class="bi bi-telephone-fill me-2"></i></i>0033652300255</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg bg-light p-0 bottom-nav">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light p-0 bottom-nav">
         <div class="container position-relative">
             <a class="navbar-brand" href="{{ route('frontend.index') }}">
                 <img src="{{ url('img/logo.png') }}" alt="" class="logo">

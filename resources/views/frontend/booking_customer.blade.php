@@ -98,12 +98,12 @@
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <p class="mb-2">Pickup Date</p>
-                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="" required>
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="{{$booking->pickup_date}}" required>
                                     </div>
 
                                     <div class="col-6">
                                         <p class="mb-2">Pickup Time</p>
-                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" required>
+                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" value="{{$booking->pickup_time}}" required>
                                     </div>
                                 </div>
 
@@ -165,7 +165,7 @@
                                     <div class="col-8">
                                         <div class="row align-items-center">
                                             <div class="col-4">
-                                                <input type="button" class="btn text-white rounded next 1st" style="background-color: #FF9701" value="NEXT" disabled></input>
+                                                <input type="button" class="btn text-white rounded next 1st" style="background-color: #FF9701" value="NEXT"></input>
                                             </div>
                                             <div class="col-8">
                                                 <h4 class="fw-bold" onchange="myFunction()">
@@ -518,7 +518,7 @@
 
     <script>    
 
-        $('#booking-form').on('keyup change paste', 'input, select, textarea', function() {
+        $('#booking-form1').on('keyup change paste', 'input, select, textarea', function() {
             if($('#result').text() != '0.00' && $('#pickup_date').val() != "" && $('#pickup_time').val() != ""){
                 $('.1st').removeAttr('disabled');
             };

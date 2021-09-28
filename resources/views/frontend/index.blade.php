@@ -11,7 +11,7 @@
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row justify-content-end pt-5">
-                <div class="col-5 p-4 cal">
+                <div class="col-12 col-lg-5 p-4 cal">
                     <h5>Book Your Ride Now</h5>
                     <form action="{{route('frontend.booking.store')}}" method="post">
                     {{csrf_field()}}
@@ -65,12 +65,12 @@
                         <div class="row mt-3">
                             <div class="col-6">
                                 <p class="mb-2">Pickup Date</p>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" name="pickup_date" id="pickup_date">
                             </div>
 
                             <div class="col-6">
                                 <p class="mb-2">Pickup Time</p>
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" name="pickup_time" id="pickup_time">
                             </div>
                         </div>
 
@@ -80,7 +80,8 @@
                                     <div class="col-4">
                                         <p class="mb-2">Adults</p>
                                         <select class="form-control" id="adults" name="adults" required onchange="myFunction()">
-                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="" selected disabled>Select...</option> 
+                                            <option value="0">0</option>  
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -96,6 +97,7 @@
                                         <p class="mb-2">Child</p>
                                         <select class="form-control" id="child" name="child" required onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option>  
+                                            <option value="0">0</option>  
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -110,7 +112,8 @@
                                     <div class="col-4">
                                         <p class="mb-2">Baby</p>
                                         <select class="form-control" id="baby" name="baby" required onchange="myFunction()">
-                                            <option value="" selected disabled>Select...</option>    
+                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="0">0</option>   
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -147,7 +150,7 @@
     </div>
 
 
-    <div class="container" style="margin-top: 6rem;">
+    <div class="container cards" style="margin-top: 6rem;">
         <div class="row">
             <div class="col-4">
                 <div class="card border-0 shadow-lg">
@@ -193,7 +196,7 @@
         </div>
     </div>
 
-    <div class="container-fluid tower" style="margin-top: 6rem;">
+    <div class="container tower" style="margin-top: 6rem;">
         <div class="container">
             <div class="row justify-content-center pt-5">
                 <div class="col-10">
@@ -365,6 +368,7 @@
     var swiper = new Swiper(".mySwiper", {
         pagination: {
             el: ".swiper-pagination",
+            clickable: true
         },
     });
 </script>
