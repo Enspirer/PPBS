@@ -8,6 +8,7 @@
 @endpush
 
 @section('content')
+
 @if ( session()->has('message') )
 
   <body style="text-align:center; background-color: #C0C0C0">
@@ -97,12 +98,12 @@
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <p class="mb-2">Pickup Date</p>
-                                        <input type="date" class="form-control" name="pickup_date" >
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" required>
                                     </div>
 
                                     <div class="col-6">
                                         <p class="mb-2">Pickup Time</p>
-                                        <input type="time" class="form-control" name="pickup_time" >
+                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" required>
                                     </div>
                                 </div>
 
@@ -190,34 +191,34 @@
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <label for="text" class="form-label">Mobile Number</label>
-                                        <input type="number" class="form-control" name="mobile_number" id="number" >
+                                        <input type="text" class="form-control" name="mobile_number" id="number" >
                                     </div>
 
                                     <div class="col-6">
                                         <label for="name" class="form-label">Arrival Flight or Train Number</label>
-                                        <input type="text" class="form-control" name="vehicle_number" >
+                                        <input type="text" class="form-control" name="vehicle_number" id="vehicle_number">
                                     </div>
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <label for="name" class="form-label">Pickup Terminal Address</label>
-                                        <input type="text" class="form-control" name="pickup_address" >
+                                        <input type="text" class="form-control" name="pickup_address" id="pickup_address">
                                     </div>
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <label for="drop_address" class="form-label">Drop Address</label>
-                                        <input type="text" class="form-control" name="drop_address" >
+                                        <input type="text" class="form-control" name="drop_address" id="drop_address">
                                     </div>
                                 </div>
 
                                 <div class="row mt-3"> 
                                     <div class="col-6">
-                                        <p class="mb-2">Number of Luggage's</p>
+                                        <label for="luggage" class="mb-2">Number of Luggage's</label>
                                         <select class="form-control" name="luggage" id="luggage" >
-                                            <option value="" selected disabled>Select...</option>   
+                                            <option value="" selected disabled>Select...</option>    
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -229,7 +230,7 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <p class="mb-2">Number of passengers Total</p>
+                                        <label class="mb-2">Number of passengers Total</label>
                                         <h4><span id="count"></span></h4>
                                     </div>
                                 </div>
@@ -241,41 +242,41 @@
                                     
                                     <div class="row mt-3">
                                         <div class="col-6">
-                                            <p class="mb-2">Departure Date</p>
+                                            <label for="departure_date" class="mb-2">Departure Date</label>
                                             <input type="date" class="form-control" name="departure_date">
                                         </div>
             
                                         <div class="col-6">
-                                            <p class="mb-2">Departure Time</p>
+                                            <label for="departure_time" class="mb-2">Departure Time</label>
                                             <input type="time" class="form-control" name="departure_time">
                                         </div>
                                     </div>
             
                                     <div class="row mt-4">
                                         <div class="col-12">
-                                            <label for="vehicle_number" class="form-label">Departure Flight or Train Number</label>
-                                            <input type="text" class="form-control" name="return_vehicle_number" id="vehicle_number" >
+                                            <label for="return_vehicle_number" class="form-label">Departure Flight or Train Number</label>
+                                            <input type="text" class="form-control" name="return_vehicle_number" id="return_vehicle_number" >
                                         </div>
                                     </div>
             
                                     <div class="row mt-4">
                                         <div class="col-12">
                                             <label for="name" class="form-label">Pickup Place or Address</label>
-                                            <input type="text" class="form-control" name="return_pickup_address" id="address" >
+                                            <input type="text" class="form-control" name="return_pickup_address" id="return_pickup_address">
                                         </div>
                                     </div>
             
                                     <div class="row mt-4">
                                         <div class="col-12">
                                             <label for="drop_address" class="form-label">Drop Airport or Address</label>
-                                            <input type="text" class="form-control" name="return_drop_address" id="drop_address" >
+                                            <input type="text" class="form-control" name="return_drop_address" id="return_drop_address" >
                                         </div>
                                     </div>
             
                                     <div class="row mt-3">
                                         <div class="col-6">
-                                            <p class="mb-2">Number of passengers Total</p>
-                                            <select class="form-control" name="return_passengers_count" id="total_passengers">
+                                            <label class="mb-2">Number of passengers Total</label>
+                                            <select class="form-control" name="return_passengers_count" id="return_passengers_count">
                                                 <option value="" selected disabled>Select...</option>   
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -305,7 +306,7 @@
                                             </div>
 
                                             <div class="col-6 text-center">
-                                                <input type="button" class="next btn text-white rounded" style="background-color: #FF9701" value="NEXT"></input>
+                                                <input type="button" class="next btn text-white rounded 2nd" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
                                         </div>
                                     </div>
@@ -338,7 +339,7 @@
                                             </div>
 
                                             <div class="col-4 text-center">
-                                                <input type="button" class="btn text-white rounded next" style="background-color: #FF9701" value="NEXT"></input>
+                                                <input type="button" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <h4 class="fw-bold" onchange="myFunction()">
@@ -360,7 +361,7 @@
                                 <p class="mt-2" style="font-size:0.9rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 
                                 <div class="form-check mt-2">
-                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="confirm" onchange="myFunction()" required>
+                                    <input class="form-check-input" type="radio" name="agree" value="One Way" id="confirm" onchange="myFunction()" required>
                                     <label class="form-check-label" for="confirm" style="font-size: 0.9rem;">
                                         Agree with this
                                     </label>
@@ -374,7 +375,7 @@
                                             </div>
 
                                             <div class="col-4 text-center">
-                                                <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="BOOK NOW" />
+                                                <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <h4 class="fw-bold" onchange="myFunction()">
@@ -402,9 +403,7 @@
 
 
 @push('after-scripts')
-
     <script>
-
         function myFunction(){
 
             if($('#one_check').is(':checked')) {
@@ -414,23 +413,14 @@
             if($('#both_check').is(':checked')) {
                 checkbox = $("#both_check").val();
             }
-            // console.log(checkbox);
-            // alert(checkbox);
+
 
             pickup_from = $('#pickup_from').val();
-            // console.log(pickup_from);
             destination = $('#destination').val();
-            // console.log(destination);
             adults = $('#adults').val();
-            // console.log(adults);
             child = $('#child').val();
-            // console.log(child);
             baby = $('#baby').val();
-            // console.log(baby);
 
-            // alert(pickup_from);
-
-            // var obj = JSON.parse(data);
 
             $.post("{{url('/')}}/api/api_booking",
                 {
@@ -444,10 +434,6 @@
                 function(output, status){                
 
                     var obj = JSON.parse(output);
-                    // console.log(obj.price);
-
-                    // console.log(status);
-                    // alert("Data: " + output + "\nStatus: " + status);
 
                     $('#result').html(obj.price);
                     $('#result2').html(obj.price);
@@ -458,17 +444,14 @@
                     $('#result_value').val(obj.price);
 
 
-                    if($('#result').text() != '0.00'){
+                   
+                    if($('#result').text() != '0.00' && $('#pickup_date').val() != "" && $('#pickup_time').val() != ""){
                         $('.1st').removeAttr('disabled');
                     };
 
-
                 }
-                
             );
         }
-
-
     </script>
 
     <script>
@@ -525,6 +508,54 @@
         $('#one_check').on('click', function() {
             $('.both').addClass('d-none');
         });
+    </script>
+
+
+    <script>    
+
+        $('#booking-form').on('keyup change paste', 'input, select, textarea', function() {
+            if($('#result').text() != '0.00' && $('#pickup_date').val() != "" && $('#pickup_time').val() != ""){
+                $('.1st').removeAttr('disabled');
+            };
+
+            if($('#one_check').is(":checked")) {
+                        
+                if($('#name').val() != '' && $('#number').val() != '' && $('#vehicle_number').val() != '' && $('#pickup_address').val() != '' && $('#drop_address').val() != '' && $('#luggage option:selected').val() != ''){
+
+                    $('.2nd').removeAttr('disabled');
+                      
+                }
+                else {
+                    $('.2nd').attr("disabled", 'disabled');
+                }
+
+            }
+
+            if($('#both_check').is(":checked")) {
+                        
+                if($('#name').val() != '' && $('#number').val() != '' && $('#vehicle_number').val() != '' && $('#pickup_address').val() != '' && $('#drop_address').val() != '' && $('#luggage option:selected').val() != '' && $('#departure_date').val() != '' && $('#departure_time').val() != '' && $('#return_vehicle_number').val() != '' && $('#return_pickup_address').val() != '' && $('#return_drop_address').val() != '' && $('#return_passengers_count option:selected').val() != ''){
+
+                    $('.2nd').removeAttr('disabled');
+                        
+                }
+                else {
+                    $('.2nd').attr("disabled", 'disabled');
+                }
+
+            }
+
+            if($('input[name="payment_method"]').is(":checked")) {
+                
+                $('.3rd').removeAttr('disabled');
+            }
+
+            if($('input[name="agree"]').is(":checked")) {
+                
+                $('.4th').removeAttr('disabled');
+            }
+
+        });
+
     </script>
 @endpush
 
