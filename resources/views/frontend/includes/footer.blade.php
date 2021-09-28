@@ -1,7 +1,7 @@
 <div class="container-fluid text-white py-5 footer" style="background-color: #000000; margin-top: 6rem;">
     <div class="container">
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <h5 class="mb-3">Get in touch</h5>
 
                 <div class="row justify-content-end align-items-center mb-2">
@@ -31,14 +31,14 @@
                     </div>
                 </div>
 
-                <div class="row mt-5">
+                <div class="row mt-5 footer-logo">
                     <div class="col-12">
                         <img src="{{ url('img/footer_logo.png') }}" alt="">
                     </div>
                 </div>
             </div>
 
-            <div class="col-3 quick-links pl-5">
+            <div class="col-12 col-md-3 quick-links pl-3 pl-5-md mt-4 mt-5-md">
                 <h5 class="mb-3">Quick Links</h5>
 
                 <a href="#" class="text-decoration-none">CDG Private Taxi Service</a> <br>
@@ -51,7 +51,7 @@
                 <a href="#" class="text-decoration-none">Contact US</a> <br>
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-3 mt-4 mt-5-md">
                 <h5 class="mb-3">Need Help</h5>
 
                 <h6 class="mb-3">How to get from Disneyland Paris to CDG Airport</h6>
@@ -66,7 +66,7 @@
 
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-md-3 mt-4 mt-5-md">
                 <h5 class="mb-3">Information </h5>
 
                 <h6 class="mb-3">How to find the driver?</h6>
@@ -79,6 +79,10 @@
                 <p class="mb-3">Sunday,29th May 2016</p>
 
                 <p>via A 86 and A4 Disneyland One hours can ride with our special driver .</p>
+            </div>
+
+            <div class="col-12 footer-bottom-logo mt-4 text-center">
+                <img src="{{ url('img/footer_logo.png') }}" alt="">
             </div>
         </div>
     </div>
