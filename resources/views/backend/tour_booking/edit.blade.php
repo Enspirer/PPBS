@@ -142,18 +142,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <table class="table table-hover table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td width="15%" style="font-weight: 600;">Other:</td>
-                                                            <td>{{ $tour_booking->other_information }}</td>
-                                                        </tr>  
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        
                                     <!-- </div> -->
                                 </div>
                             </div>
@@ -277,6 +266,18 @@
                                                             </tr> 
                                                         </tbody>
                                                     </table>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table class="table table-hover table-borderless">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="15%" style="font-weight: 600;">Other:</td>
+                                                                    <td>{{ $tour_booking->other_information }}</td>
+                                                                </tr>  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div> 
                                     

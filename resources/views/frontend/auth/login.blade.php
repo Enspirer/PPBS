@@ -15,16 +15,25 @@
             <div class="row pt-5">
                 <div class="col-4 p-4 log">
                     <h5 class="text-center fw-bold">Login to your account</h5>
-                    <form action="{{route('frontend.booking.store')}}" method="post">
+                    <form action="{{route('frontend.auth.login.post')}}" method="post">
                     {{csrf_field()}}
 
                         <div class="row mt-4">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" aria-describedby="name" name="username" placeholder="Username or Email">
+                            
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" aria-describedby="name" name="password" placeholder="Password">
+
+                                    {{ html()->password('password')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password'))
+                                        ->required() }}
                             </div>
                         </div>
 
@@ -32,15 +41,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Remember Me
-                                    </label>
+                                    {{ html()->label(html()->checkbox('remember', true, 1) . ' ' . __('labels.frontend.auth.remember_me'))->for('remember') }}
+                                      
                                 </div>
                             </div>
 
                             <div class="col-6 text-end">
-                                <a href="#" class="text-decoration-none text-dark" style="font-size: 0.9rem">Forgot Password?</a>
+                                <a href="{{ route('frontend.auth.password.reset') }}" class="text-decoration-none text-dark" style="font-size: 0.9rem">@lang('labels.frontend.passwords.forgot_password')</a>
                             </div>
                         </div>
 

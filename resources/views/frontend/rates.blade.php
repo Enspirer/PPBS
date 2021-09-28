@@ -28,115 +28,32 @@
                         <tr>
                             <th scope="col">From</th>
                             <th scope="col">Destination</th>
-                            <th scope="col">1-3 Pax</th>
-                            <th scope="col">4 Pax</th>
-                            <th scope="col">5 Pax</th>
-                            <th scope="col">6 Pax</th>
-                            <th scope="col">7 Pax</th>
-                            <th scope="col">8 Pax</th>
+                            <!-- <th scope="col">1-3</th> -->
+
+                            @foreach(App\Models\Passengers::get() as $key => $packs)                
+
+                                    <th scope="col">{{ $packs->name }}</th>
+                                    
+                            @endforeach
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CDG</td>
-                            <td>Paris</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>CDG</td>
-                            <td>Disneyland</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Orly</td>
-                            <td>Paris</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Orley</td>
-                            <td>Disneyland</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Beauvais</td>
-                            <td>Paris</td>
-                            <td>125 €</td>
-                            <td>125 €</td>
-                            <td>130 €</td>
-                            <td>135 €</td>
-                            <td>145 €</td>
-                            <td>145 €</td>
-                        </tr>
-                        <tr>
-                            <td>Beauvais</td>
-                            <td>Disneyland</td>
-                            <td>125 €</td>
-                            <td>125 €</td>
-                            <td>130 €</td>
-                            <td>135 €</td>
-                            <td>145 €</td>
-                            <td>145 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Disneyland</td>
-                            <td>75 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Paris City Center</td>
-                            <td>40 €</td>
-                            <td>40 €</td>
-                            <td>45 €</td>
-                            <td>45 €</td>
-                            <td>50 €</td>
-                            <td>55 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>CDG</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Orly</td>
-                            <td>50 €</td>
-                            <td>55 €</td>
-                            <td>60 €</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                        </tr>
+                        @foreach($oneway_rates as $key => $oneway)
+                            <tr>
+                                <td>{{ App\Models\Location::where('id',$oneway->start_point)->first()->name }}</td>
+                                <td>{{ App\Models\Location::where('id',$oneway->end_point)->first()->name }}</td>
+                                
+                                
+                                @foreach(json_decode($oneway->price_details) as $key => $price)
+                                
+                                    <td>€ {{ $price->price }}</td>
+                                @endforeach
+                                
+                            </tr>
+                        @endforeach
+                        
+                        
                     </tbody>
                 </table>
             </div>
@@ -153,115 +70,26 @@
                         <tr>
                             <th scope="col">From</th>
                             <th scope="col">Destination</th>
-                            <th scope="col">1-3 Pax</th>
-                            <th scope="col">4 Pax</th>
-                            <th scope="col">5 Pax</th>
-                            <th scope="col">6 Pax</th>
-                            <th scope="col">7 Pax</th>
-                            <th scope="col">8 Pax</th>
+                            <!-- <th scope="col">1-3 Pax</th> -->
+                            @foreach(App\Models\Passengers::get() as $key => $packs)                
+
+                                    <th scope="col">{{ $packs->name }}</th>
+                                    
+                            @endforeach
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CDG</td>
-                            <td>Paris</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>CDG</td>
-                            <td>Disneyland</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Orly</td>
-                            <td>Paris</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Orley</td>
-                            <td>Disneyland</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Beauvais</td>
-                            <td>Paris</td>
-                            <td>125 €</td>
-                            <td>125 €</td>
-                            <td>130 €</td>
-                            <td>135 €</td>
-                            <td>145 €</td>
-                            <td>145 €</td>
-                        </tr>
-                        <tr>
-                            <td>Beauvais</td>
-                            <td>Disneyland</td>
-                            <td>125 €</td>
-                            <td>125 €</td>
-                            <td>130 €</td>
-                            <td>135 €</td>
-                            <td>145 €</td>
-                            <td>145 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Disneyland</td>
-                            <td>75 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Paris City Center</td>
-                            <td>40 €</td>
-                            <td>40 €</td>
-                            <td>45 €</td>
-                            <td>45 €</td>
-                            <td>50 €</td>
-                            <td>55 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>CDG</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                            <td>75 €</td>
-                            <td>80 €</td>
-                            <td>90 €</td>
-                        </tr>
-                        <tr>
-                            <td>Paris</td>
-                            <td>Orly</td>
-                            <td>50 €</td>
-                            <td>55 €</td>
-                            <td>60 €</td>
-                            <td>60 €</td>
-                            <td>65 €</td>
-                            <td>70 €</td>
-                        </tr>
+                        @foreach($return_rates as $key => $return)
+                            <tr>
+                                <td>{{ App\Models\Location::where('id',$return->start_point)->first()->name }}</td>
+                                <td>{{ App\Models\Location::where('id',$return->end_point)->first()->name }}</td>
+                                    
+                                @foreach(json_decode($return->price_details) as $key => $price)
+                                    <td>€ {{ $price->price }}</td>
+                                @endforeach
+                                
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
