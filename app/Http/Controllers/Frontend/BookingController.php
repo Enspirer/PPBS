@@ -32,44 +32,19 @@ class BookingController extends Controller
         // dd($request);
 
         $count = $request->adults + $request->child + $request->baby;
- 
-        // $booking = BookingRates::where('booking_type',$request->booking_type)
-        // ->where('start_point',$request->pickup_from)
-        // ->where('end_point',$request->destination)
-        // ->first();
 
-        // if($booking == null){
-        //     return back()->withErrors('There is no such a Package for Now. Please choose another Package'); 
-        // }
-        
-        // $output = [];
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-        // foreach(json_decode($booking->price_details) as $key => $price_detail){
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
 
-        //     if($count == $price_detail->count){
-        //         $output = [
-        //             'count' => $price_detail->count,
-        //             'price' => $price_detail->price,
-        //             'pickup_from' => $request->pickup_from,
-        //             'destination' => $request->destination
-        //         ];
-
-        //     }
-        // }
-
-        // if($request->result_value == null){
-        //     $total_price = Booking::where('id',$request->hidden_id)->first()->total_price;
-        // }else{
-        //     $total_price = $request->result_value;
-        // }
-        
-        // if(count($output) == 0){
-        //     return back()->withErrors('Passengers limit exceeded');
-        // }else{
+        $string = str_shuffle($pin);
 
         $add = new Booking;
         
         $add->booking_type = $request->booking_type;
+        $add->booking_number = $string;
         $add->pickup_from = $request->pickup_from;
         $add->destination = $request->destination;
         $add->pickup_date = $request->pickup_date;
@@ -94,14 +69,11 @@ class BookingController extends Controller
         $add->other_information=$request->other_information;
         $add->payment_method=$request->payment_method;
         $add->status = 'Pending';
-        $add->save();
-
-                
-            // Booking::whereId($request->hidden_id)->update($update->toArray());           
+        $add->save();                
+                  
         session()->flash('message','Thanks!');
 
-        return back(); 
-        // }
+        return back();        
 
     }
 

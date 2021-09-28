@@ -36,12 +36,18 @@
                     <li class="nav-item links">
                         <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'contact-us' ? 'active' : null }}" href="{{ route('frontend.contact_us') }}">CONTACT</a>
                     </li>
+                    @auth
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.logout') }}" style="background-color: #FF9701">Logout</a>
+                    </li>
+                    @else                    
                     <li class="nav-item ps-4 pe-3">
-                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="#" style="border: 1px solid #FF9701;">Sign Up</a>
+                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="{{ route('frontend.auth.register') }}" style="border: 1px solid #FF9701;">Sign Up</a>
                     </li>
                     <li class="nav-item ps-3">
                         <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.login') }}" style="background-color: #FF9701">Log In</a>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </div>

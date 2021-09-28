@@ -10,12 +10,12 @@
 
 @if ( session()->has('message') )
 
-  <body style="text-align:center; background-color: #C0C0C0">
+  <body style="text-align:center; background-color: #deefd1">
 
         <div style="padding: 0 100px 0 100px">
 
-            <h1 style="margin-top:200px;" class="display-4">Thank You!</h1><br>
-            <p class="lead"><h4>We appreciate you booking us. One of our member will get back in touch with you soon!<br><br> Have a great day!</h4></p>
+            <h1 style="margin-top:220px;" class="display-4">Thank You!</h1><br>
+            <p class="lead"><h4>Your booking number is <span class="text-danger">{{ App\Models\Booking::latest()->first()->booking_number }}</span>. One of our member will get back in touch with you soon!<br><br> Have a great day!</h4></p>
             <hr><br>    
             <p class="lead">
                 <a class="btn btn-success btn-md" href="{{url('/')}}" role="button">Go Back to Home Page</a>
@@ -53,7 +53,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" >
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" checked onchange="myFunction()" >
                                                     <label class="form-check-label" for="one_check">
                                                         One Way
                                                     </label>
@@ -62,7 +62,7 @@
 
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check"  onchange="myFunction()">
                                                     <label class="form-check-label" for="both_check">
                                                        Both Way
                                                     </label>
@@ -129,7 +129,7 @@
                                                 <p class="mb-2">Child</p>
                                                 <select class="form-control" id="child" name="child"  onchange="myFunction()">
                                                     <option value="" selected disabled>Select...</option>  
-                                                    <option value="0">0</option>     
+                                                    <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -145,7 +145,7 @@
                                                 <p class="mb-2">Baby</p>
                                                 <select class="form-control" id="baby" name="baby"  onchange="myFunction()">
                                                     <option value="" selected disabled>Select...</option>  
-                                                    <option value="0">0</option>       
+                                                    <option value="0">0</option>  
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
