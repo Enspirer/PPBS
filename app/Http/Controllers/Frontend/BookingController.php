@@ -8,7 +8,10 @@ use App\Models\Location;
 use App\Models\BookingRates;
 use App\Models\Booking;
 use App\Models\Passengers;
+use App\Models\Auth\User;
 use DB;
+use Mail;  
+use \App\Mail\BookingUserMail;
 
 /**
  * Class BookingController.
@@ -29,8 +32,7 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {    
-        // dd($request);
-
+    
         $count = $request->adults + $request->child + $request->baby;
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -64,12 +66,65 @@ class BookingController extends Controller
         $add->return_drop_address = $request->return_drop_address;
         $add->return_vehicle_number = $request->return_vehicle_number;
         $add->return_passengers_count = $request->return_passengers_count;     
-        $add->customer_name=$request->name;       
+        $add->customer_name=$request->name;
+        $add->customer_email=$request->email;        
         $add->customer_telephone=$request->mobile_number;
         $add->other_information=$request->other_information;
-        $add->payment_method=$request->payment_method;
+        $add->payment_method=$request->payment_method;        
+        if(!empty( auth()->user()->id) === true ){
+            $add->user_id=auth()->user()->id;
+        }        
         $add->status = 'Pending';
-        $add->save();                
+        $add->save();             
+        
+     
+        if(empty( auth()->user()->id) === true ){
+            
+            $words = explode(" ", $request->name);
+        
+            $first_name = $words[0];
+
+            if( !empty( $words[1]) === true){
+                $second_name = $words[1];
+            }else{
+                $second_name = 'Last Name';
+            }
+            
+
+            $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $symbols = '@#$%^&*';
+
+            $pin_number = mt_rand(100, 999)
+                . mt_rand(100, 999)
+                . $symbols[rand(0, strlen($symbols) - 1)]
+                . $letters[rand(0, strlen($letters) - 1)];
+
+            $password = str_shuffle($pin_number);
+
+            // dd($password);
+
+            $user_add = new User;
+            
+            $user_add->first_name = $first_name;
+            $user_add->last_name = $second_name;
+            $user_add->email = $request->email;
+            $user_add->password = $password;
+            $user_add->confirmed = 1;
+        
+            $user_add->save();
+
+            $details = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $password
+            ];
+
+            \Mail::to($request->email)->send(new BookingUserMail($details));
+
+        } 
+
+
+              
                   
         session()->flash('message','Thanks!');
 

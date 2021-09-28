@@ -24,13 +24,17 @@
                                                             <td width="25%" style="font-weight: 600;">Name:</td>
                                                             <td>{{ $tour_booking->customer_title }}&nbsp;{{ $tour_booking->customer_name }}</td>                                                         
                                                         </tr>                                                                                                             
-                                                        <!-- <tr>
+                                                        <tr>
                                                             <td width="25%" style="font-weight: 600;">Email</td>
                                                             <td>{{ $tour_booking->customer_email }}</td>                                                         
-                                                        </tr> -->
+                                                        </tr>
                                                         <tr>
                                                             <td width="25%" style="font-weight: 600;">Phone Number:</td>
                                                             <td>{{ $tour_booking->customer_telephone }}</td>                                                         
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%" style="font-weight: 600;">Booking Number:</td>
+                                                            <td>{{ $tour_booking->booking_number }}</td>                                                         
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -17,6 +17,7 @@ class CreateBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->text('booking_type')->nullable();
             $table->text('booking_number')->nullable();  
+            $table->text('user_id')->nullable(); 
             $table->text('pickup_from')->nullable();
             $table->text('destination')->nullable();
             $table->text('pickup_date')->nullable();
