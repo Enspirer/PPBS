@@ -54,7 +54,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" >
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" {{($booking->booking_type == "One Way") ? "checked" : "" }}>
                                                     <label class="form-check-label" for="one_check">
                                                         One Way
                                                     </label>
@@ -63,7 +63,7 @@
 
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()">
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()" {{($booking->booking_type == "Return") ? "checked" : "" }}>
                                                     <label class="form-check-label" for="both_check">
                                                        Both Way
                                                     </label>
@@ -79,7 +79,7 @@
                                         <select class="form-control" id="pickup_from" name="pickup_from"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
                                                 @foreach($location as $locate) 
-                                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
+                                                    <option value="{{ $locate->id }}" {{$locate->id == $booking->pickup_from ? "selected" : "" }}>{{ $locate->name }}</option>  
                                                 @endforeach   
                                         </select>
                                     </div>
@@ -89,7 +89,7 @@
                                         <select class="form-control" id="destination" name="destination"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
                                                 @foreach($location as $locate) 
-                                                    <option value="{{ $locate->id }}">{{ $locate->name }}</option>  
+                                                    <option value="{{ $locate->id }}" {{$locate->id == $booking->destination ? "selected" : "" }}>{{ $locate->name }}</option>  
                                                 @endforeach 
                                         </select>
                                     </div>
@@ -98,7 +98,7 @@
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <p class="mb-2">Pickup Date</p>
-                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" required>
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="" required>
                                     </div>
 
                                     <div class="col-6">
@@ -113,7 +113,8 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Adults</p>
                                                 <select class="form-control" id="adults" name="adults"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>   
+                                                    <option value="" selected disabled>Select...</option> 
+                                                    <option value="0">0</option>  
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -129,6 +130,7 @@
                                                 <p class="mb-2">Child</p>
                                                 <select class="form-control" id="child" name="child"  onchange="myFunction()">
                                                     <option value="" selected disabled>Select...</option>  
+                                                    <option value="0">0</option> 
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -143,7 +145,8 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Baby</p>
                                                 <select class="form-control" id="baby" name="baby"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>    
+                                                    <option value="" selected disabled>Select...</option>
+                                                    <option value="0">0</option>     
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -219,6 +222,7 @@
                                         <label for="luggage" class="mb-2">Number of Luggage's</label>
                                         <select class="form-control" name="luggage" id="luggage" >
                                             <option value="" selected disabled>Select...</option>    
+                                            <option value="0">0</option>     
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -278,6 +282,7 @@
                                             <label class="mb-2">Number of passengers Total</label>
                                             <select class="form-control" name="return_passengers_count" id="return_passengers_count">
                                                 <option value="" selected disabled>Select...</option>   
+                                                <option value="0">0</option>     
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -556,6 +561,37 @@
 
         });
 
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            let adults = <?php echo json_encode ($booking->adults) ?>
+
+            $('#adults option').each(function(i){
+                if($(this).val() == adults) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+
+
+            let child = <?php echo json_encode ($booking->adults) ?>
+
+            $('#child option').each(function(i){
+                if($(this).val() == child) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+
+
+            let baby = <?php echo json_encode ($booking->adults) ?>
+
+            $('#baby option').each(function(i){
+                if($(this).val() == baby) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+        });
     </script>
 @endpush
 

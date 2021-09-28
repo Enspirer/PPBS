@@ -112,7 +112,8 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Adults</p>
                                                 <select class="form-control" id="adults" name="adults"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>   
+                                                    <option value="" selected disabled>Select...</option>  
+                                                    <option value="0">0</option>      
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -128,6 +129,7 @@
                                                 <p class="mb-2">Child</p>
                                                 <select class="form-control" id="child" name="child"  onchange="myFunction()">
                                                     <option value="" selected disabled>Select...</option>  
+                                                    <option value="0">0</option>     
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -142,7 +144,8 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Baby</p>
                                                 <select class="form-control" id="baby" name="baby"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>    
+                                                    <option value="" selected disabled>Select...</option>  
+                                                    <option value="0">0</option>       
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -218,6 +221,7 @@
                                         <label for="luggage" class="mb-2">Number of Luggage's</label>
                                         <select class="form-control" name="luggage" id="luggage" >
                                             <option value="" selected disabled>Select...</option>    
+                                            <option value="0">0</option>     
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -276,7 +280,8 @@
                                         <div class="col-6">
                                             <label class="mb-2">Number of passengers Total</label>
                                             <select class="form-control" name="return_passengers_count" id="return_passengers_count">
-                                                <option value="" selected disabled>Select...</option>   
+                                                <option value="" selected disabled>Select...</option>  
+                                                <option value="0">0</option>      
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>

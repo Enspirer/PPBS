@@ -20,11 +20,11 @@
 
                         <div class="row mt-4">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Username or Email">
+                                <input type="text" class="form-control" id="name" aria-describedby="name" name="username" placeholder="Username or Email">
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Password">
+                                <input type="text" class="form-control" id="name" aria-describedby="name" name="password" placeholder="Password">
                             </div>
                         </div>
 

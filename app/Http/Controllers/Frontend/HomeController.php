@@ -66,6 +66,8 @@ class HomeController extends Controller
             $add->booking_type = $request->booking_type;
             $add->pickup_from = $request->pickup_from;
             $add->destination = $request->destination;
+            $add->pickup_date = $request->pickup_date;
+            $add->pickup_time = $request->pickup_time;
             $add->passengers_count = $count;
             $add->adults = $request->adults;
             $add->child = $request->child;
