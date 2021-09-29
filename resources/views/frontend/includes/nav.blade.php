@@ -67,7 +67,8 @@
 </div>
 
 
-<form action="">
+<form action="{{ route('frontend.find_booking') }}" method="POST" id="modal">
+    {{ @csrf_field()}}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

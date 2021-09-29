@@ -134,4 +134,21 @@ class BookingController extends Controller
 
     }
 
+
+
+    public function findBooking(Request $request) {
+
+        $booking = Booking::where('id', $request->booking_id)->where('customer_email', $request->email)->first()->id;
+
+        return redirect()->route('frontend.booking_search', [$booking]);
+    }
+
+
+    public function bookingSearch($booking) {
+        
+        $book = Booking::where('id', $id)->first();
+
+        return view('frontend.find_booking', ['book' => $book]);
+    }
+
 }

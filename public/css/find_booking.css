@@ -1,0 +1,29 @@
+table {
+    text-align: center;
+}
+
+table thead {
+    background-color: #FF9701;
+}
+table thead tr th {
+    color: black;
+}
+.table td, .table th {
+    padding: 0.3rem!important;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+
+
+@media (max-width: 576px) {
+    .banner {
+        height: 170px!important;
+    }
+    .banner .row {
+        padding-top: 3rem!important;
+    }
+    .banner .row h2 {
+        font-size: 1.5rem!important;
+    }
+}

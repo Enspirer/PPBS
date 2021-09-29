@@ -27,6 +27,11 @@ Route::post('booking/store', [HomeController::class, 'store'])->name('booking.st
 Route::post('booking_customer/store', [HomeController::class, 'booking_customer_store'])->name('booking_customer.store');
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 
+
+Route::get('booking/{id}', [BookingController::class, 'bookingSearch'])->name('booking_search');
+Route::post('booking_search', [BookingController::class, 'findBooking'])->name('find_booking');
+
+
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'

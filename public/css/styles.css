@@ -67,7 +67,13 @@ p {
     margin-left: 0.6em!important;
 }
 
-.modal-body .form-control {
+.banner .form-control {
+    background: rgba(101, 101, 101, .4);
+    border: #707070!important;
+    color: white;
+}
+
+#modal .form-control {
     border-left: 5px solid #FF9701!important;
 }
 
