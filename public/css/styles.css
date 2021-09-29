@@ -38,7 +38,7 @@ p {
 }
 
 .bottom-nav .links {
-    padding: 0 2.5rem;
+    padding: 0 1rem;
 }
 
 .footer .quick-links a {
@@ -65,6 +65,14 @@ p {
 
 .bottom-nav .dropdown-toggle:after {
     margin-left: 0.6em!important;
+}
+
+.modal-body .form-control {
+    border-left: 5px solid #FF9701!important;
+}
+
+.modal-body .form-control:focus {
+    border-left: 5px solid red!important;
 }
 
 

@@ -36,6 +36,9 @@
                     <li class="nav-item links mb-3 mb-md-0">
                         <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'contact-us' ? 'active' : null }}" href="{{ route('frontend.contact_us') }}">CONTACT</a>
                     </li>
+                    <li class="nav-item links mb-3 mb-md-0">
+                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid rgb(31, 26, 125);">Find my Booking</a>
+                    </li>
                     @auth
                         <li class="nav-item nav1 mb-3 mb-md-0 position-relative">
                             <a class="nav-link dropdown-toggle" href="{{route('frontend.auth.login')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,10 +53,10 @@
                               </div>
                         </li>
                     @else                    
-                    <li class="nav-item px-0 ps-md-4 pe-md-3 mb-3 mb-md-0">
+                    <li class="nav-item links mb-3 mb-md-0">
                         <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="{{ route('frontend.auth.register') }}" style="border: 1px solid #FF9701;">Sign Up</a>
                     </li>
-                    <li class="nav-item ps-0 ps-md-3">
+                    <li class="nav-item links mb-3 mb-md-0">
                         <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.login') }}" style="background-color: #FF9701">Log In</a>
                     </li>
                     @endauth
@@ -63,6 +66,34 @@
     </nav>
 </div>
 
+
+<form action="">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Find My Booking</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking ID">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="Find My Booking"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 
 

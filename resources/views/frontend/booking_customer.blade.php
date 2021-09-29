@@ -233,9 +233,9 @@
                                             <option value="8">8</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6 text-center">
                                         <label class="mb-2">Number of passengers Total</label>
-                                        <h4><span id="count"></span></h4>
+                                        <h4 class="text-center"><span id="count">{{ $booking->passengers_count }}</span></h4>
                                     </div>
                                 </div>
 
@@ -273,25 +273,14 @@
                                     <div class="row mt-4">
                                         <div class="col-12">
                                             <label for="drop_address" class="form-label">Drop Airport or Address</label>
-                                            <input type="text" class="form-control" name="return_drop_address" id="return_drop_address" >
+                                            <input type="text" class="form-control" name="return_drop_address" id="return_drop_address">
                                         </div>
                                     </div>
             
                                     <div class="row mt-3">
-                                        <div class="col-6">
+                                        <div class="col-6 text-center">
                                             <label class="mb-2">Number of passengers Total</label>
-                                            <select class="form-control" name="return_passengers_count" id="return_passengers_count">
-                                                <option value="" selected disabled>Select...</option>   
-                                                <option value="0">0</option>     
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                            </select>
+                                            <h4 class="text-center"><span id="count">{{ $booking->passengers_count }}</span></h4>
                                         </div>
                                     </div>
             
@@ -582,7 +571,7 @@
             });
 
 
-            let child = <?php echo json_encode ($booking->adults) ?>
+            let child = <?php echo json_encode ($booking->child) ?>
 
             $('#child option').each(function(i){
                 if($(this).val() == child) {
@@ -591,7 +580,7 @@
             });
 
 
-            let baby = <?php echo json_encode ($booking->adults) ?>
+            let baby = <?php echo json_encode ($booking->baby) ?>
 
             $('#baby option').each(function(i){
                 if($(this).val() == baby) {
