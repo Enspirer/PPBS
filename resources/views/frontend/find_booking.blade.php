@@ -19,24 +19,167 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">Booking ID</td>
-                            <td>{{ $book->id}}</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Booking Type</td>
-                            <td>{{ $book->booking_type}}</td>
-                        </tr>
+                        @if($booking->booking_type == 'One Way')
+                            <tr>
+                                <td scope="row">Booking ID</td>
+                                <td>{{ $booking->id}}</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Booking Type</td>
+                                <td>{{ $booking->booking_type}}</td>
+                            </tr>
 
-                        <tr>
-                            <td scope="row">Pickup From</td>
-                            <td>{{ App\Models\Location::where('id', $book->pickup_from)->first()->name}}</td>
-                        </tr>
+                            <tr>
+                                <td scope="row">Pickup From</td>
+                                <td>{{ App\Models\Location::where('id', $booking->pickup_from)->first()->name}}</td>
+                            </tr>
 
-                        <tr>
-                            <td scope="row">Destination</td>
-                            <td>{{ App\Models\Location::where('id', $book->destination)->first()->name}}</td>
-                        </tr>
+                            <tr>
+                                <td scope="row">Destination</td>
+                                <td>{{ App\Models\Location::where('id', $booking->destination)->first()->name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Pickup Date</td>
+                                <td>{{ $booking->pickup_date}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Pickup Time</td>
+                                <td>{{ $booking->pickup_time}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Adults</td>
+                                <td>{{ $booking->adults}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Children</td>
+                                <td>{{ $booking->child}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Babies</td>
+                                <td>{{ $booking->baby}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Arrival Vehicle Number</td>
+                                <td>{{ $booking->vehicle_number}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Discount</td>
+                                <td>{{ $booking->discount}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Number of Luggages</td>
+                                <td>{{ $booking->number_of_luggages}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Total Passengers</td>
+                                <td>{{ $booking->passengers_count}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                        @else
+
+                            <tr>
+                                <td scope="row">Booking ID</td>
+                                <td>{{ $booking->id}}</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Booking Type</td>
+                                <td>{{ $booking->booking_type}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Pickup From</td>
+                                <td>{{ App\Models\Location::where('id', $booking->pickup_from)->first()->name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Destination</td>
+                                <td>{{ App\Models\Location::where('id', $booking->destination)->first()->name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Pickup Date</td>
+                                <td>{{ $booking->pickup_date}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Pickup Time</td>
+                                <td>{{ $booking->pickup_time}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Adults</td>
+                                <td>{{ $booking->adults}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Children</td>
+                                <td>{{ $booking->child}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Babies</td>
+                                <td>{{ $booking->baby}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Discount</td>
+                                <td>{{ $booking->discount}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Number of Luggages</td>
+                                <td>{{ $booking->number_of_luggages}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Total Passengers</td>
+                                <td>{{ $booking->passengers_count}}</td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Total Price</td>
+                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                            </tr>
+
+                        @endif
                     </tbody>
                 </table>
             </div>

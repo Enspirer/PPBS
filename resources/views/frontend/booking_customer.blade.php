@@ -240,7 +240,7 @@
                                             <option value="8">8</option>
                                         </select>
                                     </div>
-                                    <div class="col-6 text-center">
+                                    <div class="col-6 text-center one-way-luggage">
                                         <label class="mb-2">Number of passengers Total</label>
                                         <h4 class="text-center"><span id="count">{{ $booking->passengers_count }}</span></h4>
                                     </div>
@@ -284,19 +284,19 @@
                                         </div>
                                     </div>
             
-                                    <div class="row mt-3">
-                                        <div class="col-6 text-center">
-                                            <label class="mb-2">Number of passengers Total</label>
-                                            <h4 class="text-center"><span id="count">{{ $booking->passengers_count }}</span></h4>
-                                        </div>
-                                    </div>
-            
                                     <div class="row mt-4">
                                         <div class="col-12">
                                             <label for="drop_address" class="form-label">Other Information</label>
                                             <textarea class="form-control" name="other_information" row="7"></textarea>
                                         </div>
                                     </div>
+
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h5><span id="count">Number of passengers Total : {{ $booking->passengers_count }}</span></h5>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="row mt-5 mb-4 justify-content-center">
@@ -516,6 +516,17 @@
         $('#one_check').on('click', function() {
             $('.both').addClass('d-none');
         });
+
+        let check = <?php echo json_encode ($booking->booking_type) ?>
+
+        if(check == 'Return') {
+            $('.both').removeClass('d-none');
+            $('.one-way-luggage').addClass('d-none');
+
+        } else {
+            $('.both').addClass('d-none');
+            $('.one-way-luggage').removeClass('d-none');
+        }
     </script>
 
 
