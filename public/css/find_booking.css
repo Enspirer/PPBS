@@ -1,17 +1,13 @@
-table {
-    text-align: center;
-}
-
 table thead {
     background-color: #FF9701;
 }
 table thead tr th {
     color: black;
+    padding-left: 3rem;
 }
+
 .table td, .table th {
-    padding: 0.3rem!important;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    padding: 0.7rem 3rem 0.7rem 3rem;
 }
 
 
