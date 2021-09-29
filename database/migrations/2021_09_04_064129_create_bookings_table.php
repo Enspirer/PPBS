@@ -45,6 +45,7 @@ class CreateBookingsTable extends Migration
             $table->text('customer_telephone')->nullable();            
             $table->text('other_information')->nullable();
             $table->text('payment_method')->nullable();
+            $table->text('payment_status')->nullable();
             $table->text('status')->nullable();
             $table->timestamps();
         });
