@@ -117,6 +117,7 @@ class BookingController extends Controller
 
                 $details = [
                     'name' => $request->name,
+                    'booking_number' => $string,
                     'email' => $request->email,
                     'password' => $password
                 ];

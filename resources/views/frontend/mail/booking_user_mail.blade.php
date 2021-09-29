@@ -42,6 +42,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </td>
         </tr>
         <tr>            
+            <td width="20%" cellpadding="0" cellspacing="0">  
+                <p align="left"><b>Booking Number:</b> </p>  
+                <hr>        
+            </td>
+            <td  cellpadding="0" cellspacing="0">  
+                <p align="left">{{ $details['booking_number'] }}</p> 
+                <hr>                
+            </td>
+        </tr>
+        <tr>            
             <td width="20%" cellpadding="0" cellspacing="0">
                 <p align="left"><b>Email Address:</b> </p>
                 <hr>
