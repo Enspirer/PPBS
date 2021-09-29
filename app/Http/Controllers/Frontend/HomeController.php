@@ -162,8 +162,7 @@ class HomeController extends Controller
                     $second_name = $words[1];
                 }else{
                     $second_name = 'Last Name';
-                }
-                
+                }                
 
                 $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $symbols = '@#$%^&*';
@@ -174,9 +173,7 @@ class HomeController extends Controller
                     . $letters[rand(0, strlen($letters) - 1)];
 
                 $password = str_shuffle($pin_number);
-
-                // dd($password);
-
+                
                 $user_add = new User;
                 
                 $user_add->first_name = $first_name;
@@ -187,6 +184,8 @@ class HomeController extends Controller
             
                 $user_add->save();
 
+                Booking::whereId($request->hidden_id)->update(array('user_id' => $user_add->id)); 
+
                 $details = [
                     'name' => $request->name,
                     'booking_number' => $string,
@@ -195,6 +194,14 @@ class HomeController extends Controller
                 ];
 
                 \Mail::to($request->email)->send(new BookingUserMail($details));
+
+            }else{
+
+                $user_details = User::where('email',$request->email)->first();
+                $user_id = $user_details->id;
+
+                Booking::whereId($request->hidden_id)->update(array('user_id' => $user_id));
+
             }
         }               
                   
