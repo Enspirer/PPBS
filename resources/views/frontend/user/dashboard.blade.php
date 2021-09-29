@@ -39,6 +39,19 @@
                         <div class="card">
                             <div class="card-body">
 
+                            <table class="table table-striped table-bordered" id="villadatatable" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#ID</th>
+                                        <!-- <th scope="col">Status</th> -->
+                                        <th scope="col">Option</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+
                             </div>
                         </div>
                     </div>
@@ -48,6 +61,22 @@
         </div>
     </div>
 
-
+    <script type="text/javascript">
+        $(function () {
+            var table = $('#villadatatable').DataTable({
+                processing: true,
+                ajax: "{{route('frontend.user.pending.getPendingDetails')}}",
+                serverSide: true,
+                order: [[0, "desc"]],
+                columns: [
+                    {data: 'id', name: 'id'},
+                    // {data: 'status', name: 'status'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+ 
+          
+        });
+    </script>
 
 @endsection

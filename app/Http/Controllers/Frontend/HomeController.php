@@ -12,6 +12,8 @@ use App\Models\Auth\User;
 use DB;
 use Mail;  
 use \App\Mail\BookingUserMail;
+use \App\Mail\BookingDetailsMail;
+use \App\Mail\BookingDetailsBothMail;
 
 /**
  * Class HomeController.
@@ -123,11 +125,12 @@ class HomeController extends Controller
         // $update->destination = $request->destination;
         // $update->pickup_date = $request->pickup_date;
         // $update->pickup_time = $request->pickup_time;
-        // $update->passengers_count = $count;
+        
         // $update->adults = $request->adults;
         // $update->child = $request->child;
         // $update->baby = $request->baby;
         // $update->total_price = $request->result_value;
+        // $update->passengers_count = $count;
         $update->number_of_luggages = $request->luggage;
         $update->vehicle_number = $request->vehicle_number;
         $update->departure_date = $request->departure_date;
@@ -148,7 +151,75 @@ class HomeController extends Controller
         }        
         $update->status = 'Pending';
                 
-        Booking::whereId($request->hidden_id)->update($update->toArray());   
+        Booking::whereId($request->hidden_id)->update($update->toArray());  
+        
+        $created_at = Booking::where('id',$request->hidden_id)->first(); 
+
+        $pickup_from = Location::where('id',$request->pickup_from)->first()->name;
+        $destination = Location::where('id',$request->destination)->first()->name;
+        
+        if($request->booking_type == 'One Way'){
+
+            $booking_details = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->mobile_number,
+                'booking_number' => $string,
+                'pickup_from' => $pickup_from,
+                'destination' => $destination,
+                'pickup_date' => $request->pickup_date,
+                'pickup_time' => $request->pickup_time,
+                'adults' => $request->adults,
+                'child' => $request->child,
+                'baby' => $request->baby,
+                'pickup_address' => $request->pickup_address,
+                'drop_address' => $request->drop_address,
+                'vehicle_number' => $request->vehicle_number,
+                'luggage' => $request->luggage,
+                'total_price' => $request->result_value,
+                'payment_method' => $request->payment_method,
+                'booking_type' => $request->booking_type,
+                'created_at' => $created_at->created_at->toDateString(),
+            ];
+            
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
+
+        }else{
+
+            $booking_details = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->mobile_number,
+                'booking_number' => $string,
+                'pickup_from' => $pickup_from,
+                'destination' => $destination,
+                'pickup_date' => $request->pickup_date,
+                'pickup_time' => $request->pickup_time,
+                'adults' => $request->adults,
+                'child' => $request->child,
+                'baby' => $request->baby,
+                'pickup_address' => $request->pickup_address,
+                'drop_address' => $request->drop_address,
+                'vehicle_number' => $request->vehicle_number,
+                'luggage' => $request->luggage,
+                'total_price' => $request->result_value,
+                'payment_method' => $request->payment_method,
+                'booking_type' => $request->booking_type,
+                'return_pickup_address' => $request->return_pickup_address,
+                'return_drop_address' => $request->return_drop_address,
+                'return_vehicle_number' => $request->return_vehicle_number,
+                'return_passengers_count' => $request->return_passengers_count,
+                'departure_date' => $request->departure_date,
+                'departure_time' => $request->departure_time,
+                'other_information' => $request->other_information,
+                'created_at' => $created_at->created_at->toDateString(),
+            ];
+            
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
+
+        }      
+        
+        // dd($booking_details);
         
         if(empty( auth()->user()->id) === true ){
 
