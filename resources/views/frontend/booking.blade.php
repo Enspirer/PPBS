@@ -41,7 +41,7 @@
                 <li class="fw-bold"><br> Payment</li>
                 <li class="fw-bold"><br> Confirm</li>
             </ul>
-            <div class="col-7">
+            <div class="col-12 col-md-7">
                 <form action="{{route('frontend.online_booking.store')}}" method="post" id="booking-form" style="margin-top: 2rem;">
                 {{csrf_field()}}   
                     <fieldset>
@@ -49,7 +49,7 @@
                             <div class="col-12 px-5 py-3">
                             <h5>Book Your Ride Now</h5>
                                 <div class="row mt-4">
-                                    <div class="col-8" >
+                                    <div class="col-12 col-md-8" >
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-check">
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <p class="mb-2">Pickup Place</p>
                                         <select class="form-control" id="pickup_from" name="pickup_from"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
@@ -83,7 +83,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <p class="mb-2">Destination Place</p>
                                         <select class="form-control" id="destination" name="destination"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
@@ -95,19 +95,19 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <p class="mb-2">Pickup Date</p>
                                         <input type="date" class="form-control" name="pickup_date" id="pickup_date">
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <p class="mb-2">Pickup Time</p>
                                         <input type="time" class="form-control" name="pickup_time" id="pickup_time">
                                     </div>
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col-8">
+                                    <div class="col-12 col-md-8">
                                         <div class="row">
                                             <div class="col-4">
                                                 <p class="mb-2">Adults</p>
@@ -198,12 +198,12 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <label for="text" class="form-label">Mobile Number</label>
                                         <input type="number" class="form-control" name="mobile_number" id="number" >
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <label for="name" class="form-label">Arrival Flight or Train Number</label>
                                         <input type="text" class="form-control" name="vehicle_number" id="vehicle_number">
                                     </div>
@@ -284,7 +284,7 @@
                                     </div>
             
                                     <div class="row mt-3">
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6">
                                             <label class="mb-2">Number of passengers Total</label>
                                             <select class="form-control" name="return_passengers_count" id="return_passengers_count">
                                                 <option value="" selected disabled>Select...</option>  
@@ -312,15 +312,15 @@
                                 <div class="row mt-5 mb-4 justify-content-center">
                                     <div class="col-12">
                                         <div class="row align-items-center">
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center">
                                                 <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
                                             </div>
 
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center">
                                                 <input type="button" class="next btn text-white rounded 2nd" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
 
-                                            <div class="col-4 text-end">
+                                            <div class="col-12 col-md-4 text-center text-md-right">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
                                                     <span>€</span><span id="result1">0</span><span>.00</span>
                                                 </h4>
@@ -334,31 +334,31 @@
 
                     <fieldset>
                         <div class="row border banner" style="color: #1C1952">
-                            <div class="col-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
+                            <div class="col-12 col-md-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
                                 <h5>Payment Information</h5>
 
-                                <div class="row mt-5 mb-4 align-items-center">
-                                    <div class="col-6">
+                                <div class="row mt-5 mb-2 mt-md-5 mb-md-4">
+                                    <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <input class="form-check-input" type="radio" name="payment_method" value="Pay upon Arrival">
                                         <a href="#" class="btn text-decoration-none p-3" style="border: 1px solid #FF9701">Pay upon Arrival</a>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <input class="form-check-input" type="radio" name="payment_method" value="PayPal" id="one-check" >
                                         <a href="#" class="btn text-decoration-none px-4" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></a>
                                     </div>
                                 </div>
 
-                                <div class="row mt-5 mb-4">
+                                <div class="row mt-3 mb-4 mt-md-5">
                                     <div class="col-12">
                                         <div class="row align-items-center">
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
                                             </div>
 
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <input type="button" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT" disabled></input>
                                             </div>
-                                            <div class="col-4 text-end">
+                                            <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
                                                     <span>€</span><span id="result2">0</span><span>.00</span>
                                                 </h4>
@@ -372,7 +372,7 @@
 
                     <fieldset>
                         <div class="row border banner" style="color: #1C1952">
-                            <div class="col-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
+                            <div class="col-12 col-md-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
                                 <h5>Confirm your book</h5>
 
                                 <p class="mt-2" style="font-size:0.9rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
@@ -387,14 +387,14 @@
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="row align-items-center">
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
                                             </div>
 
-                                            <div class="col-4 text-center">
+                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
                                             </div>
-                                            <div class="col-4 text-center">
+                                            <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
                                                 
                                                     <input type="hidden" name="passengers_count" id="passengers_count">
