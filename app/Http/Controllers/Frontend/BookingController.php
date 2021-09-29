@@ -32,7 +32,7 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {    
-    
+            
         $count = $request->adults + $request->child + $request->baby;
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -79,48 +79,50 @@ class BookingController extends Controller
         
      
         if(empty( auth()->user()->id) === true ){
-            
-            $words = explode(" ", $request->name);
-        
-            $first_name = $words[0];
 
-            if( !empty( $words[1]) === true){
-                $second_name = $words[1];
-            }else{
-                $second_name = 'Last Name';
+            if( User::where('email',$request->email)->first() == null  ){            
+            
+                $words = explode(" ", $request->name);
+            
+                $first_name = $words[0];
+
+                if( !empty( $words[1]) === true){
+                    $second_name = $words[1];
+                }else{
+                    $second_name = 'Last Name';
+                }
+                
+
+                $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $symbols = '@#$%^&*';
+
+                $pin_number = mt_rand(100, 999)
+                    . mt_rand(100, 999)
+                    . $symbols[rand(0, strlen($symbols) - 1)]
+                    . $letters[rand(0, strlen($letters) - 1)];
+
+                $password = str_shuffle($pin_number);
+
+                // dd($password);
+
+                $user_add = new User;
+                
+                $user_add->first_name = $first_name;
+                $user_add->last_name = $second_name;
+                $user_add->email = $request->email;
+                $user_add->password = $password;
+                $user_add->confirmed = 1;
+            
+                $user_add->save();
+
+                $details = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => $password
+                ];
+
+                \Mail::to($request->email)->send(new BookingUserMail($details));
             }
-            
-
-            $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $symbols = '@#$%^&*';
-
-            $pin_number = mt_rand(100, 999)
-                . mt_rand(100, 999)
-                . $symbols[rand(0, strlen($symbols) - 1)]
-                . $letters[rand(0, strlen($letters) - 1)];
-
-            $password = str_shuffle($pin_number);
-
-            // dd($password);
-
-            $user_add = new User;
-            
-            $user_add->first_name = $first_name;
-            $user_add->last_name = $second_name;
-            $user_add->email = $request->email;
-            $user_add->password = $password;
-            $user_add->confirmed = 1;
-        
-            $user_add->save();
-
-            $details = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $password
-            ];
-
-            \Mail::to($request->email)->send(new BookingUserMail($details));
-
         } 
 
 
