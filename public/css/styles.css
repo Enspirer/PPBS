@@ -50,6 +50,23 @@ p {
     display: none;
 }
 
+.bottom-nav .dropdown-menu {
+    background-color: rgb(255, 151, 1)!important;
+    left: -2rem;
+}
+
+.bottom-nav .dropdown-menu a {
+    color: white!important;
+}
+
+.bottom-nav .dropdown-item:hover {
+    color: #16181b!important;
+}
+
+.bottom-nav .dropdown-toggle:after {
+    margin-left: 0.6em!important;
+}
+
 
 
 @media (min-width: 1400px) {

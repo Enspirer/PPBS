@@ -37,9 +37,18 @@
                         <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'contact-us' ? 'active' : null }}" href="{{ route('frontend.contact_us') }}">CONTACT</a>
                     </li>
                     @auth
-                    <li class="nav-item ps-0 ps-md-3">
-                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.logout') }}" style="background-color: #FF9701">Logout</a>
-                    </li>
+                        <li class="nav-item nav1 mb-3 mb-md-0 position-relative">
+                            <a class="nav-link dropdown-toggle" href="{{route('frontend.auth.login')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle me-2"> <span class="fw-bold user-name">{{auth()->user()->first_name}}</span>
+                              </a>
+                              <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownMenuLink" style="background-color: #4195E1">
+                                <a class="dropdown-item text-light" href="{{route('frontend.user.dashboard')}}">Upcoming Bookings</a>
+                                <a class="dropdown-item text-light" href="">Completed Bookings</a>
+                                <a class="dropdown-item text-light" href="">Cancelled Bookings</a>
+                                <a class="dropdown-item text-light" href="">My Settings</a>
+                                <a class="dropdown-item text-light" href="{{route('frontend.auth.logout')}}">Log Out</a>
+                              </div>
+                        </li>
                     @else                    
                     <li class="nav-item px-0 ps-md-4 pe-md-3 mb-3 mb-md-0">
                         <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="{{ route('frontend.auth.register') }}" style="border: 1px solid #FF9701;">Sign Up</a>
@@ -52,7 +61,6 @@
             </div>
         </div>
     </nav>
-
 </div>
 
 
