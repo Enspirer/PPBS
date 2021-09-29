@@ -10,7 +10,7 @@
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row pt-5">
-                <div class="col-7 p-4 log">
+                <div class="col-12 col-md-7 p-4 log">
                     <h5 class="text-center fw-bold mb-3">Create an account</h5>
                     <form action="{{ route('frontend.auth.register.post') }}" method="post">
                     {{csrf_field()}}
@@ -76,8 +76,8 @@
                         </div>
 
                         
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <div class="form-check mb-3" id="flexCheckRegister">
+                            <input class="form-check-input" type="checkbox" value="">
                             <label class="form-check-label" for="flexCheckDefault">
                                 I accept <a href="#" style="color: #1F1A7D;">privacy policy</a> and <a href="#" style="color: #1F1A7D;">general conditions</a>
                             </label>

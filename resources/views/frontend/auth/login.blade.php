@@ -13,7 +13,7 @@
     <div class="container-fluid p-0 banner">
         <div class="container">
             <div class="row pt-5">
-                <div class="col-4 p-4 log">
+                <div class="col-12 col-md-4 p-4 log">
                     <h5 class="text-center fw-bold">Login to your account</h5>
                     <form action="{{route('frontend.auth.login.post')}}" method="post">
                     {{csrf_field()}}
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-6 text-end">
+                            <div class="col-6 text-start text-md-right">
                                 <a href="{{ route('frontend.auth.password.reset') }}" class="text-decoration-none text-dark" style="font-size: 0.9rem">@lang('labels.frontend.passwords.forgot_password')</a>
                             </div>
                         </div>

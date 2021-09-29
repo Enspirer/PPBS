@@ -135,6 +135,11 @@
                             </tr>
 
                             <tr>
+                                <td scope="row">Arrival Vehicle Number</td>
+                                <td>{{ $booking->vehicle_number}}</td>
+                            </tr>
+
+                            <tr>
                                 <td scope="row">Discount</td>
                                 <td>{{ $booking->discount}}</td>
                             </tr>
@@ -155,29 +160,38 @@
                             </tr>
 
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Departure Date</td>
+                                <td>{{ $booking->departure_date}}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Departure Time</td>
+                                <td>{{ $booking->departure_time}}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Return Pickup Address</td>
+                                <td>{{ $booking->return_pickup_address}}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Return Drop Address</td>
+                                <td>{{ $booking->return_drop_address}}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Departure Vehicle Number</td>
+                                <td>{{ $booking->return_vehicle_number}}</td>
                             </tr>
                             <tr>
-                                <td scope="row">Total Price</td>
-                                <td><span>€</span>{{ $booking->total_price}}<span>.00</span></td>
+                                <td scope="row">Return Passengers Count</td>
+                                <td>{{ $booking->return_passengers_count}}</td>
                             </tr>
+                            <tr>
+                                <td scope="row">Other Information</td>
+                                <td>{{ $booking->other_information}}</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Payment Method</td>
+                                <td>{{ $booking->payment_method}}</td>
+                            </tr>
+
 
                         @endif
                     </tbody>
