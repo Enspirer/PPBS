@@ -193,14 +193,14 @@
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <label for="name" class="form-label">Email Address</label>
-                                        <input type="text" class="form-control" name="email" id="email" >
+                                        <input type="email" class="form-control" name="email" id="email" >
                                     </div>
                                 </div>
 
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <label for="text" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" name="mobile_number" id="number" >
+                                        <input type="number" class="form-control" name="mobile_number" id="number" >
                                     </div>
 
                                     <div class="col-6">
@@ -239,9 +239,9 @@
                                             <option value="8">8</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6 text-center">
                                         <label class="mb-2">Number of passengers Total</label>
-                                        <h4><span id="count"></span></h4>
+                                        <h4 class="text-center"><span id="count"></span></h4>
                                     </div>
                                 </div>
 

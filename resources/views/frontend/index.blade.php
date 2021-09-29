@@ -81,7 +81,6 @@
                                         <p class="mb-2">Adults</p>
                                         <select class="form-control" id="adults" name="adults" required onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
-                                            <option value="0">0</option>  
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
