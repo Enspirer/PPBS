@@ -42,8 +42,10 @@
                             <table class="table table-striped table-bordered" id="villadatatable" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#ID</th>
-                                        <!-- <th scope="col">Status</th> -->
+                                        <th scope="col">Booking Type</th>
+                                        <th scope="col">Pickup From</th>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Total Price</th>
                                         <th scope="col">Option</th>
                                     </tr>
                                 </thead>
@@ -69,8 +71,10 @@
                 serverSide: true,
                 order: [[0, "desc"]],
                 columns: [
-                    {data: 'id', name: 'id'},
-                    // {data: 'status', name: 'status'},
+                    {data: 'booking_type', name: 'booking_type'},
+                    {data: 'pickup_from', name: 'pickup_from'},
+                    {data: 'destination', name: 'destination'},
+                    {data: 'total_price', name: 'total_price'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

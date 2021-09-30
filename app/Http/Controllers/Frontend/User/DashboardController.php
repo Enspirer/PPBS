@@ -10,15 +10,14 @@ use App\Models\Passengers;
 use App\Models\Auth\User;
 use DB;
 use DataTables;
+use Illuminate\Http\Request;
 
 /**
  * Class DashboardController.
  */
 class DashboardController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+    
     public function index()
     {
         $booking_pending = Booking::where('status','=','Pending')->get();
@@ -30,11 +29,11 @@ class DashboardController extends Controller
 
     public function getPendingDetails(Request $request)
     {
-      
+        $data = Booking::where('status', 'Pending')->get();
+
         if($request->ajax())
         {
-            $data = Booking::get();
-
+            
             return DataTables::of($data)
             
                     ->addColumn('action', function($data){

@@ -344,7 +344,9 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <input class="form-check-input" type="radio" name="payment_method" value="PayPal" id="one-check" >
-                                        <a href="#" class="btn text-decoration-none px-4" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></a>
+                                        <!-- <a href="#" class="btn text-decoration-none px-4" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></a> 
+                                    -->
+                                        <div id="paypal-button"></div>
                                     </div>
                                 </div>
 
@@ -573,6 +575,49 @@
             }
 
         });
+
+    </script>
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    
+    <script>
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+        sandbox: 'demo_sandbox_client_id',
+        production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+        size: 'small',
+        color: 'gold',
+        shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function(data, actions) {
+        return actions.payment.create({
+            transactions: [{
+            amount: {
+                total: '0.01',
+                currency: 'USD'
+            }
+            }]
+        });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function() {
+            // Show a confirmation message to the buyer
+            window.alert('Thank you for your purchase!');
+        });
+        }
+    }, '#paypal-button');
 
     </script>
 @endpush
