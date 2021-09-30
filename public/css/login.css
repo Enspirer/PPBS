@@ -23,6 +23,10 @@
     font-size: 0.9rem;
 }
 
+.form-check {
+    padding-left: 0rem!important;
+}
+
 hr {
     background-color: #FF9701!important;
     opacity: 1!important;
