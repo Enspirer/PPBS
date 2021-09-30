@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\BookingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +19,5 @@ use App\Http\Controllers\Frontend\HomeController;
 });*/
 
 Route::post('api_booking', [HomeController::class, 'api_booking'])->name('api_booking');
+
+Route::post('payment-booking', [BookingController::class, 'checkout'])->name('checkout_booking');

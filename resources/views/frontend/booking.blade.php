@@ -39,7 +39,7 @@
                 <li class="active fw-bold"><br> Inquire</li>
                 <li class="fw-bold"><br> Information</li>
                 <li class="fw-bold"><br> Payment</li>
-                <li class="fw-bold"><br> Confirm</li>
+                <li class="fw-bold"><br> Complete</li>
             </ul>
             <div class="col-12 col-md-7">
                 <form action="{{route('frontend.online_booking.store')}}" method="post" id="booking-form" style="margin-top: 2rem;">
@@ -358,7 +358,7 @@
                                             </div>
 
                                             <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
-                                                <input type="button" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT" disabled></input>
+                                                <input type="submit" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT"></input>
                                             </div>
                                             <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
@@ -389,12 +389,12 @@
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="row align-items-center">
-                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
+                                            <!-- <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
-                                            </div>
+                                            </div> -->
 
                                             <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
-                                                <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
+                                                <input type="" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
                                             </div>
                                             <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
@@ -581,45 +581,47 @@
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     
     <script>
-    paypal.Button.render({
-        // Configure environment
-        env: 'sandbox',
-        client: {
-        sandbox: 'demo_sandbox_client_id',
-        production: 'demo_production_client_id'
-        },
-        // Customize button (optional)
-        locale: 'en_US',
-        style: {
-        size: 'small',
-        color: 'gold',
-        shape: 'pill',
-        },
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+            sandbox: 'sb-crr43e7953331@business.example.com',
+            production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+            },
 
-        // Enable Pay Now checkout flow (optional)
-        commit: true,
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
 
-        // Set up a payment
-        payment: function(data, actions) {
-        return actions.payment.create({
-            transactions: [{
-            amount: {
-                total: '0.01',
-                currency: 'USD'
+            // Set up a payment
+            payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                amount: {
+                    total: '0.01',
+                    currency: 'USD'
+                }
+                }]
+            });
+            },
+            // Execute the payment
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                // window.alert('Thank you for your purchase!');
+                    $('#booking-form').submit();
+                });
             }
-            }]
-        });
-        },
-        // Execute the payment
-        onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function() {
-            // Show a confirmation message to the buyer
-            window.alert('Thank you for your purchase!');
-        });
-        }
-    }, '#paypal-button');
+        }, '#paypal-button');
 
     </script>
+
 @endpush
 
 @endif
