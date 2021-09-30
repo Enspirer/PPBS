@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
     Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
         // User Dashboard Specific
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('booking/pending', [DashboardController::class, 'getPendingDetails'])->name('pending.getPendingDetails');
 
         // User Account Specific
         Route::get('account', [AccountController::class, 'index'])->name('account');

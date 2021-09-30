@@ -283,6 +283,23 @@
                                             <input type="text" class="form-control" name="return_drop_address" id="return_drop_address">
                                         </div>
                                     </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <label class="mb-2">Number of passengers Total</label>
+                                            <select class="form-control" name="return_passengers_count" id="return_passengers_count">
+                                                <option value="" selected disabled>Select...</option>      
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                        </div>
+                                    </div>
             
                                     <div class="row mt-3">
                                         <div class="col-12 col-md-6">
@@ -399,7 +416,7 @@
                                                 <h4 class="fw-bold price" onchange="myFunction()">
                                                 
                                                     <input type="hidden" name="passengers_count" id="passengers_count">
-                                                    <input type="hidden" name="result_value" id="result_value">
+                                                    <input type="hidden" name="result_value" id="result_value" value="{{$booking->total_price}}">
                                                         <span>€</span><span id="result3">0</span><span>.00</span>
                                                 </h4>
                                             </div>
