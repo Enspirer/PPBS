@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
         Route::get('dashboard/booking/completed', [DashboardController::class, 'getCompletedDetails'])->name('completed.getCompletedDetails');
         Route::get('dashboard/booking/cancelled', [DashboardController::class, 'getCancelledDetails'])->name('cancelled.getCancelledDetails');
         Route::get('dashboard/booking/draft', [DashboardController::class, 'getDraftDetails'])->name('draft.getDraftDetails');
+        Route::get('dashboard/booking/print/{id}', [DashboardController::class, 'booking_print'])->name('booking_print');
 
         // User Account Specific
         Route::get('account', [AccountController::class, 'index'])->name('account');

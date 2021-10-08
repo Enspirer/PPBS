@@ -34,6 +34,8 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {    
+
+        // dd($request);
             
         $count = $request->adults + $request->child + $request->baby;
 

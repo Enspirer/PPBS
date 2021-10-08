@@ -481,7 +481,7 @@
 
 
                    
-                    if($('#result').text() != '0.00' && $('#pickup_date').val() != "" && $('#pickup_time').val() != ""){
+                    if($('#result').text() != '0.00' ){
                         $('.1st').removeAttr('disabled');
                     };
 
@@ -630,7 +630,6 @@
                     $(this).attr('selected', 'selected');
                 }
             });
-
 
             let price = $('#result').text();
             $('#result1').text(price);

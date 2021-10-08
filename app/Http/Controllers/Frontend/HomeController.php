@@ -78,6 +78,9 @@ class HomeController extends Controller
             $add->child = $request->child;
             $add->baby = $request->baby;
             $add->total_price = $request->result_value;
+            if(!empty( auth()->user()->id) === true ){
+                $add->user_id=auth()->user()->id;
+            }
     
             $add->save();
     

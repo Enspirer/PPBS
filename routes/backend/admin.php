@@ -40,6 +40,7 @@ Route::get('tour_booking/getdetails', [TourBookingController::class, 'getDetails
 Route::get('tour_booking/edit/{id}', [TourBookingController::class, 'edit'])->name('tour_booking.edit');
 Route::post('tour_booking/update', [TourBookingController::class, 'update'])->name('tour_booking.update');
 Route::get('tour_booking/destroy/{id}', [TourBookingController::class, 'destroy'])->name('tour_booking.destroy');
+Route::get('tour_booking/print/{id}', [TourBookingController::class, 'booking_print'])->name('booking_print');
 
 Route::get('contact_us', [ContactUsController::class, 'index'])->name('contact_us.index');
 Route::get('contact_us/getdetails', [ContactUsController::class, 'getDetails'])->name('contact_us.getDetails');

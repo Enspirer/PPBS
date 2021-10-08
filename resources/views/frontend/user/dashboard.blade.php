@@ -36,7 +36,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
 
@@ -52,7 +52,7 @@
                                                     <th scope="col">Booking Number</th>
                                                     <th scope="col">Pickup Date</th>
                                                     <th scope="col">Total Price</th>
-                                                    <!-- <th scope="col">Option</th> -->
+                                                    <th scope="col">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -73,7 +73,7 @@
                                                     <th scope="col">Booking Number</th>
                                                     <th scope="col">Pickup Date</th>
                                                     <th scope="col">Total Price</th>
-                                                    <!-- <th scope="col">Option</th> -->
+                                                    <th scope="col">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -93,7 +93,7 @@
                                                     <th scope="col">Booking Number</th>
                                                     <th scope="col">Pickup Date</th>
                                                     <th scope="col">Total Price</th>
-                                                    <!-- <th scope="col">Option</th> -->
+                                                    <th scope="col">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -113,7 +113,7 @@
                                                     <th scope="col">Booking Number</th>
                                                     <th scope="col">Pickup Date</th>
                                                     <th scope="col">Total Price</th>
-                                                    <!-- <th scope="col">Option</th> -->
+                                                    <th scope="col">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -164,7 +164,7 @@
                     {data: 'booking_number', name: 'booking_number'},
                     {data: 'pickup_date', name: 'pickup_date'},
                     {data: 'total_price', name: 'total_price'},
-                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             }); 
         });
@@ -181,7 +181,7 @@
                     {data: 'booking_number', name: 'booking_number'},
                     {data: 'pickup_date', name: 'pickup_date'},
                     {data: 'total_price', name: 'total_price'},
-                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             }); 
         });
@@ -198,7 +198,7 @@
                     {data: 'booking_number', name: 'booking_number'},
                     {data: 'pickup_date', name: 'pickup_date'},
                     {data: 'total_price', name: 'total_price'},
-                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             }); 
         });
@@ -215,7 +215,7 @@
                     {data: 'booking_number', name: 'booking_number'},
                     {data: 'pickup_date', name: 'pickup_date'},
                     {data: 'total_price', name: 'total_price'},
-                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             }); 
         });

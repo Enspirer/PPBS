@@ -26,9 +26,11 @@ class TourBookingController extends Controller
             $data = Booking::where('status','!=',null)->get();
             return DataTables::of($data)
                     ->addColumn('action', function($data){
-                        $button = '<a href="'.route('admin.tour_booking.edit',$data->id).'" name="edit" id="'.$data->id.'" class="edit btn btn-secondary btn-sm ml-3 mr-3"><i class="fas fa-stamp"></i> Approval </a>';
-                        $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>';
-                        return $button;
+                        $button = '<a href="'.route('admin.tour_booking.edit',$data->id).'" name="edit" id="'.$data->id.'" class="edit btn btn-secondary btn-sm"><i class="fas fa-stamp"></i> Approval </a>';
+                        $button2 = '<a href="'.route('admin.booking_print',$data->id).'" name="edit" id="'.$data->id.'" class="edit btn btn-success btn-sm ml-2"><i class="fas fa-print"></i> Print</a>';
+                        $button3 = '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm ml-2"><i class="fas fa-trash"></i> Delete</button>';
+
+                        return $button. $button2. $button3;
                     })
                     ->addColumn('booked_date', function($data){
                         
@@ -85,4 +87,15 @@ class TourBookingController extends Controller
         Booking::where('id', $id)->delete(); 
     }
 
+
+    public function booking_print($id)
+    {
+        $booking_print = Booking::where('id',$id)->first();
+
+        // dd($booking_print);
+
+        return view('backend.tour_booking.booking_print',[
+            'booking_print' => $booking_print
+        ]);
+    }
 }
