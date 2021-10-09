@@ -339,11 +339,11 @@
 
                                 <div class="row mt-5 mb-2 mt-md-5 mb-md-4">
                                     <div class="col-12 col-md-6 mb-3 mb-md-0">
-                                        <input class="form-check-input mt-2" type="radio" name="payment_method" id="payment_method1" value="Pay upon Arrival">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="payment_method1" value="Pay upon Arrival">
                                         <label class="btn text-decoration-none p-3" for="payment_method1" style="border: 1px solid #FF9701">Pay upon Arrival</label>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-check-input mt-3" type="radio" name="payment_method" id="payment_method2" value="PayPal" id="one-check" >
+                                        <!-- <input class="form-check-input mt-3" type="radio" name="payment_method" id="payment_method2" value="PayPal" id="one-check" > -->
                                         <!-- <label class="btn text-decoration-none px-4" for="payment_method2" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></label>  -->
                                    
                                         <div id="paypal-button"></div>
@@ -359,7 +359,7 @@
 
                                             <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
                                                 <!-- <input type="submit" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT"></input> -->
-                                                <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW"/>
+                                                <input type="submit" class="btn text-white rounded 3rd" style="background-color: #FF9701" value="BOOK NOW" disabled />
                                             </div>
                                             <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
@@ -535,6 +535,7 @@
                 $('.3rd').removeAttr('disabled');
             }
 
+            
             if($('input[name="agree"]').is(":checked")) {
                 
                 $('.4th').removeAttr('disabled');
@@ -587,6 +588,8 @@
         }, '#paypal-button');
 
     </script>
+
+    
 
 @endpush
 

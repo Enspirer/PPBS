@@ -98,14 +98,15 @@
                                 <div class="row mt-3">
                                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <p class="mb-2">Pickup Date</p>
-                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="{{$booking->pickup_date}}" required>
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="{{$booking->pickup_date}}" >
                                     </div>
 
                                     <div class="col-12 col-md-6">
                                         <p class="mb-2">Pickup Time</p>
-                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" value="{{$booking->pickup_time}}" required>
+                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" value="{{$booking->pickup_time}}" >
                                     </div>
                                 </div>
+                                
 
                                 <div class="row mt-3">
                                     <div class="col-12 col-md-8">
@@ -194,7 +195,7 @@
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <label for="name" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" name="email" id="email" >
+                                        <input type="text" class="form-control" name="email" id="email" >
                                     </div>
                                 </div>
 
@@ -355,18 +356,20 @@
                             <div class="col-12 col-md-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
                                 <h5>Payment Information</h5>
 
-                                <div class="row mt-3 mb-2 mt-md-5 mb-md-4">
+                                <div class="row mt-5 mb-2 mt-md-5 mb-md-4">
                                     <div class="col-12 col-md-6 mb-3 mb-md-0">
-                                        <input class="form-check-input" type="radio" name="payment_method" value="Pay upon Arrival">
-                                        <a href="#" class="btn text-decoration-none p-3" style="border: 1px solid #FF9701">Pay upon Arrival</a>
+                                        <input class="form-check-input" type="radio" name="payment_method" id="payment_method1" value="Pay upon Arrival">
+                                        <label class="btn text-decoration-none p-3" for="payment_method1" style="border: 1px solid #FF9701">Pay upon Arrival</label>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-check-input" type="radio" name="payment_method" value="PayPal" id="one-check" >
-                                        <a href="#" class="btn text-decoration-none px-4" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></a>
+                                        <!-- <input class="form-check-input mt-3" type="radio" name="payment_method" id="payment_method2" value="PayPal" id="one-check" > -->
+                                        <!-- <label class="btn text-decoration-none px-4" for="payment_method2" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></label>  -->
+                                   
+                                        <div id="paypal-button"></div>
                                     </div>
                                 </div>
 
-                                <div class="row mt-5 mb-4 mt-md-5">
+                                <div class="row mt-3 mb-4 mt-md-5">
                                     <div class="col-12">
                                         <div class="row align-items-center">
                                             <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
@@ -374,10 +377,13 @@
                                             </div>
 
                                             <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
-                                                <input type="button" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT" disabled></input>
+                                                <!-- <input type="submit" class="btn text-white rounded next 3rd" style="background-color: #FF9701" value="NEXT"></input> -->
+                                                <input type="submit" class="btn text-white rounded 3rd" style="background-color: #FF9701" value="BOOK NOW" disabled />
                                             </div>
                                             <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
+                                                    <input type="hidden" name="passengers_count" id="passengers_count">
+                                                    <input type="hidden" name="result_value" id="result_value">
                                                     <span>€</span><span id="result2">0</span><span>.00</span>
                                                 </h4>
                                             </div>
@@ -388,44 +394,7 @@
                         </div>
                     </fieldset>
 
-                    <fieldset>
-                        <div class="row border banner" style="color: #1C1952">
-                            <div class="col-12 col-md-8 px-5 py-3" style="background: rgba(255, 255, 255, .8);">
-                                <h5>Confirm your book</h5>
-
-                                <p class="mt-2" style="font-size:0.9rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-
-                                <div class="form-check mt-2">
-                                    <input class="form-check-input" type="radio" name="agree" value="One Way" id="confirm" required>
-                                    <label class="form-check-label" for="confirm" style="font-size: 0.9rem;">
-                                        Agree with this
-                                    </label>
-                                </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-12">
-                                        <div class="row align-items-center">
-                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
-                                                <input type="button" class="previous btn text-white rounded" style="background-color: #FF9701" value="PREVIOUS"></input>
-                                            </div>
-
-                                            <div class="col-6 col-md-4 text-center mb-3 mb-md-0">
-                                                <input type="submit" class="btn text-white rounded 4th" style="background-color: #FF9701" value="BOOK NOW" disabled/>
-                                            </div>
-                                            <div class="col-12 col-md-4 text-center">
-                                                <h4 class="fw-bold price" onchange="myFunction()">
-                                                
-                                                    <input type="hidden" name="passengers_count" id="passengers_count">
-                                                    <input type="hidden" name="result_value" id="result_value" value="{{$booking->total_price}}">
-                                                        <span>€</span><span id="result3">0</span><span>.00</span>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
+                    
                 </form>
             </div>
         </div>
@@ -637,6 +606,51 @@
             $('#result3').text(price);
         });
     </script>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    
+    <script>
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+            sandbox: 'sb-crr43e7953331@business.example.com',
+            production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                amount: {
+                    total: '0.01',
+                    currency: 'USD'
+                }
+                }]
+            });
+            },
+            // Execute the payment
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                // window.alert('Thank you for your purchase!');
+                    $('#booking-form').submit();
+                });
+            }
+        }, '#paypal-button');
+
+    </script>
+    
 @endpush
 
 @endif
