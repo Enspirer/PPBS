@@ -119,7 +119,7 @@ p {
     .footer-bottom-logo {
         display: block!important;
     }
-    /* * {
-        border: 1px solid red;;
-    } */
+    .copyright p {
+        font-size: 0.8rem!important;
+    }
 }
