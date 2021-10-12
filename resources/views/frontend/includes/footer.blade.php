@@ -90,11 +90,11 @@
 
         <div class="container copyright">
             <div class="row justify-content-between">
-                <div class="col-12 col-md-4 text-center text-md-left">
+                <div class="col-12 col-md-4 p-0 text-center text-md-left">
                     <p>2021 PARIS PRIVATE TRANSFER</p>
                 </div>
 
-                <div class="col-12 col-md-4 text-center text-md-right">
+                <div class="col-12 col-md-4 p-0 text-center text-md-right">
                     <p>Powered By <a href="https://www.enspirer.com" class="text-decoration-none">Enspirer</a></p>
                 </div>
             </div>
