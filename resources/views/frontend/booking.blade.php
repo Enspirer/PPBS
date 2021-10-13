@@ -548,7 +548,7 @@
             // Configure environment
             env: 'sandbox',
             client: {
-            sandbox: 'sb-crr43e7953331_api1.business.example.com',
+            sandbox: 'AU7G1fGwjvuVo9Xn89nTpj1Y5Y9744p-OT0lUhu8kV0T_EVK6_qCQrsUYNWFeyvCq4dgsxKfqmfjJJ56',
             production: 'demo_production_client_id'
             },
             // Customize button (optional)
@@ -567,8 +567,8 @@
             return actions.payment.create({
                 transactions: [{
                 amount: {
-                    total: '0.01',
-                    currency: 'USD'
+                    total: $('#result_value').val(),
+                    currency: 'EUR'
                 }
                 }]
             });
