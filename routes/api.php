@@ -19,5 +19,6 @@ use App\Http\Controllers\Frontend\BookingController;
 });*/
 
 Route::post('api_booking', [HomeController::class, 'api_booking'])->name('api_booking');
+Route::post('api_find_booking', [BookingController::class, 'api_find_booking'])->name('api_find_booking');
 
 Route::post('payment-booking', [BookingController::class, 'checkout'])->name('checkout_booking');

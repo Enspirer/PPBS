@@ -27,9 +27,8 @@ Route::post('booking_customer/store', [HomeController::class, 'booking_customer_
 
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 
-
-Route::get('booking/{id}', [BookingController::class, 'bookingSearch'])->name('booking_search');
 Route::post('booking_search', [BookingController::class, 'findBooking'])->name('find_booking');
+Route::get('booking/{id}', [BookingController::class, 'bookingSearch'])->name('booking_search');
 
 
 /*

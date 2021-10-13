@@ -548,7 +548,7 @@
             // Configure environment
             env: 'sandbox',
             client: {
-            sandbox: 'sb-crr43e7953331@business.example.com',
+            sandbox: 'sb-crr43e7953331_api1.business.example.com',
             production: 'demo_production_client_id'
             },
             // Customize button (optional)

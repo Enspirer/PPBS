@@ -21,8 +21,8 @@
                     <tbody>
                         @if($booking->booking_type == 'One Way')
                             <tr>
-                                <td scope="row">Booking ID</td>
-                                <td>{{ $booking->id}}</td>
+                                <td scope="row">Booking Number</td>
+                                <td>{{ $booking->booking_number}}</td>
                             </tr>
                             <tr>
                                 <td scope="row">Booking Type</td>

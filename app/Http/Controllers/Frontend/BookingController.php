@@ -211,31 +211,6 @@ class BookingController extends Controller
     }
 
 
-
-    public function findBooking(Request $request) {
-
-
-        $booking = Booking::where('booking_number', $request->booking_id)->where('customer_email', $request->email)->first();
-
-        if($booking){
-            $book = $booking->id;
-            return redirect()->route('frontend.booking_search', [$book]);
-        }else{
-            return back();
-        }
-
-
-    }
-
-
-    public function bookingSearch($book) {
-        
-        $booking = Booking::where('id', $book)->first();
-
-        return view('frontend.find_booking', ['booking' => $booking]);
-    }
-
-
     public function checkout(Request $request) {
 
         $count = $request->adults + $request->child + $request->baby;
@@ -411,5 +386,42 @@ class BookingController extends Controller
             ]
         );
     }
+
+
+    public function findBooking(Request $request) {
+
+        $booking = Booking::where('booking_number', $request->booking_id)->where('customer_email', $request->email)->first();
+
+        if($booking){
+            $book = $booking->id;
+            return redirect()->route('frontend.booking_search', [$book]);
+        }else{
+            return back()->withErrors('Invalid Booking Number or Email Address'); 
+        }
+    }
+
+
+    public function bookingSearch($book) {
+        
+        $booking = Booking::where('id', $book)->first();
+
+        return view('frontend.find_booking', ['booking' => $booking]);
+    }
+
+    public function api_find_booking(Request $request)
+    {     
+       
+        $booking = Booking::where('booking_number', $request->booking_id)->where('customer_email',$request->email)->first();
+    
+        if($booking){
+            return json_encode($booking);
+        }else{
+            return json_encode('no_data');
+        }              
+
+    }
+
+
+
 
 }

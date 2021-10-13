@@ -67,7 +67,7 @@
 </div>
 
 
-<form action="{{ route('frontend.find_booking') }}" method="POST" id="modal" onsubmit="validate_booking_id()">
+<form action="{{ route('frontend.find_booking') }}" method="POST" id="modal">
     {{ @csrf_field()}}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -79,17 +79,17 @@
                 <div class="modal-body">
                         
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking ID" required>
+                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking Number" onchange="Find_Booking_Function()" required>
                     </div>
 
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address" required>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address" onchange="Find_Booking_Function()" required>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn text-white rounded" style="background-color: #FF9701" value="Find My Booking"></input>
+                    <button type="submit" class="btn text-white rounded submit_button" id="submit_button" style="background-color: #FF9701" disabled>Find My Booking</button>
                 </div>
             </div>
         </div>
@@ -104,7 +104,36 @@
 
 </script> -->
 
+<script>
 
+    function Find_Booking_Function(){
+    
+      
+        booking_id = $('#booking_id').val();
+        // alert(booking_id);
+        email = $('#email').val();
+        // alert(email);
+
+        $.post("{{url('/')}}/api/api_find_booking",
+            {
+                booking_id: booking_id,
+                email: email
+            },
+            function(booking, status){  
+                // console.log(booking);              
+
+                var obj = JSON.parse(booking);
+
+                if(obj != 'no_data') {  
+                    $('.submit_button').removeAttr('disabled');
+                }                
+
+            }
+            
+        );
+    }
+
+</script>
 
 
 
