@@ -67,7 +67,7 @@
 </div>
 
 
-<form action="{{ route('frontend.find_booking') }}" method="POST" id="modal">
+<form action="{{ route('frontend.find_booking') }}" method="POST" id="modal" onsubmit="validate_booking_id()">
     {{ @csrf_field()}}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -79,11 +79,11 @@
                 <div class="modal-body">
                         
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking ID">
+                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking ID" required>
                     </div>
 
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address">
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address" required>
                     </div>
 
                 </div>
@@ -95,6 +95,14 @@
         </div>
     </div>
 </form>
+
+<!-- <script>
+
+    function validate_booking_id(){
+        alert('model');
+    }
+
+</script> -->
 
 
 

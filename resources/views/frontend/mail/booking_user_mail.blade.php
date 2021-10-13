@@ -32,16 +32,17 @@
             <td style="padding:36px 30px 42px 30px;">
               <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
                 <tr>
-                  <td style="padding:0 0 36px 0;color:#153643;" align="left">
+                  <td style="padding:0 0 30px 0;color:#153643;" align="left">
                     <h1 style="font-size:20px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Paris Private Transfer - Login Details</h1>
                   </td>
-                  <td style="padding:0 0 36px 0;color:#153643;" align="right">
+                  <td style="padding:0 0 30px 0;color:#153643;" align="right">
                     <img src="{{url('img/logo.png')}}" style="width:100%; max-width:60px; margin:0 0 20px 0;">                    
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:0 0 36px 0;color:#153643;">
-                    <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan et dictum, nisi libero ultricies ipsum, posuere neque at erat.</p>
+                  <td style="padding:0 0 30px 0;color:#153643;">
+                    <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Dear {{ $details['name'] }},</p>
+                    <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Thank you for registered with Paris Private Transfer. This is your login credential in order to log into our website.</p>
                   </td>
                 </tr>
                 <tr>
@@ -73,12 +74,12 @@
             </td>
           </tr>
           <tr>
-            <td style="padding:30px;background:#ee4c50;">
+            <td style="padding:30px;background:#ff9701;">
               <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
                 <tr>
                   <td style="padding:0;width:50%;" align="center">
                     <p style="margin:0;font-size:20px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
-                      &reg; Paris Private Transfer
+                      Paris Private Transfer &reg;
                     </p>
                   </td>
                   <!-- <td style="padding:0;width:50%;" align="right">

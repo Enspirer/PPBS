@@ -42,6 +42,7 @@
                 <li class="fw-bold"><br> Payment</li>
                 <li class="fw-bold"><br> Confirm</li>
             </ul>
+            
             <div class="col-12 col-md-7">
                 <form action="{{route('frontend.booking_customer.store')}}" method="post" id="booking-form1" style="margin-top: 2rem;">
                 {{csrf_field()}}   
@@ -54,7 +55,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" {{($booking->booking_type == "One Way") ? "checked" : "" }}>
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="one_check" onchange="myFunction()" {{ $booking_type == 'One Way' ? "checked" : "" }}>
                                                     <label class="form-check-label" for="one_check">
                                                         One Way
                                                     </label>
@@ -63,7 +64,7 @@
 
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()" {{($booking->booking_type == "Return") ? "checked" : "" }}>
+                                                    <input class="form-check-input" type="radio" name="booking_type" value="Return" id="both_check" onchange="myFunction()" {{ $booking_type == 'Return' ? "checked" : "" }}>
                                                     <label class="form-check-label" for="both_check">
                                                        Both Way
                                                     </label>
@@ -79,7 +80,7 @@
                                         <select class="form-control" id="pickup_from" name="pickup_from"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
                                                 @foreach($location as $locate) 
-                                                    <option value="{{ $locate->id }}" {{$locate->id == $booking->pickup_from ? "selected" : "" }}>{{ $locate->name }}</option>  
+                                                    <option value="{{ $locate->id }}" {{$locate->id == $pickup_from ? "selected" : "" }}>{{ $locate->name }}</option>  
                                                 @endforeach   
                                         </select>
                                     </div>
@@ -89,7 +90,7 @@
                                         <select class="form-control" id="destination" name="destination"  onchange="myFunction()">
                                             <option value="" selected disabled>Select...</option> 
                                                 @foreach($location as $locate) 
-                                                    <option value="{{ $locate->id }}" {{$locate->id == $booking->destination ? "selected" : "" }}>{{ $locate->name }}</option>  
+                                                    <option value="{{ $locate->id }}" {{$locate->id == $destination ? "selected" : "" }}>{{ $locate->name }}</option>  
                                                 @endforeach 
                                         </select>
                                     </div>
@@ -98,12 +99,12 @@
                                 <div class="row mt-3">
                                     <div class="col-12 col-md-6 mb-3 mb-md-0">
                                         <p class="mb-2">Pickup Date</p>
-                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="{{$booking->pickup_date}}" >
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" value="{{$pickup_date}}" >
                                     </div>
 
                                     <div class="col-12 col-md-6">
                                         <p class="mb-2">Pickup Time</p>
-                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" value="{{$booking->pickup_time}}" >
+                                        <input type="time" class="form-control" name="pickup_time" id="pickup_time" value="{{$pickup_time}}" >
                                     </div>
                                 </div>
                                 
@@ -114,7 +115,6 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Adults</p>
                                                 <select class="form-control" id="adults" name="adults"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option> 
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -129,7 +129,6 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Child</p>
                                                 <select class="form-control" id="child" name="child"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>  
                                                     <option value="0">0</option> 
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -145,7 +144,6 @@
                                             <div class="col-4">
                                                 <p class="mb-2">Baby</p>
                                                 <select class="form-control" id="baby" name="baby"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>
                                                     <option value="0">0</option>     
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -165,12 +163,12 @@
                                     <div class="col-12">
                                         <div class="row align-items-center">
                                             <div class="col-4">
-                                                <input type="hidden" name="hidden_id" value="{{ $booking->id }}" />
+                                                <!-- <input type="hidden" name="hidden_id" value="" /> -->
                                                 <input type="button" class="btn text-white rounded next 1st" style="background-color: #FF9701" value="NEXT"></input>
                                             </div>
                                             <div class="col-8 text-end">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
-                                                    <span>€</span><span id="result">{{ $booking->total_price }}</span><span>.00</span>
+                                                    <span>€</span><span id="result">{{ $total_price }}</span><span>.00</span>
                                                 </h4>
                                             </div>
                                         </div>
@@ -243,7 +241,7 @@
                                     </div>
                                     <div class="col-6 text-center">
                                         <label class="mb-2">Number of passengers Total</label>
-                                        <h4 class="text-center"><span id="count">{{ $booking->passengers_count }}</span></h4>
+                                        <h4 class="text-center"><span id="count">{{ $count }}</span></h4>
                                     </div>
                                 </div>
 
@@ -255,12 +253,12 @@
                                     <div class="row mt-3">
                                         <div class="col-6">
                                             <label for="departure_date" class="mb-2">Departure Date</label>
-                                            <input type="date" class="form-control" name="departure_date">
+                                            <input type="date" class="form-control" name="departure_date" id="departure_date">
                                         </div>
             
                                         <div class="col-6">
                                             <label for="departure_time" class="mb-2">Departure Time</label>
-                                            <input type="time" class="form-control" name="departure_time">
+                                            <input type="time" class="form-control" name="departure_time" id="departure_time">
                                         </div>
                                     </div>
             
@@ -302,7 +300,7 @@
                                         </div>
                                     </div>
             
-                                    <div class="row mt-3">
+                                    <!-- <div class="row mt-3">
                                         <div class="col-12 col-md-6">
                                             <label class="mb-2">Number of passengers Total</label>
                                             <select class="form-control" name="return_passengers_count" id="return_passengers_count">
@@ -318,7 +316,7 @@
                                                 <option value="8">8</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
             
                                     <div class="row mt-4">
                                         <div class="col-12">
@@ -382,8 +380,8 @@
                                             </div>
                                             <div class="col-12 col-md-4 text-center">
                                                 <h4 class="fw-bold price" onchange="myFunction()">
-                                                    <input type="hidden" name="passengers_count" id="passengers_count">
-                                                    <input type="hidden" name="result_value" id="result_value">
+                                                    <input type="hidden" name="passengers_count" id="passengers_count" value="{{$count}}">
+                                                    <input type="hidden" name="result_value" id="result_value" value="{{$total_price}}">
                                                     <span>€</span><span id="result2">0</span><span>.00</span>
                                                 </h4>
                                             </div>
@@ -514,7 +512,7 @@
             $('.both').addClass('d-none');
         });
 
-        let check = <?php echo json_encode ($booking->booking_type) ?>
+        let check = <?php echo json_encode ($booking_type) ?>
 
         if(check == 'Return') {
             $('.both').removeClass('d-none');
@@ -574,7 +572,7 @@
 
     <script>
         $(document).ready(function() {
-            let adults = <?php echo json_encode ($booking->adults) ?>
+            let adults = <?php echo json_encode ($adults) ?>
 
             $('#adults option').each(function(i){
                 if($(this).val() == adults) {
@@ -583,7 +581,7 @@
             });
 
 
-            let child = <?php echo json_encode ($booking->child) ?>
+            let child = <?php echo json_encode ($child) ?>
 
             $('#child option').each(function(i){
                 if($(this).val() == child) {
@@ -592,7 +590,7 @@
             });
 
 
-            let baby = <?php echo json_encode ($booking->baby) ?>
+            let baby = <?php echo json_encode ($baby) ?>
 
             $('#baby option').each(function(i){
                 if($(this).val() == baby) {

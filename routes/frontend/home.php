@@ -21,10 +21,10 @@ Route::post('online-booking/store', [BookingController::class, 'store'])->name('
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact_us');
 Route::post('contact-us/send', [ContactController::class, 'store'])->name('contact_us.store');
 
-Route::get('booking_customer/{id}', [HomeController::class, 'booking_customer'])->name('booking_customer');
-
 Route::post('booking/store', [HomeController::class, 'store'])->name('booking.store');
+Route::get('booking_customer/{booking_type}/{pickup_from}/{destination}/{pickup_date}/{pickup_time}/{adults}/{child}/{baby}/{count}/{total_price}', [HomeController::class, 'booking_customer'])->name('booking_customer');
 Route::post('booking_customer/store', [HomeController::class, 'booking_customer_store'])->name('booking_customer.store');
+
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 

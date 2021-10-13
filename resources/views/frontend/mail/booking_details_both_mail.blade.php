@@ -111,7 +111,7 @@
                                 <br>
                             </td>
                             
-                            <td>
+                            <td align="right">
                                 <b>Booking Number: {{ $booking_details['booking_number'] }}</b><br>
                                 Created: {{ $booking_details['created_at'] }}
                             </td>
@@ -131,7 +131,7 @@
                                 info@parisprivatetransfer.com</b>
                             </td>
                             
-                            <td>
+                            <td align="right">
                                 <b>{{ $booking_details['name'] }}<br>
                                 {{ $booking_details['phone_number'] }}<br>                                
                                 {{ $booking_details['email'] }}</b>
@@ -141,9 +141,6 @@
                 </td>
             </tr>
             
-            
-
-            <br><br><h1 style="font-size: 20px;" align="center">Paris Private Transfer - Booking Details</h1><br><br>
             
             <tr class="item">
                 <td>
@@ -217,7 +214,7 @@
 
             <tr class="item">
                 <td>
-                Pickup Time:
+                Pickup Time (24 Hours):
                 </td>
                 
                 <td>
@@ -325,13 +322,6 @@
                 </td>
             </tr>
             
-            <!-- <tr class="total">
-                <td></td>
-                
-                <td>
-                Phone Number:
-                </td>
-            </tr> -->
 
             <br>
 
@@ -392,7 +382,7 @@
             </tr>
             <tr class="item">
                 <td>
-                Departure Time:
+                Departure Time (24 Hours):
                 </td>
                 
                 <td>

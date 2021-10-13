@@ -111,10 +111,8 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <p class="mb-2">Adults</p>
-                                                <select class="form-control" id="adults" name="adults"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>  
-                                                    <!-- <option value="0">0</option>       -->
-                                                    <option value="1">1</option>
+                                                <select class="form-control" id="adults" name="adults" onchange="myFunction()">
+                                                    <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
@@ -127,8 +125,7 @@
 
                                             <div class="col-4">
                                                 <p class="mb-2">Child</p>
-                                                <select class="form-control" id="child" name="child"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>  
+                                                <select class="form-control" id="child" name="child" onchange="myFunction()">
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -143,8 +140,7 @@
 
                                             <div class="col-4">
                                                 <p class="mb-2">Baby</p>
-                                                <select class="form-control" id="baby" name="baby"  onchange="myFunction()">
-                                                    <option value="" selected disabled>Select...</option>  
+                                                <select class="form-control" id="baby" name="baby" onchange="myFunction()">
                                                     <option value="0">0</option>  
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -253,12 +249,12 @@
                                     <div class="row mt-3">
                                         <div class="col-6">
                                             <label for="departure_date" class="mb-2">Departure Date</label>
-                                            <input type="date" class="form-control" name="departure_date">
+                                            <input type="date" class="form-control" name="departure_date" id="departure_date">
                                         </div>
             
                                         <div class="col-6">
                                             <label for="departure_time" class="mb-2">Departure Time</label>
-                                            <input type="time" class="form-control" name="departure_time">
+                                            <input type="time" class="form-control" name="departure_time" id="departure_time">
                                         </div>
                                     </div>
             
