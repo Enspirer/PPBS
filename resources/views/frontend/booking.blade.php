@@ -431,7 +431,7 @@
 
 
                    
-                    if($('#result').text() != '0.00' ){
+                    if($('#result').text() != '0.00' && $('#pickup_date').val() != "" && $('#pickup_time').val() != ""){
                         $('.1st').removeAttr('disabled');
                     };
 
