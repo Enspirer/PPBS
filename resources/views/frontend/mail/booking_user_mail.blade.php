@@ -1,75 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-.field {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title></title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    table, td, div, h1, p {font-family: Arial, sans-serif;}
+  </style>
 </head>
-<body align="center" style="background-color: #eee; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #333333;">
-    
-<br><br>
-    <h1 style="font-size: 20px;">Paris Private Transfer - Login Details</h1><br>
-    
-    <table width="70%" cellpadding="0" cellspacing="0" border="0" align="center">
-        
-        <tr>            
-            <td width="20%" cellpadding="0" cellspacing="0">  
-                <p align="left"><b>Name:</b> </p>  
-                <hr>        
+<body style="margin:0;padding:0;">
+  <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
+    <tr>
+      <td align="center" style="padding:0;">
+        <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+          <tr>
+            <!-- <td align="center" style="padding:40px 0 30px 0;background:#70bbd9;">
+              <img src="https://assets.codepen.io/210284/h1.png" alt="" width="300" style="height:auto;display:block;" />
+            </td> -->
+          </tr>
+          <tr>
+            <td style="padding:36px 30px 42px 30px;">
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                <tr>
+                  <td style="padding:0 0 30px 0;color:#153643;" align="left">
+                    <h1 style="font-size:20px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Paris Private Transfer - Login Details</h1>
+                  </td>
+                  <td style="padding:0 0 30px 0;color:#153643;" align="right">
+                    <img src="{{url('img/logo.png')}}" style="width:100%; max-width:60px; margin:0 0 20px 0;">                    
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 30px 0;color:#153643;">
+                    <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Dear {{ $details['name'] }},</p>
+                    <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Thank you for registered with Paris Private Transfer. This is your login credential in order to log into our website.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0;">
+                    <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                      <tr>
+                        <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
+                          <!-- <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="https://assets.codepen.io/210284/left.gif" alt="" width="260" style="height:auto;display:block;" /></p> -->
+                          <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Name:</p>
+                          <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Booking Number:</p>
+                          <b><p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Email Address:</p></b>
+                          <b><p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Password:</p></b>
+                          <!-- <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">Blandit ipsum volutpat sed</a></p> -->
+                        </td>
+                        <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td>
+                        <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
+                          <!-- <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="https://assets.codepen.io/210284/right.gif" alt="" width="260" style="height:auto;display:block;" /></p> -->
+                          <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{ $details['name'] }}</p>
+                          <p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{ $details['booking_number'] }}</p>
+                          <b><p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{ $details['email'] }}</p></b>
+                          <b><p style="color: black; margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{ $details['password'] }}</p></b>
+                          <!-- <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">In tempus felis blandit</a></p> -->
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </td>
-            <td  cellpadding="0" cellspacing="0">  
-                <p align="left">{{ $details['name'] }}</p> 
-                <hr>                
+          </tr>
+          <tr>
+            <td style="padding:30px;background:#ff9701;">
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
+                <tr>
+                  <td style="padding:0;width:50%;" align="center">
+                    <p style="margin:0;font-size:20px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
+                      Paris Private Transfer &reg;
+                    </p>
+                  </td>
+                  <!-- <td style="padding:0;width:50%;" align="right">
+                    <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
+                      <tr>
+                        <td style="padding:0 0 0 10px;width:38px;">
+                          <a href="http://www.twitter.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
+                        </td>
+                        <td style="padding:0 0 0 10px;width:38px;">
+                          <a href="http://www.facebook.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td> -->
+                </tr>
+              </table>
             </td>
-        </tr>
-        <tr>            
-            <td width="20%" cellpadding="0" cellspacing="0">  
-                <p align="left"><b>Booking Number:</b> </p>  
-                <hr>        
-            </td>
-            <td  cellpadding="0" cellspacing="0">  
-                <p align="left">{{ $details['booking_number'] }}</p> 
-                <hr>                
-            </td>
-        </tr>
-        <tr>            
-            <td width="20%" cellpadding="0" cellspacing="0">
-                <p align="left"><b>Email Address:</b> </p>
-                <hr>
-            </td>
-            <td  cellpadding="0" cellspacing="0">     
-                <p align="left">{{ $details['email'] }}</p>  
-                <hr>         
-            </td>
-        </tr>
-        <tr>            
-            <td width="20%" cellpadding="0" cellspacing="0">   
-                <p align="left"><b>Password:</b></p>
-            </td>
-            <td  cellpadding="0" cellspacing="0">
-                <p align="left">{{ $details['password'] }}</p>             
-            </td>
-        </tr>
-    </table>
-    <br><br>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>

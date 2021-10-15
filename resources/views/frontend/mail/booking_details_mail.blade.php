@@ -107,12 +107,12 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="{{url('img/logo.png')}}" style="width:100%; max-width:300px;">
+                                <img src="{{url('img/logo.png')}}" style="width:100%; max-width:60px;">
                                 <br>
                             </td>
                             
-                            <td>
-                                Booking Number: {{ $booking_details['booking_number'] }}<br>
+                            <td align="right">
+                               <b>Booking Number: {{ $booking_details['booking_number'] }}</b><br>
                                 Created: {{ $booking_details['created_at'] }}
                             </td>
                         </tr>
@@ -125,16 +125,16 @@
                     <table>
                         <tr>
                             <td>
-                                Paris Private Transfer<br>
+                             <b>Paris Private Transfer<br>
                                 12345 Sunny Road<br>
                                 Sunnyville, CA 12345<br>
-                                info@parisprivatetransfer.com
+                                info@parisprivatetransfer.com</b>
                             </td>
                             
-                            <td>
-                                {{ $booking_details['name'] }}<br>
-                                {{ $booking_details['phone_number'] }}<br>                                
-                                {{ $booking_details['email'] }}
+                            <td align="right">
+                             <b>{{ $booking_details['name'] }}<br>
+                                {{ $booking_details['phone_number'] }}<br>                           
+                                {{ $booking_details['email'] }}</b>
                             </td>
                         </tr>
                     </table>
@@ -214,7 +214,7 @@
 
             <tr class="item">
                 <td>
-                Pickup Time:
+                Pickup Time (24 Hours):
                 </td>
                 
                 <td>

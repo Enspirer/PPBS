@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" onchange="myFunction()" required>
+                                            <input class="form-check-input" type="radio" name="booking_type" value="One Way" id="flexRadioDefault1" checked onchange="myFunction()" required>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 One Way
                                             </label>
@@ -65,12 +65,12 @@
                         <div class="row mt-3">
                             <div class="col-6">
                                 <p class="mb-2">Pickup Date</p>
-                                <input type="date" class="form-control" name="pickup_date" id="pickup_date">
+                                <input type="date" class="form-control" name="pickup_date" id="pickup_date" required>
                             </div>
 
                             <div class="col-6">
                                 <p class="mb-2">Pickup Time</p>
-                                <input type="time" class="form-control" name="pickup_time" id="pickup_time">
+                                <input type="time" class="form-control" name="pickup_time" id="pickup_time" required>
                             </div>
                         </div>
 

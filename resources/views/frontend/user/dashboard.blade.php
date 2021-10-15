@@ -29,9 +29,9 @@
                                 <li class="nav-item me-3 cancelled mt-2" role="presentation" style="padding: 5px;background: #eeeeee;border-radius: 18px;">
                                     <a class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false">Cancelled Bookings</a>
                                 </li>
-                                <li class="nav-item me-3 draft mt-2" role="presentation" style="padding: 5px;background: #eeeeee;border-radius: 18px;">
+                                <!-- <li class="nav-item me-3 draft mt-2" role="presentation" style="padding: 5px;background: #eeeeee;border-radius: 18px;">
                                     <a class="nav-link" id="pills-draft-tab" data-bs-toggle="pill" data-bs-target="#pills-draft" type="button" role="tab" aria-controls="pills-draft" aria-selected="false">Draft Bookings</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
 
