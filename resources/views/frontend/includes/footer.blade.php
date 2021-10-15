@@ -1,4 +1,4 @@
-<div class="container-fluid text-white pt-5 pb-3 footer" style="background-color: #000000; margin-top: 6rem;">
+<div class="container-fluid text-white pt-5 pb-3 footer" style="background-color: #000000; margin-top: 1rem;">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-3">

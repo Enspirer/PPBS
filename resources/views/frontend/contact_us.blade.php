@@ -40,7 +40,7 @@
 
 
     <div class="container mt-3 contact-us">
-        <div class="row justify-content-center pt-5">
+        <div class="row justify-content-center pt-3">
             <div class="col-12 col-md-10">
                 <div class="row">
                     <div class="col-12 col-md">
@@ -112,34 +112,40 @@
         </div>
     </div>
 
-    <div class="container cards" style="margin-top: 6rem;">
+    <div class="container cards" style="margin-top: 2rem; margin-bottom: 2.5rem">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <div class="row">
                     <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
-                            <img src="{{ url('img/contact/1.png') }}" class="card-img-top img-fluid w-100" alt="...">
-                            <div class="card-body pb-1 text-center">
-                                <h6 class="card-title fw-bold mb-2">CDG to Paris 4 Pax 60 Euro</h6>
-                            </div>
+                            <a href="{{ route('frontend.booking') }}" class="text-decoration-none text-dark">
+                                <img src="{{ url('img/contact/1.png') }}" class="card-img-top img-fluid w-100" alt="...">
+                                <div class="card-body pb-1 text-center">
+                                    <h6 class="card-title fw-bold mb-2">CDG to Paris 4 Pax 60 Euro</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
-                            <img src="{{ url('img/contact/2.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body pb-1 text-center">
-                                <h6 class="card-title fw-bold mb-2">CDG to Disney 4 Pax 60 Euro</h6>
-                            </div>
+                            <a href="{{ route('frontend.booking') }}" class="text-decoration-none text-dark">
+                                <img src="{{ url('img/contact/2.png') }}" class="card-img-top" alt="...">
+                                <div class="card-body pb-1 text-center">
+                                    <h6 class="card-title fw-bold mb-2">CDG to Disney 4 Pax 60 Euro</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-4 mb-4 mb-md-0">
                         <div class="card border-0 card">
-                            <img src="{{ url('img/contact/3.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body pb-1 text-center">
-                                <h6 class="card-title fw-bold mb-2">Orly  to Paris 4 Pax 60 Euro</h6>
-                            </div>
+                            <a href="{{ route('frontend.booking') }}" class="text-decoration-none text-dark">
+                                <img src="{{ url('img/contact/3.png') }}" class="card-img-top" alt="...">
+                                <div class="card-body pb-1 text-center">
+                                    <h6 class="card-title fw-bold mb-2">Orly  to Paris 4 Pax 60 Euro</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

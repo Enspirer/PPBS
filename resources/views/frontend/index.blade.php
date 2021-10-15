@@ -149,7 +149,7 @@
     </div>
 
 
-    <div class="container cards" style="margin-top: 6rem;">
+    <div class="container cards" style="margin-top: 2rem;">
         <div class="row">
             <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
@@ -195,7 +195,7 @@
         </div>
     </div>
 
-    <div class="container tower" style="margin-top: 6rem;">
+    <div class="container tower" style="margin-top: 1rem;">
         <div class="container">
             <div class="row justify-content-center pt-5">
                 <div class="col-12 col-md-10">
@@ -274,7 +274,7 @@
     </div>
 
 
-    <div class="container slider" style="margin-top: 6rem;">
+    <div class="container slider" style="margin-top: 1rem;">
         <h2 class="fw-bold text-center mb-4" style="color: #1F1A7D">Booking a private taxi Paris</h2>
         
         <div class="swiper mySwiper">
