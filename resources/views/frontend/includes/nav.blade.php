@@ -79,11 +79,15 @@
                 <div class="modal-body">
                         
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" placeholder="Booking Number" onchange="Find_Booking_Function()" required>
+                        <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" onchange="Find_Booking_Function()" placeholder="Booking Number" required>
                     </div>
 
                     <div class="mb-3">
                         <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email Address" onchange="Find_Booking_Function()" required>
+                    </div>
+
+                    <div>
+                        <p class="fw-bold" id="error" style="color: red;"></p>
                     </div>
 
                 </div>
@@ -126,12 +130,25 @@
 
                 if(obj != 'no_data') {  
                     $('.submit_button').removeAttr('disabled');
-                }                
+                    $('#error').text('');
+                }  
+
+                else {
+                    $('.submit_button').attr('disabled', 'disabled');;
+                    $('#error').text('Please provide the correct booking id and email');
+                }              
 
             }
             
         );
     }
+
+
+    // function remove() {
+    //     alert('dfd');
+    // }
+
+    
 
 </script>
 
