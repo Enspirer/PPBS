@@ -62,7 +62,7 @@
 
                 <p>We monitor your arrival and the driver will be on time to pick you up. Free reservation cancellation.</p>
 
-                <a href="#" type="button" class="btn text-white rounded mt-4" style="background-color: #FF9701">BOOK NOW<i class="bi bi-arrow-right text-white ms-3"></i></a>
+                <a href="{{ route('frontend.booking') }}" type="button" class="btn text-white rounded mt-4" style="background-color: #FF9701">BOOK NOW<i class="bi bi-arrow-right text-white ms-3"></i></a>
 
             </div>
 
