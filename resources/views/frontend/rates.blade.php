@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-3">
         <h4 class="display-6 text-center">One way Transfer</h4>
 
         <div class="row mt-4">
