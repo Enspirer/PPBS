@@ -170,11 +170,7 @@ class HomeController extends Controller
         $update->status = 'Pending';
 
         $update->save();
-                
-        // Booking::whereId($request->hidden_id)->update($update->toArray());  
-        
-        // $created_at = Booking::where('id',$request->hidden_id)->first(); 
-
+                        
         $pickup_from = Location::where('id',$request->pickup_from)->first()->name;
         $destination = Location::where('id',$request->destination)->first()->name;
         
@@ -192,6 +188,7 @@ class HomeController extends Controller
                 'adults' => $request->adults,
                 'child' => $request->child,
                 'baby' => $request->baby,
+                'passengers_count' => $count,
                 'pickup_address' => $request->pickup_address,
                 'drop_address' => $request->drop_address,
                 'vehicle_number' => $request->vehicle_number,
@@ -218,6 +215,7 @@ class HomeController extends Controller
                 'adults' => $request->adults,
                 'child' => $request->child,
                 'baby' => $request->baby,
+                'passengers_count' => $count,
                 'pickup_address' => $request->pickup_address,
                 'drop_address' => $request->drop_address,
                 'vehicle_number' => $request->vehicle_number,
@@ -238,9 +236,7 @@ class HomeController extends Controller
             \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
-        
-        // dd($booking_details);
-        
+                
         if(empty( auth()->user()->id) === true ){
 
             if( User::where('email',$request->email)->first() == null  ){            
@@ -276,8 +272,6 @@ class HomeController extends Controller
                 $user_add->save();
 
                 Booking::whereId($update->id)->update(array('user_id' => $user_add->id));
-
-                // Booking::whereId($request->hidden_id)->update(array('user_id' => $user_add->id)); 
 
                 $details = [
                     'name' => $request->name,

@@ -94,7 +94,7 @@
                     <p> All Bookings </p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-plane-departure mb-4 mr-2" aria-hidden="true"></i>
+                    <i class="fas fa-plane mb-4 mr-2" aria-hidden="true"></i>
                 </div>
                 <a href="{{url('admin/tour_booking')}}" class="card-box-footer" style="border-radius: 0px 0px 15px 15px;">View More <i class="fa fa-arrow-circle-right"></i></a>
             </div>

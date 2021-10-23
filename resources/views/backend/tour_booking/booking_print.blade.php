@@ -18,186 +18,199 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
    <div class="col-md-12">
-      <div class="invoice">
+      <div class="invoice p-5">
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
-            <span class="pull-right hidden-print">
-            <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a> -->
-            <img src="{{url('img/logo.png')}}" style="width: 80px; height:50px; margin-top:-10px;">
-         </span>
-            Paris Private Transfer 
+            
+            <table>
+               <tr>
+                  <td align="right"><small class="invoice-from">From:</small></td>
+                  <td><small class="invoice-from"><strong class="text-inverse">Paris Private Transfer</strong> info@parisprivatetransfer.com</small></td>
+               </tr>
+               <tr>
+                  <td align="right"><small class="invoice-from">Date:</small></td>
+                  <td><small class="invoice-from"><strong class="text-inverse">{{ date('F d,Y') }}</strong></small></td>
+               </tr>
+               <tr>
+                  <td align="right"><small class="invoice-from">To:</small></td>
+                  <td><small class="invoice-from"><strong class="text-inverse">{{$booking_print->customer_name}}</strong> {{$booking_print->customer_email}}</small></td>
+               </tr>
+            </table>
+                 
          </div>
-         <!-- end invoice-company -->
-         <!-- begin invoice-header -->
-         <div class="invoice-header">
 
+         <hr>
+
+         <div class="invoice-company text-inverse f-w-600">
+            <table width="100%">
+               <tr>
+                  <td width="50%"></td>
+                  <td><img src="{{url('img/logo.png')}}" style="width: 40%;"></td>
+               </tr>            
+            </table>
+            <table width="100%" class="mt-4">
+               <tr>
+                  <td width="50%">
+                     <h6 class="invoice-inverse">Booking Number: {{$booking_print->booking_number}}</h6>
+                  </td>
+                  <td>
+                     <h6 class="text-inverse">ORDER STATUS: 
+                        @if($booking_print->status == 'Approved')
+                           <strong class="text-inverse ml-2" style="color:green">{{$booking_print->status}}</strong>
+                        @elseif($booking_print->status == 'Disapproved')
+                           <strong class="text-inverse ml-2" style="color:red">{{$booking_print->status}}</strong>
+                        @else
+                           <strong class="text-inverse ml-2" style="color:#DE970B">{{$booking_print->status}}</strong>
+                        @endif
+                     </h6>  
+                  </td>
+               </tr> 
+            </table>
+         </div>
+
+         <hr>
+
+         <div class="invoice-header">
             <div class="invoice-from">
-               <!-- <small>from</small> -->
-               <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">Paris Private Transfer</strong><br>
-                  12345 Sunny Road,<br>
-                  Sunnyville, CA 12345<br>
-                  Phone: 0033652300255<br>
-                  Email: info@parisprivatetransfer.com
+               <address class="mt-2 mb-2">
+                  <strong class="text-inverse" style="border-bottom:1px solid #23282c;">Traveller Information</strong><br>
+                     <table class="mt-3" width="380px">
+                        <tr>
+                           <td><h6 class="text-inverse">Name:</h6></td>
+                           <td><h6 class="text-inverse">{{$booking_print->customer_name}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Email:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->customer_email}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Phone:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->customer_telephone}}</h6></td>
+                        </tr>
+                     </table>
                </address>
+               
             </div>
             <div class="invoice-to">
-               <!-- <small>to</small> -->
-               <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">{{$booking_print->customer_name}}</strong><br>
-                  <!-- Street Address<br>
-                  City, Zip Code<br> -->
-                  Phone: {{$booking_print->customer_telephone}}<br>
-                  Email: {{$booking_print->customer_email}}
+               <address class="mt-2 mb-2">
+                  <strong class="text-inverse" style="border-bottom:1px solid #23282c;">Carrier Details</strong><br>
+                     <table class="mt-3" width="380px">
+                        <tr>
+                           <td><h6 class="text-inverse">Adults:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->adults}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Children:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->child}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Babies:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->baby}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Passengers:</h6></td>
+                           <td><h6 class="text-inverse">{{$booking_print->passengers_count}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Vehicle Number:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->vehicle_number}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Luggages:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->number_of_luggages}}</h6></td>
+                        </tr>
+                     </table>
                </address>
-            </div>
-            <div class="invoice-date">
-               <!-- <small>Invoice / July period</small> -->
-               <div class="date text-inverse m-t-5">{{ date('F d,Y') }}</div>
-               <br>
-               <div class="invoice-detail">
-                  Booking Number: {{$booking_print->booking_number}}<br>
-                  Booked Date: {{ date('F d,Y', strtotime($booking_print->created_at)) }}
-               </div>
-            </div>
+            </div>            
          </div>
+
+         <hr>
+
+         <div class="invoice-header">
+            <div class="invoice-from">
+               <address class="mt-2 mb-2">
+                  <strong class="text-inverse" style="border-bottom:1px solid #23282c;">Pick-up Information</strong><br>
+                     <table class="mt-3" width="380px">
+                        <tr>
+                           <td><h6 class="text-inverse">From:</h6></td>
+                           <td>
+                              <h6 class="text-inverse">
+                              @if(App\Models\Location::where('id',$booking_print->pickup_from)->first() == null)
+                              <span class="badge badge-danger">Location Deleted</span>
+                              @elseif(App\Models\Location::where('id',$booking_print->pickup_from)->first()->status == 'Disabled')                                 
+                                 <span class="badge badge-warning">{{ App\Models\Location::where('id',$tour_booking->pickup_from)->first()->name }} &nbsp; ( Location Disabled )</span>
+                              @else
+                                 {{ App\Models\Location::where('id',$booking_print->pickup_from)->first()->name }}
+                              @endif 
+                              </h6>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Date:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->pickup_date}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Time:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->pickup_time}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Address:</td>
+                           <td><h6 class="text-inverse">{{$booking_print->pickup_address}}</h6></td>
+                        </tr>
+                     </table>
+               </address>
+               
+            </div>
+            <div class="invoice-to">
+               <address class="mt-2 mb-2">
+                  <strong class="text-inverse" style="border-bottom:1px solid #23282c;">Drop-of Information</strong><br>
+                     <table class="mt-3" width="380px">
+                        <tr>
+                           <td><h6 class="text-inverse">To:</h6></td>
+                           <td class="text-inverse">
+                              <h6 class="text-inverse">
+                              @if(App\Models\Location::where('id',$booking_print->destination)->first() == null)
+                                 <span class="badge badge-danger">Location Deleted</span>
+                              @elseif(App\Models\Location::where('id',$booking_print->destination)->first()->status == 'Disabled')                                 
+                                 <span class="badge badge-warning">{{ App\Models\Location::where('id',$tour_booking->destination)->first()->name }} &nbsp; ( Location Disabled )</span>
+                              @else
+                                 {{ App\Models\Location::where('id',$booking_print->destination)->first()->name }}
+                              @endif 
+                              </h6>                        
+                           </td>
+                        </tr>
+                     </table>
+               </address>
+            </div>            
+         </div>
+
+         <hr>
+
+         <div class="invoice-header">
+            <div class="invoice-from">
+               <table class="mt-3" width="30%">                        
+                  <tr>
+                     <td><h6 class="text-inverse">Booking Type:</td>
+                     <td><h6 class="text-inverse">{{$booking_print->booking_type}}</h6></td>
+                  </tr>
+                  <tr>
+                     <td><h6 class="text-inverse">Total Price:</td>
+                     <td><h6 class="text-inverse">&euro;{{$booking_print->total_price}}</h6></td>
+                  </tr>
+                  <tr>
+                     <td><h6 class="text-inverse">Payment Method:</td>
+                     <td><h6 class="text-inverse">{{$booking_print->payment_method}}</h6></td>
+                  </tr>
+               </table>               
+            </div>                        
+         </div>
+
+         
+
          <!-- end invoice-header -->
          <!-- begin invoice-content -->
          <div class="invoice-content">
-            <!-- begin table-responsive -->
-            <div class="table-responsive">
-               <table class="table table-invoice">
-                  <!-- <thead>
-                     <tr>
-                        <th>TASK DESCRIPTION</th>
-                        <th class="text-left" width="10%">RATE</th>
-                        <th class="text-center" width="10%">HOURS</th>
-                        <th class="text-right" width="20%">LINE TOTAL</th>
-                     </tr>
-                  </thead> -->
-                  <tbody>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Name</span><br>
-                           <!-- <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small> -->
-                        </td>
-                        <td class="text-right">{{$booking_print->customer_name}}</td>
-                        <!-- <td class="text-center">50</td>
-                        <td class="text-right">$2,500.00</td> -->
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Email Address</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->customer_email}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Booking Number</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->booking_number}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Phone Number</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->customer_telephone}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Pickup From</span><br>
-                        </td>
-                        <td class="text-right">
-                           @if(App\Models\Location::where('id',$booking_print->pickup_from)->first() == null)
-                              <span class="badge badge-danger">Location Deleted</span>
-                           @elseif(App\Models\Location::where('id',$booking_print->pickup_from)->first()->status == 'Disabled')                                 
-                              <span class="badge badge-warning">{{ App\Models\Location::where('id',$tour_booking->pickup_from)->first()->name }} &nbsp; ( Location Disabled )</span>
-                           @else
-                              {{ App\Models\Location::where('id',$booking_print->pickup_from)->first()->name }}
-                           @endif 
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Destination</span><br>
-                        </td>
-                        <td class="text-right">
-                           @if(App\Models\Location::where('id',$booking_print->destination)->first() == null)
-                              <span class="badge badge-danger">Location Deleted</span>
-                           @elseif(App\Models\Location::where('id',$booking_print->destination)->first()->status == 'Disabled')                                 
-                              <span class="badge badge-warning">{{ App\Models\Location::where('id',$tour_booking->destination)->first()->name }} &nbsp; ( Location Disabled )</span>
-                           @else
-                              {{ App\Models\Location::where('id',$booking_print->destination)->first()->name }}
-                           @endif 
-                        
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Pickup Date</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->pickup_date}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Pickup Time</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->pickup_time}}</td>
-                     </tr>
-
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Pickup Address</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->pickup_address}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Drop Address</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->drop_address}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Vehicle Number</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->vehicle_number}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Luggages Count</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->number_of_luggages}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Payment Method</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->payment_method}}</td>
-                     </tr>
-                     
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Adults Count</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->adults}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Childs Count</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->child}}</td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <span class="text-inverse">Baby Count</span><br>
-                        </td>
-                        <td class="text-right">{{$booking_print->baby}}</td>
-                     </tr>
-                     
-                  </tbody>
-               </table>
-            </div>
+            
 
 
 
@@ -209,117 +222,52 @@
                   </div>
                </div>
 
-               <div class="table-responsive">
-                  <table class="table table-invoice">
-                     <tbody>
+               <hr>
+               <div class="invoice-header">
+                  <div class="invoice-from">
+                     <table class="mt-3" width="100%">                        
                         <tr>
-                           <td>
-                              <span class="text-inverse">Pick Up Address</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->return_pickup_address}}</td>
+                           <td><h6 class="text-inverse">Pick Up Address:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->return_pickup_address}}</h6></td>
                         </tr>
                         <tr>
-                           <td>
-                              <span class="text-inverse">Drop Address</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->return_drop_address}}</td>
+                           <td><h6 class="text-inverse">Drop Address:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->return_drop_address}}</h6></td>
                         </tr>
                         <tr>
-                           <td>
-                              <span class="text-inverse">Vehicle Number</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->return_vehicle_number}}</td>
-                        </tr>                  
-                        <tr>
-                           <td>
-                              <span class="text-inverse">Departure Date</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->departure_date}}</td>
+                           <td><h6 class="text-inverse">Vehicle Number:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->return_vehicle_number}}</h6></td>
                         </tr>
                         <tr>
-                           <td>
-                              <span class="text-inverse">Departure Time</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->departure_time}}</td>
+                           <td><h6 class="text-inverse">Passengers Count:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->return_passengers_count}}</h6></td>
                         </tr>
-
                         <tr>
-                           <td>
-                              <span class="text-inverse">Other Information</span><br>
-                           </td>
-                           <td class="text-right">{{$booking_print->other_information}}</td>
+                           <td><h6 class="text-inverse">Departure Date:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->departure_date}}</h6></td>
                         </tr>
-                        
-                     </tbody>
-                  </table>
-               </div>
+                        <tr>
+                           <td><h6 class="text-inverse">Departure Time:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->departure_time}}</h6></td>
+                        </tr>
+                        <tr>
+                           <td><h6 class="text-inverse">Other Information:</td>
+                           <td><h6 class="text-inverse ml-3">{{$booking_print->other_information}}</h6></td>
+                        </tr>
+                     </table>               
+                  </div>                        
+               </div>              
             @endif   
+            
 
-
-
-            <!-- end table-responsive -->
-            <!-- begin invoice-price -->
-            <div class="invoice-price">
-               <div class="invoice-price-left">
-                  <div class="invoice-price-row">
-                     <div class="sub-price">
-                        <small>Booking Type</small>
-                        <span class="text-inverse">{{$booking_print->booking_type}}</span>
-                     </div>
-                     <!-- <div class="sub-price">
-                        <i class="fa fa-plus text-muted"></i>
-                     </div> -->
-                     <div class="sub-price text-center">
-                        <small>PASSENGERS COUNT</small>
-                        <span class="text-inverse">{{$booking_print->passengers_count}}</span>
-                     </div>
-
-                     @if($booking_print->booking_type == 'Return')
-                     <div class="sub-price text-center">
-                        <small>RETURN PASSENGERS COUNT</small>
-                        <span class="text-inverse">{{$booking_print->return_passengers_count}}</span>
-                     </div>
-                     @endif
-
-                     <div class="sub-price text-center">
-                        <small>Booking Status</small>
-                        @if($booking_print->status == 'Approved')
-                           <span class="text-inverse" style="color:green">{{$booking_print->status}}</span>
-                        @elseif($booking_print->status == 'Disapproved')
-                           <span class="text-inverse" style="color:red">{{$booking_print->status}}</span>
-                        @else
-                           <span class="text-inverse" style="color:#DE970B">{{$booking_print->status}}</span>
-                        @endif
-                     </div>
-
-                  </div>
-               </div>
-               <div class="invoice-price-right">
-                  <small>TOTAL PRICE</small> <span class="f-w-600">${{$booking_print->total_price}}</span>
-               </div>
-            </div>
-            <!-- end invoice-price -->
-         </div>
-         <!-- end invoice-content -->
-         <!-- begin invoice-note -->
-         <!-- <div class="invoice-note">
-            * Make all cheques payable to [Your Company Name]<br>
-            * Payment is due within 30 days<br>
-            * If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
-         </div> -->
-         <!-- end invoice-note -->
          <!-- begin invoice-footer -->
-         <div class="invoice-footer mt-5">
-            <p class="text-center m-b-5 f-w-600">
-               THANK YOU FOR YOUR BUSINESS
-            </p>
-            <p class="text-center">
-               <!-- <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> matiasgallipoli.com</span> -->
-               <span class="m-r-10"><i class="fas fa-fw fa-lg fa-phone-volume"></i> 0033652300255</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> info@parisprivatetransfer.com</span>
-            </p>
+         <div class="invoice-footer mt-5 p-3" style="border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9">
+            <h6 class="text-center m-b-5 f-w-600">Thank you and have a pleasant journey!</h6>
+
+            <h6 class="text-center m-b-5 f-w-600 mt-3" style="color: #4863A0">Orders are subject to our terms & conditions. We welcome all comments on the service we provide.</h6>
          </div>
          <!-- end invoice-footer -->
+         
       </div>
    </div>
 </div>
