@@ -14,6 +14,7 @@ use Mail;
 use \App\Mail\BookingUserMail;
 use \App\Mail\BookingDetailsMail;
 use \App\Mail\BookingDetailsBothMail;
+use DateTime;
 
 /**
  * Class HomeController.
@@ -126,14 +127,24 @@ class HomeController extends Controller
         // dd($request);
 
         $count = $request->adults + $request->child + $request->baby;
+      
 
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $booking_value = Booking::get();
 
-        $pin = mt_rand(1000000, 9999999)
-            . mt_rand(1000000, 9999999)
-            . $characters[rand(0, strlen($characters) - 1)];
+        if(count($booking_value) == 0){
+            $date = new DateTime();
+            $input = 1;
+            $string = date_format($date,"Ymd").sprintf('%03u', $input);
+        }else{
+            $booking_number = Booking::latest()->take(1)->first();
+            // dd($booking_number);
 
-        $string = str_shuffle($pin);
+            $date = new DateTime();
+            $input = $booking_number->booking_number + 1;
+            $newstring = substr($input, -3);
+            $string = date_format($date,"Ymd").sprintf('%03u', $newstring);
+        }
+        
 
         $update = new Booking;
         
