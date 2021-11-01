@@ -122,4 +122,12 @@ p {
     .copyright p {
         font-size: 0.8rem!important;
     }
+    .quick-links {
+        padding-left: 15px!important;
+    }
+    .g-recaptcha {
+        transform:scale(0.85);
+        transform-origin:0 0;
+        text-align: center;
+    }
 }

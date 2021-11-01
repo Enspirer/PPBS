@@ -4,7 +4,7 @@
             <div class="col-12 col-md-3">
                 <h5 class="mb-3">Get in touch</h5>
 
-                <div class="row justify-content-end align-items-center mb-2">
+                <div class="row justify-content-end align-items-center mb-2" style="padding: 0.85rem 0; border-bottom: 1px solid rgba(255, 255, 255, .3);">
                     <div class="col-1">
                         <i class="bi bi-telephone-fill"></i>
                     </div>
@@ -13,7 +13,17 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-end align-items-center">
+                <div class="row justify-content-end align-items-center mb-2" style="padding: 0.85rem 0; border-bottom: 1px solid rgba(255, 255, 255, .3);">
+                    <div class="col-1">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+                    <div class="col-10">
+                        <p>61 Rue St Blaise Paris 75020</p>
+                        <p>France</p>
+                    </div>
+                </div>
+
+                <div class="row justify-content-end align-items-center mb-2" style="padding: 0.85rem 0; border-bottom: 1px solid rgba(255, 255, 255, .3);">
                     <div class="col-1">
                         <i class="bi bi-envelope-fill"></i>
                     </div>
@@ -22,23 +32,32 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-end align-items-center mt-3">
+                <div class="row justify-content-end align-items-center" style="padding: 0.85rem 0; border-bottom: 1px solid rgba(255, 255, 255, .3);">
+                    <div class="col-1">
+                        <!-- <i class="bi bi-envelope-fill"></i> -->
+                    </div>
                     <div class="col-10">
+                        <p>Siret: 80832090700013</p>
+                    </div>
+                </div>
+
+                <div class="row mt-4 footer-logo">
+                    <div class="col-12">
+                        <img src="{{ url('img/footer_logo.png') }}" alt="">
+                    </div>
+                </div>
+
+                <div class="row justify-content-end align-items-center mt-3">
+                    <div class="col-12 col-md-11">
                         <img src="{{ url('img/facebook.png') }}" alt="">
                         <img src="{{ url('img/google-plus.png') }}" alt="">
                         <img src="{{ url('img/linkedin.png') }}" alt="">
                         <img src="{{ url('img/pinterest.png') }}" alt="">
                     </div>
                 </div>
-
-                <div class="row mt-5 footer-logo">
-                    <div class="col-12">
-                        <img src="{{ url('img/footer_logo.png') }}" alt="">
-                    </div>
-                </div>
             </div>
 
-            <div class="col-12 col-md-3 quick-links pl-3 pl-5-md mt-4 mt-5-md">
+            <div class="col-12 col-md-3 quick-links mt-4 mt-5-md" style="padding-left: 4rem;">
                 <h5 class="mb-3">Quick Links</h5>
 
                 <a href="#" class="text-decoration-none">CDG Private Taxi Service</a> <br>
@@ -94,9 +113,9 @@
                     <p>&copy Copyright <script>document.write(new Date().getFullYear())</script>. Paris Private Transfer. All Rights Reserved</p>
                 </div>
 
-                <div class="col-12 col-md-5 p-0 text-center text-md-right">
+                <!-- <div class="col-12 col-md-5 p-0 text-center text-md-right">
                     <p>Powered By <a href="https://www.enspirer.com" class="text-decoration-none">Enspirer</a></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

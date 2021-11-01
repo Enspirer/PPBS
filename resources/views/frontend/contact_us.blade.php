@@ -98,11 +98,17 @@
                                         <input type="text" class="form-control" name="subject" aria-describedby="subject" placeholder="Le sujet de la siscussion" required>
                                     </div>
 
-                                    <div class="mb-3">
+                                    <div class="mb-4">
                                         <textarea name="message" name="message" rows="6" class="form-control" placeholder="Type your message" required></textarea>
                                     </div>
 
-                                    <button type="submit" class="btn text-white rounded mt-4" style="background-color: #FF9701">Submit</button>
+                                    <div class="row justify-content-center mb-4">
+                                        <div class="col-12 col-md-10 text-center">
+                                            <div class="g-recaptcha" data-callback="checked" data-sitekey="6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR" style="display: inline-block;"></div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn text-white rounded submit-btn" style="background-color: #FF9701" disabled>Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -158,3 +164,16 @@
 @endif
 
 @endsection
+
+
+@push('after-scripts')
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        function checked() {
+        $('.submit-btn').removeAttr('disabled');
+    };
+    </script>
+
+@endpush
