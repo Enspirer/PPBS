@@ -12,9 +12,10 @@
                 </div>
 
                 @auth
-                    <div class="col-12 text-center col-lg-2 text-lg-end">
-                        <a href="{{route('frontend.auth.login')}}">Booking History</a>
-                    </div>
+                         <a href="{{route('frontend.auth.login')}}" class="" style="width: 90px;color: black"><p style="width: 50px;"><i></i>Dashboard</p></a>
+
+                         <a href="{{route('frontend.auth.logout')}}" class="" style="width: 60px;color: black;"><p style="width: 50px;"><i></i>Logout</p></a>
+
                 @else
                         <a href="{{route('frontend.auth.login')}}" class="" style="width: 60px;color: black"><p style="width: 30px;"><i></i>Login</p></a>
 
