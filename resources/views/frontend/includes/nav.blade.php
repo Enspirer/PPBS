@@ -13,14 +13,10 @@
 
                 @auth
                          <a href="{{route('frontend.auth.login')}}" class="" style="width: 90px;color: black"><p style="width: 50px;"><i></i>Dashboard</p></a>
-
                          <a href="{{route('frontend.auth.logout')}}" class="" style="width: 60px;color: black;"><p style="width: 50px;"><i></i>Logout</p></a>
-
                 @else
                         <a href="{{route('frontend.auth.login')}}" class="" style="width: 60px;color: black"><p style="width: 30px;"><i></i>Login</p></a>
-
                         <a href="{{route('frontend.auth.register')}}" class="" style="width: 60px;color: black;"><p style="width: 30px;"><i></i>Register</p></a>
-
                 @endauth
 
 
@@ -88,7 +84,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn text-white rounded submit_button" id="submit_button" style="background-color: #FF9701" disabled>Find My Booking</button>
+                    <button type="submit" class="btn text-white rounded submit_button" id="submit_button" style="background-color: #FF9701" disabled>Booking Tracker</button>
                 </div>
             </div>
         </div>
