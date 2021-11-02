@@ -159,7 +159,7 @@
                         <p class="card-text">We provide a private taxi service from Charles de Gaulle to Disneyland Paris 42 KM a ride with our experienced drivers at a low cost and all Disney hotels are serviced. Enjoy Disneyland with us because we care about the comfort and safety of your children.</p>
 
                         <div class="text-end">
-                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                            <a href="{{ route('frontend.booking') }}" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                         <p class="card-text">Do you need a private taxi from Charles De Gaulle to Paris city center, it is 32 KM Distance. Paris private transfer drivers welcome you personally, assist and guide you to visit the most beautiful places in the city of Paris. We offer the best prices for reduced cost online booking.</p>
 
                         <div class="text-end">
-                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                            <a href="{{ route('frontend.booking') }}" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                         <p class="card-text">The cheapest direct shuttle from Beauvais airport to Disneyland Paris for your budget. The journey time is 90 minutes. Distance 120 KM from Beauvais Tille airport to Euro disney Val d 'Europe Marne la Valle.</p>
 
                         <div class="text-end" style="margin-top: 1.4rem;">
-                            <a href="#" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                            <a href="{{ route('frontend.booking') }}" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                             <h3 class="fw-bold mb-3" style="color: #1F1A7D">About Us</h3>
                             <p style="text-align: justify">Paris Private Transfer is a specializing private passengers transport services in France we offer services from Paris CDG Airport to Disneyland, Orly, Beauvais with Clean, comfortable and modern vehicles. Our drivers are professional and friendly competent people, speaking English and well trained to ensure a safe trip. We cover a wide range of destinations, always the right choice for a one-way trip or a return trip to Euro disney Paris Orly Paris Beauvais</p>
 
-                            <button class="btn text-white rounded mt-4" style="background-color: #FF9701">CONTACT US<i class="bi bi-arrow-right text-white ms-3"></i></button>
+                            <a href="{{ route('frontend.contact_us') }}" type="button" class="btn text-white rounded mt-4" style="background-color: #FF9701">CONTACT US<i class="bi bi-arrow-right text-white ms-3"></i></a>
                         </div>
 
                         <div class="col-12 col-md-1"></div>
@@ -265,7 +265,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn text-white rounded mt-4" style="background-color: #FF9701">BOOK NOW<i class="bi bi-arrow-right text-white ms-3"></i></button>
+                            <a href="{{ route('frontend.booking') }}" type="button" class="btn text-white rounded mt-4" style="background-color: #FF9701">BOOK NOW<i class="bi bi-arrow-right text-white ms-3"></i></a>
                         </div>
                     </div>
                 </div>

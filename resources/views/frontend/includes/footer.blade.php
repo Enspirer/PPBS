@@ -47,14 +47,14 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-end align-items-center mt-3">
+                <!-- <div class="row justify-content-end align-items-center mt-3">
                     <div class="col-12 col-md-11">
-                        <img src="{{ url('img/facebook.png') }}" alt="">
+                        <img src="{{ url('img/facebook_full.png') }}" alt="">
                         <img src="{{ url('img/google-plus.png') }}" alt="">
                         <img src="{{ url('img/linkedin.png') }}" alt="">
                         <img src="{{ url('img/pinterest.png') }}" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="col-12 col-md-3 quick-links mt-4 mt-5-md" style="padding-left: 4rem;">
@@ -68,6 +68,12 @@
                 <a href="#" class="text-decoration-none">Tarifs de transfert</a> <br>
                 <a href="#" class="text-decoration-none">Booking Now</a> <br>
                 <a href="#" class="text-decoration-none">Contact US</a> <br>
+
+
+                <div style="margin-top: 3rem">
+                    <h6 class="mb-3">Follow us on</h6>
+                    <a href="http://facebook.com/pages/category/taxi-service/paris-private-transfer-1586680981555486/" class="text-decoration-none" target="_blank"><img src="{{ url('img/facebook_full.png') }}" alt="" class="img-fluid" style="height: 50px;"></a>
+                </div>
             </div>
 
             <div class="col-12 col-md-3 mt-4 mt-5-md">
@@ -94,9 +100,6 @@
 
                 <h6 class="mb-3">How to ride Orly to Disneyland Paris</h6>
 
-                <p>Admin parisprivatetransfer.com</p>
-                <p class="mb-3">Sunday,29th May 2016</p>
-
                 <p>via A 86 and A4 Disneyland One hours can ride with our special driver .</p>
             </div>
 
@@ -110,7 +113,7 @@
         <div class="container copyright">
             <div class="row justify-content-between">
                 <div class="col-12 col-md-5 p-0 text-center text-md-left">
-                    <p>&copy Copyright <script>document.write(new Date().getFullYear())</script>. Paris Private Transfer. All Rights Reserved</p>
+                    <p>&copy Copyright, parisprivatetransfer.com. All Rights Reserved</p>
                 </div>
 
                 <!-- <div class="col-12 col-md-5 p-0 text-center text-md-right">

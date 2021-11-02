@@ -28,7 +28,7 @@
 
     <div class="container mt-3">
         <div class="row justify-content-center pt-5 text-center">
-            <p>Airport Paris rivers Specializing Online GDG Private Taxi & Cabs Booking</p>
+            <p>Airport Paris drivers Specializing Online GDG Private Taxi & Cabs Booking</p>
             <h2 style="color: #1F1A7D">Book Your Private Taxi Online Now</h2>
         </div>
     </div>

@@ -126,8 +126,11 @@
                         <div class="card border-0 card">
                             <a href="{{ route('frontend.booking') }}" class="text-decoration-none text-dark">
                                 <img src="{{ url('img/contact/1.png') }}" class="card-img-top img-fluid w-100" alt="...">
-                                <div class="card-body pb-1 text-center">
+                                <div class="card-body text-center">
                                     <h6 class="card-title fw-bold mb-2">CDG to Paris 4 Pax 60 Euro</h6>
+                                    <div class="text-end">
+                                        <p class="fw-bold" style="color: rgb(255, 151, 1);">Book Now</p>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -139,6 +142,9 @@
                                 <img src="{{ url('img/contact/2.png') }}" class="card-img-top" alt="...">
                                 <div class="card-body pb-1 text-center">
                                     <h6 class="card-title fw-bold mb-2">CDG to Disney 4 Pax 60 Euro</h6>
+                                    <div class="text-end">
+                                        <p class="fw-bold" style="color: rgb(255, 151, 1);">Book Now</p>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -150,6 +156,9 @@
                                 <img src="{{ url('img/contact/3.png') }}" class="card-img-top" alt="...">
                                 <div class="card-body pb-1 text-center">
                                     <h6 class="card-title fw-bold mb-2">Orly  to Paris 4 Pax 60 Euro</h6>
+                                    <div class="text-end">
+                                        <p class="fw-bold" style="color: rgb(255, 151, 1);">Book Now</p>
+                                    </div>
                                 </div>
                             </a>
                         </div>
