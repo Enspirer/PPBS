@@ -69,46 +69,6 @@
                     </div>
 
 
-                    <div class="row">
-                        <p class="fw-bold">
-                            Login with
-                        </p>
-                    </div>
-                    <div class="row justify-content-between mx-0 align-items-center">
-                        <div class="col-3 p-2">
-                            <div class="row align-items-center bg-white p-2">
-                                <div class="col-4 p-0">
-                                    <img src="{{ url('img/login/fb.png') }}" alt="" class="img-fluid">
-                                </div>
-                                <div class="col-8 p-0">
-                                    <p style="font-size: 0.8rem">Facebook</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 p-2">
-                            <div class="row align-items-center bg-white p-2">
-                                <div class="col-3 p-0">
-                                    <img src="{{ url('img/login/google.png') }}" alt="" class="img-fluid">
-                                </div>
-                                <div class="col-9 pe-0">
-                                    <p style="font-size: 0.8rem">Google</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-3 p-2">
-                            <div class="row align-items-center bg-white p-2">
-                                <div class="col-3 p-0">
-                                    <img src="{{ url('img/login/linked.png') }}" alt="" class="img-fluid">
-                                </div>
-                                <div class="col-9 pe-0">
-                                    <p style="font-size: 0.8rem">LinkedIn</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <p class="mt-2" style="font-size: 0.9rem">Don't have an account? <a href="{{ route('frontend.auth.register') }}" class="text-decoration-none" style="color: #1F1A7D;">Register here</a></p>
                 </div>
             </div>

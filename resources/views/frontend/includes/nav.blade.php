@@ -2,7 +2,7 @@
 
     <div class="container-fluid py-2 top-nav" style="background-color: #DFDFDF;">
         <div class="container">
-            <div class="row justify-content-sm-start justify-content-lg-end">
+            <div class="row justify-content-sm-start justify-content-lg-end" style="width: 1100px;">
                 <div class="col-12 text-center col-lg-3 text-lg-end">
                     <p><i class="bi bi-envelope-fill me-2"></i>info@parisprivatetransfer.com</p>
                 </div>
@@ -10,6 +10,20 @@
                 <div class="col-12 text-center col-lg-2 text-lg-end">
                     <p><i class="bi bi-telephone-fill me-2"></i></i>0033652300255</p>
                 </div>
+
+                @auth
+                    <div class="col-12 text-center col-lg-2 text-lg-end">
+                        <a href="{{route('frontend.auth.login')}}">Booking History</a>
+                    </div>
+                @else
+                        <a href="{{route('frontend.auth.login')}}" class="" style="width: 60px;color: black"><p style="width: 30px;"><i></i>Login</p></a>
+
+                        <a href="{{route('frontend.auth.register')}}" class="" style="width: 60px;color: black;"><p style="width: 30px;"><i></i>Register</p></a>
+
+                @endauth
+
+
+
             </div>
         </div>
     </div>
@@ -39,27 +53,7 @@
                     <li class="nav-item links mb-3 mb-md-0">
                         <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid rgb(31, 26, 125);">Find my Booking</a>
                     </li>
-                    @auth
-                        <li class="nav-item nav1 mb-3 mb-md-0 position-relative">
-                            <a class="nav-link dropdown-toggle" href="{{route('frontend.auth.login')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle me-2"> <span class="fw-bold user-name">{{auth()->user()->first_name}}</span>
-                              </a>
-                              <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownMenuLink" style="background-color: #4195E1">
-                                <a class="dropdown-item text-light" href="{{route('frontend.user.dashboard')}}">Upcoming Bookings</a>
-                                <a class="dropdown-item text-light" href="">Completed Bookings</a>
-                                <a class="dropdown-item text-light" href="">Cancelled Bookings</a>
-                                <a class="dropdown-item text-light" href="">My Settings</a>
-                                <a class="dropdown-item text-light" href="{{route('frontend.auth.logout')}}">Log Out</a>
-                              </div>
-                        </li>
-                    @else                    
-                    <li class="nav-item links mb-3 mb-md-0">
-                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" href="{{ route('frontend.auth.register') }}" style="border: 1px solid #FF9701;">Sign Up</a>
-                    </li>
-                    <li class="nav-item links mb-3 mb-md-0">
-                        <a class="nav-link text-decoration-none text-white btn rounded-pill px-4" href="{{ route('frontend.auth.login') }}" style="background-color: #FF9701">Log In</a>
-                    </li>
-                    @endauth
+
                 </ul>
             </div>
         </div>
@@ -77,7 +71,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                        
+
                     <div class="mb-3">
                         <input type="text" class="form-control" id="booking_id" name="booking_id" aria-describedby="booking_id" onchange="Find_Booking_Function()" placeholder="Booking Number" required>
                     </div>
@@ -111,8 +105,8 @@
 <script>
 
     function Find_Booking_Function(){
-    
-      
+
+
         booking_id = $('#booking_id').val();
         // alert(booking_id);
         email = $('#email').val();
@@ -123,23 +117,23 @@
                 booking_id: booking_id,
                 email: email
             },
-            function(booking, status){  
-                // console.log(booking);              
+            function(booking, status){
+                // console.log(booking);
 
                 var obj = JSON.parse(booking);
 
-                if(obj != 'no_data') {  
+                if(obj != 'no_data') {
                     $('.submit_button').removeAttr('disabled');
                     $('#error').text('');
-                }  
+                }
 
                 else {
                     $('.submit_button').attr('disabled', 'disabled');;
                     $('#error').text('Please provide the correct booking id and email');
-                }              
+                }
 
             }
-            
+
         );
     }
 
@@ -148,7 +142,7 @@
     //     alert('dfd');
     // }
 
-    
+
 
 </script>
 
