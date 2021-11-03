@@ -36,8 +36,7 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {    
-
-        dd($request);
+        // dd($request);
             
         $count = $request->adults + $request->child + $request->baby;
 
@@ -83,14 +82,20 @@ class BookingController extends Controller
         $add->customer_name=$request->name;
         $add->customer_email=$request->email;        
         $add->customer_telephone=$request->mobile_number;
-        $add->other_information=$request->other_information;
-        $add->payment_method=$request->payment_method;        
-        $add->payment_status='Pending';        
+        $add->other_information=$request->other_information;         
+        $add->status = 'Pending';      
 
         if(!empty( auth()->user()->id) === true ){
             $add->user_id=auth()->user()->id;
         }        
-        $add->status = 'Pending';
+        if($request->paypal == 'Paypal'){
+            $add->payment_status = 'Completed';
+            $add->payment_method = $request->paypal;
+        }else{
+            $add->payment_status = 'Pending';
+            $add->payment_method = $request->payment_method;
+        }
+        
         $add->save(); 
 
         $pickup_from = Location::where('id',$request->pickup_from)->first()->name;
@@ -98,64 +103,30 @@ class BookingController extends Controller
         
         if($request->booking_type == 'One Way'){
 
-            if($request->paypal == 'Paypal') {
-                $booking_details = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone_number' => $request->mobile_number,
-                    'booking_number' => $string,
-                    'pickup_from' => $pickup_from,
-                    'destination' => $destination,
-                    'pickup_date' => $request->pickup_date,
-                    'pickup_time' => $request->pickup_time,
-                    'adults' => $request->adults,
-                    'child' => $request->child,
-                    'baby' => $request->baby,
-                    'passengers_count' => $count,
-                    'pickup_address' => $request->pickup_address,
-                    'drop_address' => $request->drop_address,
-                    'vehicle_number' => $request->vehicle_number,
-                    'luggage' => $request->luggage,
-                    'total_price' => $request->result_value,
-                    'payment_method' => $request->paypal,
-                    'payment_status' => 'Completed',
-                    'booking_type' => $request->booking_type,
-                    'created_at' => $add->created_at->toDateString(),
-                ];
-                
-                \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
-            }
-
-            else {
-
-                $booking_details = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone_number' => $request->mobile_number,
-                    'booking_number' => $string,
-                    'pickup_from' => $pickup_from,
-                    'destination' => $destination,
-                    'pickup_date' => $request->pickup_date,
-                    'pickup_time' => $request->pickup_time,
-                    'adults' => $request->adults,
-                    'child' => $request->child,
-                    'baby' => $request->baby,
-                    'passengers_count' => $count,
-                    'pickup_address' => $request->pickup_address,
-                    'drop_address' => $request->drop_address,
-                    'vehicle_number' => $request->vehicle_number,
-                    'luggage' => $request->luggage,
-                    'total_price' => $request->result_value,
-                    'payment_method' => $request->payment_method,
-                    'payment_status' => 'Pending',
-                    'booking_type' => $request->booking_type,
-                    'created_at' => $add->created_at->toDateString(),
-                ];
-                
-                \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
-            }
-
+            $booking_details = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->mobile_number,
+                'booking_number' => $string,
+                'pickup_from' => $pickup_from,
+                'destination' => $destination,
+                'pickup_date' => $request->pickup_date,
+                'pickup_time' => $request->pickup_time,
+                'adults' => $request->adults,
+                'child' => $request->child,
+                'baby' => $request->baby,
+                'passengers_count' => $count,
+                'pickup_address' => $request->pickup_address,
+                'drop_address' => $request->drop_address,
+                'vehicle_number' => $request->vehicle_number,
+                'luggage' => $request->luggage,
+                'total_price' => $request->result_value,
+                'payment_method' => $add->payment_method,
+                'booking_type' => $request->booking_type,
+                'created_at' => $add->created_at->toDateString(),
+            ];
             
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
 
         }else{
 
@@ -177,8 +148,7 @@ class BookingController extends Controller
                 'vehicle_number' => $request->vehicle_number,
                 'luggage' => $request->luggage,
                 'total_price' => $request->result_value,
-                'payment_method' => $request->payment_method,
-                'payment_status' => 'Pending',
+                'payment_method' => $add->payment_method,
                 'booking_type' => $request->booking_type,
                 'return_pickup_address' => $request->return_pickup_address,
                 'return_drop_address' => $request->return_drop_address,
@@ -190,7 +160,7 @@ class BookingController extends Controller
                 'created_at' => $add->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsBothMail($booking_details));
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
         
@@ -208,8 +178,7 @@ class BookingController extends Controller
                     $second_name = $words[1];
                 }else{
                     $second_name = 'Last Name';
-                }
-                
+                }                
 
                 $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $symbols = '@#$%^&*';
@@ -252,7 +221,7 @@ class BookingController extends Controller
 
             }
         }               
-                  
+                          
         session()->flash('message','Thanks!');
 
         return back();        

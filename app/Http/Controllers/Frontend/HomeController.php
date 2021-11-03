@@ -67,24 +67,7 @@ class HomeController extends Controller
         if(count($output) == 0){
             return back()->withErrors('Passengers limit exceeded');
         }else{
-            // $add = new Booking;
-
-            // $add->booking_type = $request->booking_type;
-            // $add->pickup_from = $request->pickup_from;
-            // $add->destination = $request->destination;
-            // $add->pickup_date = $request->pickup_date;
-            // $add->pickup_time = $request->pickup_time;
-            // $add->passengers_count = $count;
-            // $add->adults = $request->adults;
-            // $add->child = $request->child;
-            // $add->baby = $request->baby;
-            // $add->total_price = $request->result_value;
-            // if(!empty( auth()->user()->id) === true ){
-            //     $add->user_id=auth()->user()->id;
-            // }    
-            // $add->save();
-
-            // $add->id
+            
             return redirect()->route('frontend.booking_customer',[
                 'booking_type' => $request->booking_type,
                 'pickup_from' => $request->pickup_from,
@@ -103,8 +86,7 @@ class HomeController extends Controller
     }
 
     public function booking_customer($booking_type,$pickup_from,$destination,$pickup_date,$pickup_time,$adults,$child,$baby,$count,$total_price)
-    {
-        
+    {        
         $location = Location::where('status','=','Enabled')->get();
 
         return view('frontend.booking_customer',[
@@ -124,10 +106,9 @@ class HomeController extends Controller
 
     public function booking_customer_store(Request $request)
     {    
-        dd($request);
+        // dd($request);
 
-        $count = $request->adults + $request->child + $request->baby;
-      
+        $count = $request->adults + $request->child + $request->baby;      
 
         $booking_value = Booking::get();
 
@@ -145,7 +126,6 @@ class HomeController extends Controller
             $string = date_format($date,"Ymd").sprintf('%03u', $newstring);
         }
         
-
         $update = new Booking;
         
         $update->booking_type = $request->booking_type;
@@ -174,7 +154,15 @@ class HomeController extends Controller
         $update->customer_email=$request->email;        
         $update->customer_telephone=$request->mobile_number;
         $update->other_information=$request->other_information;
-        $update->payment_method=$request->payment_method;        
+        
+        if($request->paypal == 'Paypal'){
+            $update->payment_status = 'Completed';
+            $update->payment_method = $request->paypal;
+        }else{
+            $update->payment_status = 'Pending';
+            $update->payment_method = $request->payment_method;
+        }
+
         if(!empty( auth()->user()->id) === true ){
             $update->user_id=auth()->user()->id;
         }        
@@ -205,12 +193,12 @@ class HomeController extends Controller
                 'vehicle_number' => $request->vehicle_number,
                 'luggage' => $request->luggage,
                 'total_price' => $request->result_value,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $update->payment_method,
                 'booking_type' => $request->booking_type,
                 'created_at' => $update->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
 
         }else{
 
@@ -232,7 +220,7 @@ class HomeController extends Controller
                 'vehicle_number' => $request->vehicle_number,
                 'luggage' => $request->luggage,
                 'total_price' => $request->result_value,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $update->payment_method,
                 'booking_type' => $request->booking_type,
                 'return_pickup_address' => $request->return_pickup_address,
                 'return_drop_address' => $request->return_drop_address,
@@ -244,7 +232,7 @@ class HomeController extends Controller
                 'created_at' => $update->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsBothMail($booking_details));
+            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
                 
@@ -291,7 +279,7 @@ class HomeController extends Controller
                     'password' => $password
                 ];
 
-                // \Mail::to($request->email)->send(new BookingUserMail($details));
+                \Mail::to($request->email)->send(new BookingUserMail($details));
 
             }else{
 
@@ -299,14 +287,12 @@ class HomeController extends Controller
                 $user_id = $user_details->id;
 
                 Booking::whereId($update->id)->update(array('user_id' => $user_id));
-
             }
-        }               
-                  
+        }     
+                 
         session()->flash('message','Thanks!');
 
-        return back(); 
-        
+        return back();        
 
     }    
 

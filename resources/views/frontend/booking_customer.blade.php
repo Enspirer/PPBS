@@ -360,10 +360,9 @@
                                         <label class="btn text-decoration-none p-3" for="payment_method1" style="border: 1px solid #FF9701">Pay upon Arrival</label>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <!-- <input class="form-check-input mt-3" type="radio" name="payment_method" id="payment_method2" value="PayPal" id="one-check" > -->
-                                        <!-- <label class="btn text-decoration-none px-4" for="payment_method2" style="background: rgba(101, 101, 101, .6);"><img src="{{ url('img/booking/paypal.png')}}" alt="" style="height: 3rem;"></label>  -->
                                    
                                         <div id="paypal-button"></div>
+                                        <input type="hidden" name="paypal" id="paypal">
                                     </div>
                                 </div>
 
@@ -642,6 +641,7 @@
                 return actions.payment.execute().then(function() {
                 // Show a confirmation message to the buyer
                 // window.alert('Thank you for your purchase!');
+                    $('#paypal').val('Paypal');
                     $('#booking-form1').submit();
                 });
             }
