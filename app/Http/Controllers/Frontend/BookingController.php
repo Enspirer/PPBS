@@ -37,7 +37,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {    
 
-        // dd($request);
+        dd($request);
             
         $count = $request->adults + $request->child + $request->baby;
 
@@ -85,6 +85,8 @@ class BookingController extends Controller
         $add->customer_telephone=$request->mobile_number;
         $add->other_information=$request->other_information;
         $add->payment_method=$request->payment_method;        
+        $add->payment_status='Pending';        
+
         if(!empty( auth()->user()->id) === true ){
             $add->user_id=auth()->user()->id;
         }        
@@ -96,30 +98,35 @@ class BookingController extends Controller
         
         if($request->booking_type == 'One Way'){
 
-            $booking_details = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone_number' => $request->mobile_number,
-                'booking_number' => $string,
-                'pickup_from' => $pickup_from,
-                'destination' => $destination,
-                'pickup_date' => $request->pickup_date,
-                'pickup_time' => $request->pickup_time,
-                'adults' => $request->adults,
-                'child' => $request->child,
-                'baby' => $request->baby,
-                'passengers_count' => $count,
-                'pickup_address' => $request->pickup_address,
-                'drop_address' => $request->drop_address,
-                'vehicle_number' => $request->vehicle_number,
-                'luggage' => $request->luggage,
-                'total_price' => $request->result_value,
-                'payment_method' => $request->payment_method,
-                'booking_type' => $request->booking_type,
-                'created_at' => $add->created_at->toDateString(),
-            ];
+            if($request->paypal == 'Paypal') {
+                $booking_details = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone_number' => $request->mobile_number,
+                    'booking_number' => $string,
+                    'pickup_from' => $pickup_from,
+                    'destination' => $destination,
+                    'pickup_date' => $request->pickup_date,
+                    'pickup_time' => $request->pickup_time,
+                    'adults' => $request->adults,
+                    'child' => $request->child,
+                    'baby' => $request->baby,
+                    'passengers_count' => $count,
+                    'pickup_address' => $request->pickup_address,
+                    'drop_address' => $request->drop_address,
+                    'vehicle_number' => $request->vehicle_number,
+                    'luggage' => $request->luggage,
+                    'total_price' => $request->result_value,
+                    'payment_method' => $request->paypal,
+                    'payment_status' => 'Completed',
+                    'booking_type' => $request->booking_type,
+                    'created_at' => $add->created_at->toDateString(),
+                ];
+                
+                \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
+            }
+
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
 
         }else{
 
@@ -142,6 +149,7 @@ class BookingController extends Controller
                 'luggage' => $request->luggage,
                 'total_price' => $request->result_value,
                 'payment_method' => $request->payment_method,
+                'payment_status' => 'Pending',
                 'booking_type' => $request->booking_type,
                 'return_pickup_address' => $request->return_pickup_address,
                 'return_drop_address' => $request->return_drop_address,
@@ -153,7 +161,7 @@ class BookingController extends Controller
                 'created_at' => $add->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
+            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
         
@@ -296,7 +304,7 @@ class BookingController extends Controller
                 'created_at' => $add->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
+            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
 
         }else{
 
@@ -329,7 +337,7 @@ class BookingController extends Controller
                 'created_at' => $add->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
+            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
         

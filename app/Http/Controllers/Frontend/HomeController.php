@@ -124,7 +124,7 @@ class HomeController extends Controller
 
     public function booking_customer_store(Request $request)
     {    
-        // dd($request);
+        dd($request);
 
         $count = $request->adults + $request->child + $request->baby;
       
@@ -210,7 +210,7 @@ class HomeController extends Controller
                 'created_at' => $update->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsMail($booking_details));
+            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
 
         }else{
 
@@ -244,7 +244,7 @@ class HomeController extends Controller
                 'created_at' => $update->created_at->toDateString(),
             ];
             
-            \Mail::to([$request->email,'nihsaan.enspirer@gmail.com'])->send(new BookingDetailsBothMail($booking_details));
+            \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsBothMail($booking_details));
 
         }      
                 
@@ -291,7 +291,7 @@ class HomeController extends Controller
                     'password' => $password
                 ];
 
-                \Mail::to($request->email)->send(new BookingUserMail($details));
+                // \Mail::to($request->email)->send(new BookingUserMail($details));
 
             }else{
 
