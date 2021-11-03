@@ -22,20 +22,12 @@
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             
-            <table>
+            <table width="100%">
                <tr>
-                  <td align="right"><small class="invoice-from">From:</small></td>
-                  <td><small class="invoice-from"><strong class="text-inverse">Paris Private Transfer</strong> info@parisprivatetransfer.com</small></td>
-               </tr>
-               <tr>
-                  <td align="right"><small class="invoice-from">Date:</small></td>
-                  <td><small class="invoice-from"><strong class="text-inverse">{{ date('F d,Y') }}</strong></small></td>
-               </tr>
-               <tr>
-                  <td align="right"><small class="invoice-from">To:</small></td>
-                  <td><small class="invoice-from"><strong class="text-inverse">{{$booking_print->customer_name}}</strong> {{$booking_print->customer_email}}</small></td>
-               </tr>
-            </table>
+                  <td width="50%"><h5 class="invoice-inverse">Booking Number: {{$booking_print->booking_number}}</h5></td>
+                 
+               </tr>            
+            </table> 
                  
          </div>
 
@@ -44,16 +36,28 @@
          <div class="invoice-company text-inverse f-w-600">
             <table width="100%">
                <tr>
-                  <td width="50%"></td>
-                  <td><img src="{{url('img/logo.png')}}" style="width: 40%;"></td>
+                  <td width="50%">
+                     <table>
+                        <tr>
+                           <td class="text-right"><small class="invoice-from">From:</small></td>
+                           <td><small class="invoice-from"><strong class="text-inverse">Paris Private Transfer</strong> info@parisprivatetransfer.com</small></td>
+                        </tr>
+                        <tr>
+                           <td class="text-right"><small class="invoice-from">Date:</small></td>
+                           <td><small class="invoice-from"><strong class="text-inverse">{{ date('F d,Y') }}</strong></small></td>
+                        </tr>
+                        <tr>
+                           <td class="text-right"><small class="invoice-from">To:</small></td>
+                           <td><small class="invoice-from"><strong class="text-inverse">{{$booking_print->customer_name}}</strong> {{$booking_print->customer_email}}</small></td>
+                        </tr>
+                     </table>
+                  </td>
+                  <td class="text-right"><img src="{{url('img/logo.png')}}" style="width: 30%;"></td>
                </tr>            
             </table>
             <table width="100%" class="mt-4">
                <tr>
                   <td width="50%">
-                     <h6 class="invoice-inverse">Booking Number: {{$booking_print->booking_number}}</h6>
-                  </td>
-                  <td>
                      <h6 class="text-inverse">ORDER STATUS: 
                         @if($booking_print->status == 'Approved')
                            <strong class="text-inverse ml-2" style="color:green">{{$booking_print->status}}</strong>
@@ -62,7 +66,10 @@
                         @else
                            <strong class="text-inverse ml-2" style="color:#DE970B">{{$booking_print->status}}</strong>
                         @endif
-                     </h6>  
+                     </h6> 
+                  </td>
+                  <td>
+
                   </td>
                </tr> 
             </table>
@@ -261,10 +268,12 @@
             
 
          <!-- begin invoice-footer -->
-         <div class="invoice-footer mt-5 p-3" style="border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9">
-            <h6 class="text-center m-b-5 f-w-600">Thank you and have a pleasant journey!</h6>
+         <div class="invoice-footer mt-5 p-3" style="margin:20px 0 20px 0; border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9" align="center">
+            <h6 class="text-center m-b-5 f-w-600">Thank you for booking with parisprivatetransfer.com<br>
+            Please check your details are correct and reconfirm, Our Contact number 0033652300255</h6>
 
-            <h6 class="text-center m-b-5 f-w-600 mt-3" style="color: #4863A0">Orders are subject to our terms & conditions. We welcome all comments on the service we provide.</h6>
+            <h6 class="text-center m-b-5 f-w-600 mt-3">Orders are subject to our terms & conditions. We welcome all comments on the service we provide.<br>
+            Have a pleasant journey!</h6>
          </div>
          <!-- end invoice-footer -->
          
