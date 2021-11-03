@@ -48,7 +48,7 @@
                         <a class="nav-link text-decoration-none text-dark p-0 {{ Request::segment(1) == 'contact-us' ? 'active' : null }}" href="{{ route('frontend.contact_us') }}">CONTACT</a>
                     </li>
                     <li class="nav-item links mb-3 mb-md-0">
-                        <a class="nav-link text-decoration-none text-dark btn rounded-pill px-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid rgb(31, 26, 125);">Booking Tracker</a>
+                        <a class="nav-link text-decoration-none text-dark p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">BOOKING TRACKER</a>
                     </li>
 
                 </ul>
