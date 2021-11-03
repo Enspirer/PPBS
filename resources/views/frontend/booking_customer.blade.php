@@ -12,17 +12,14 @@
 @if ( session()->has('message') )
 
   <body style="text-align:center; background-color: #deefd1">
-
         <div style="padding: 0 100px 0 100px">
-
-            <h1 style="margin-top:220px;" class="display-4">Thank You!</h1><br>
-            <p class="lead"><h4>Your booking number is <span class="text-danger">{{ App\Models\Booking::latest()->first()->booking_number }}</span>. One of our member will get back in touch with you soon!<br><br> Have a great day!</h4></p>
+            <h1 style="margin-top:220px;" class="display-6">Thank you for booking with parisprivatetransfer.com</h1><br>
+            <p class="lead"><h4>Your Booking Number is <span class="text-danger">{{ App\Models\Booking::latest()->first()->booking_number }}</span>. Please check your details are correct and reconfirm.<br><br> Our Contact number  0033652300255.<br><br>Have a pleasant journey!<br><br></h4></p>
             <hr><br>    
             <p class="lead">
                 <a class="btn btn-success btn-md" href="{{url('/')}}" role="button">Go Back to Home Page</a>
             </p>
-        </div>
-        
+        </div>        
     </body>
 
 @else  
