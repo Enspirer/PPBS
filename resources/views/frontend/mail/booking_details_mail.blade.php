@@ -8,7 +8,7 @@
    
     .invoice {
         background: #F5F5F5;
-        padding: 50px;
+        padding: 10px 50px 50px 50px;
     }
 
     .invoice-company {
@@ -124,32 +124,39 @@
         <div class="invoice p-5">
             <!-- begin invoice-company -->
             <div class="invoice-company text-inverse f-w-600">
-                
-                <table>
-                <tr>
-                    <td align="right"><small style="padding-right: 20px">From:</small></td>
-                    <td><small class="invoice-from"><strong class="text-inverse">Paris Private Transfer</strong> info@parisprivatetransfer.com</small></td>
-                </tr>
-                <tr>
-                    <td align="right"><small style="padding-right: 20px">Date:</small></td>
-                    <td><small class="invoice-from"><strong class="text-inverse">{{ date('F d,Y') }}</strong></small></td>
-                </tr>
-                <tr>
-                    <td align="right"><small style="padding-right: 20px">To:</small></td>
-                    <td><small class="invoice-from"><strong class="text-inverse">{{$booking_details['name']}}</strong> {{$booking_details['email']}}</small></td>
-                </tr>
-                </table>
-                    
+
+                <table width="100%">
+                    <tr>
+                        <td width="50%"><h5 class="invoice-inverse">Booking Number: {{$booking_details['booking_number']}}</h5></td>
+                 
+                    </tr>            
+                </table>    
+
             </div>
 
             <hr>
 
             <div class="invoice-company text-inverse f-w-600">
                 <table width="100%">
-                <tr>
-                    <td width="50%"><h5 class="invoice-inverse">Booking Number: {{$booking_details['booking_number']}}</h5></td>
-                    <td><img src="{{url('img/logo.png')}}" style="width: 40%;"></td>
-                </tr>            
+                    <tr>
+                        <td width="70%">
+                            <table>
+                                <tr>
+                                    <td align="right"><small style="padding-right: 20px">From:</small></td>
+                                    <td><small class="invoice-from"><strong class="text-inverse">Paris Private Transfer</strong> info@parisprivatetransfer.com</small></td>
+                                </tr>
+                                <tr>
+                                    <td align="right"><small style="padding-right: 20px">Date:</small></td>
+                                    <td><small class="invoice-from"><strong class="text-inverse">{{ date('F d,Y') }}</strong></small></td>
+                                </tr>
+                                <tr>
+                                    <td align="right"><small style="padding-right: 20px">To:</small></td>
+                                    <td><small class="invoice-from"><strong class="text-inverse">{{$booking_details['name']}}</strong> {{$booking_details['email']}}</small></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td align="right"><img src="{{url('img/logo.png')}}" style="width: 40%;"></td>
+                    </tr>            
                 </table>
             </div>
 
@@ -273,9 +280,11 @@
 
             <!-- begin invoice-footer -->
             <div class="invoice-footer mt-5 p-3" style="margin:20px 0 20px 0; border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9" align="center">
-                <h3 class="text-center m-b-5 f-w-600">Thank you and have a pleasant journey!</h3>
+                <h3 class="text-center m-b-5 f-w-600">Thank you for booking with parisprivatetransfer.com<br>
+                Please check your details are correct and reconfirm, Our Contact number 0033652300255</h3>
 
-                <h3 class="text-center m-b-5 f-w-600 mt-3" style="color: #4863A0">Orders are subject to our terms & conditions. We welcome all comments on the service we provide.</h3>
+                <h3 class="text-center m-b-5 f-w-600 mt-3">Orders are subject to our terms & conditions. We welcome all comments on the service we provide.<br>
+                Have a pleasant journey!</h3>
             </div>
             <!-- end invoice-footer -->
             
