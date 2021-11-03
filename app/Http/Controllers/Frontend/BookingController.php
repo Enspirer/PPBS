@@ -126,6 +126,35 @@ class BookingController extends Controller
                 \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
             }
 
+            else {
+
+                $booking_details = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone_number' => $request->mobile_number,
+                    'booking_number' => $string,
+                    'pickup_from' => $pickup_from,
+                    'destination' => $destination,
+                    'pickup_date' => $request->pickup_date,
+                    'pickup_time' => $request->pickup_time,
+                    'adults' => $request->adults,
+                    'child' => $request->child,
+                    'baby' => $request->baby,
+                    'passengers_count' => $count,
+                    'pickup_address' => $request->pickup_address,
+                    'drop_address' => $request->drop_address,
+                    'vehicle_number' => $request->vehicle_number,
+                    'luggage' => $request->luggage,
+                    'total_price' => $request->result_value,
+                    'payment_method' => $request->payment_method,
+                    'payment_status' => 'Pending',
+                    'booking_type' => $request->booking_type,
+                    'created_at' => $add->created_at->toDateString(),
+                ];
+                
+                \Mail::to([$request->email,'zajjith@yopmail.com'])->send(new BookingDetailsMail($booking_details));
+            }
+
             
 
         }else{
