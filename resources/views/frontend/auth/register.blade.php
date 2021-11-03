@@ -75,13 +75,19 @@
                             </div>
                         </div>
 
-                        
-                        <div class="form-check mb-3" id="flexCheckRegister">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                I accept <a href="#" style="color: #1F1A7D;">privacy policy</a> and <a href="#" style="color: #1F1A7D;">general conditions</a>
-                            </label>
+                        <div class="row">
+                            <div class="col-md-12" style="padding-left: 40px;">
+                                <div class="mb-3">
+                                    <div class="form-check mb-3" id="flexCheckRegister">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            I accept <a href="#" style="color: #1F1A7D;">privacy policy</a> and <a href="#" style="color: #1F1A7D;">general conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="row align-items-center">
                             <div class="col-6">

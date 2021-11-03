@@ -72,7 +72,7 @@
 
                 <div style="margin-top: 3rem">
                     <h6 class="mb-3">Follow us on</h6>
-                    <a href="http://facebook.com/pages/category/taxi-service/paris-private-transfer-1586680981555486/" class="text-decoration-none" target="_blank"><img src="{{ url('img/facebook_full.png') }}" alt="" class="img-fluid" style="height: 50px;"></a>
+                    <a href="http://facebook.com/pages/category/taxi-service/paris-private-transfer-1586680981555486/" class="text-decoration-none" target="_blank"><img src="{{ url('img/facebook_logo.png') }}" alt="" class="img-fluid" style="height: 67px;"></a>
                 </div>
             </div>
 
