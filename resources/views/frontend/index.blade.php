@@ -151,23 +151,29 @@
 
     <div class="container cards" style="margin-top: 2rem;">
         <div class="row">
-            <div class="col-12 col-md-4 index-card">
-                <div class="card border-0 shadow-lg">
-                    <img src="{{ url('img/index/card-1.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body pb-1">
-                        <h5 class="card-title fw-bold mb-2">Disneyland Private Transfer</h5>
-                        <p class="card-text">We provide a private taxi service from Charles de Gaulle to Disneyland Paris 42 KM a ride with our experienced drivers at a low cost and all Disney hotels are serviced. Enjoy Disneyland with us because we care about the comfort and safety of your children.</p>
 
-                        <div class="text-end">
-                            <a href="{{ route('frontend.booking') }}" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                <div class="col-12 col-md-4 index-card">
+                    <div class="card border-0 shadow-lg">
+                        <a href="{{ route('frontend.booking') }}" style="color: black">
+                        <img src="{{ url('img/index/card-1.png') }}" class="card-img-top" alt="...">
+                        </a>
+                            <div class="card-body pb-1">
+                            <h5 class="card-title fw-bold mb-2">Disneyland Private Transfer</h5>
+                            <p class="card-text">We provide a private taxi service from Charles de Gaulle to Disneyland Paris 42 KM a ride with our experienced drivers at a low cost and all Disney hotels are serviced. Enjoy Disneyland with us because we care about the comfort and safety of your children.</p>
+
+                            <div class="text-end">
+                                <a href="{{ route('frontend.booking') }}" class="btn p-0"><i class="bi bi-arrow-right-circle"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
 
             <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
+                    <a href="{{ route('frontend.booking') }}" style="color: black">
                     <img src="{{ url('img/index/card-2.png') }}" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body pb-1">
                         <h5 class="card-title fw-bold mb-2">Paris Airport Transport</h5>
                         <p class="card-text">Do you need a private taxi from Charles De Gaulle to Paris city center, it is 32 KM Distance. Paris private transfer drivers welcome you personally, assist and guide you to visit the most beautiful places in the city of Paris. We offer the best prices for reduced cost online booking.</p>
@@ -181,7 +187,9 @@
 
             <div class="col-12 col-md-4 index-card">
                 <div class="card border-0 shadow-lg">
+                    <a href="{{ route('frontend.booking') }}" style="color: black">
                     <img src="{{ url('img/index/card-3.png') }}" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body pb-1">
                         <h5 class="card-title fw-bold mb-2">Beauvais Airport Transfer</h5>
                         <p class="card-text">The cheapest direct shuttle from Beauvais airport to Disneyland Paris for your budget. The journey time is 90 minutes. Distance 120 KM from Beauvais Tille airport to Euro disney Val d 'Europe Marne la Valle.</p>
