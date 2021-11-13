@@ -1,6 +1,11 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('navs.general.home'))
+@section('title', 'CDG Airport taxi Paris| Private Disneyland transfer  | private
+cabs services')
+@section('meta_description','CDG private transfer from Charles
+de Gaulle to Eurodisney for low cost check our rates and book online now
+Beauvais, Orly')
+
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ url('css/contact_us.css') }}">

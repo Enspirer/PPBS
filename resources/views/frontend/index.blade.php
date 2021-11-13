@@ -1,6 +1,9 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('navs.general.home'))
+@section('title', 'CDG Airport taxi | Paris Private transfer cabs | transfer
+Disneyland')
+@section('meta_description','CDG Paris private Taxi Shuttle Service from Paris Disneyland We providing baby & child seats Free
+minivan for Airport Charles de Gaulle to Eurodisney and Orly')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ url('css/index.css') }}">

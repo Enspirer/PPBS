@@ -1,6 +1,10 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('navs.general.home'))
+@section('title', 'CDG Paris low cost  private taxi online booking')
+@section('meta_description','Airport Paris Driver
+specializing Online Private Taxi & cabs booking Service for Paris
+Disneyland We providing baby & child seats Free all in one Family
+minivan Charles de Gaulle to Eurodisney and Orly')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ url('css/booking.css') }}">
